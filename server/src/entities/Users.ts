@@ -13,9 +13,11 @@ import {
   DeleteDateColumn,
   Entity,
   Index,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { WordBooks } from './WordBooks';
 
 @Index('email', ['email'], { unique: true })
 @Entity({ schema: 'word_test_app', name: 'users' })
@@ -58,6 +60,12 @@ export class Users {
   password: string;
 
   @IsString()
+  @IsNotEmpty()
+  @ApiProperty({ example: 'default', description: '권한' })
+  @Column('varchar', { name: 'role', nullable: false, default: 'default' })
+  role: string;
+
+  @IsString()
   @MaxLength(255)
   @ApiProperty({ example: 'image.jpg', description: '유저 이미지' })
   @Column('varchar', {
@@ -84,4 +92,7 @@ export class Users {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  @OneToMany(() => WordBooks, (wordBooks) => wordBooks.User)
+  WordBooks: WordBooks[];
 }

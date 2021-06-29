@@ -7,6 +7,8 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { AuthModule } from './auth/auth.module';
 import { Users } from './entities/Users';
 import { UsersModule } from './users/users.module';
+import { WordBooks } from './entities/WordBooks';
+import { Words } from './entities/Words';
 
 @Module({
   imports: [
@@ -18,7 +20,7 @@ import { UsersModule } from './users/users.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [Users],
+      entities: [Users, WordBooks, Words],
       synchronize: true,
     }),
     AuthModule,
