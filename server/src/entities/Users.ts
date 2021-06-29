@@ -12,10 +12,12 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  Index,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
+@Index('email', ['email'], { unique: true })
 @Entity({ schema: 'word_test_app', name: 'user' })
 export class Users {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
