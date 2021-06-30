@@ -4,9 +4,12 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { WordBooks } from './WordBooks';
 
 @Entity({ schema: 'word_test_app', name: 'words' })
 export class Words {
@@ -41,4 +44,8 @@ export class Words {
 
   @DeleteDateColumn()
   deletedAt: Date;
+
+  @ManyToOne(() => WordBooks, (wordBooks) => wordBooks.Words)
+  @JoinColumn([{ name: 'WordBookId', referencedColumnName: 'id' }])
+  WordBook: WordBooks;
 }

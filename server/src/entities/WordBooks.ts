@@ -7,10 +7,12 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Users } from './Users';
+import { Words } from './Words';
 
 @Entity({ schema: 'word_test_app', name: 'wordbooks' })
 export class WordBooks {
@@ -43,4 +45,7 @@ export class WordBooks {
   @ManyToOne(() => Users, (users) => users.WordBooks)
   @JoinColumn([{ name: 'UserId', referencedColumnName: 'id' }])
   User: Users;
+
+  @OneToMany(() => Words, (words) => words.WordBook)
+  Words: Words[];
 }

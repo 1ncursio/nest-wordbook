@@ -9,6 +9,7 @@ import { Users } from './entities/Users';
 import { UsersModule } from './users/users.module';
 import { WordBooks } from './entities/WordBooks';
 import { Words } from './entities/Words';
+import { Exams } from './entities/Exams';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { Words } from './entities/Words';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [Users, WordBooks, Words],
+      entities: [Users, WordBooks, Words, Exams],
       synchronize: true,
     }),
     AuthModule,

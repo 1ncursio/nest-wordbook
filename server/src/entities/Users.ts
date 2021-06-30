@@ -17,6 +17,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Exams } from './Exams';
 import { WordBooks } from './WordBooks';
 
 @Index('email', ['email'], { unique: true })
@@ -95,4 +96,9 @@ export class Users {
 
   @OneToMany(() => WordBooks, (wordBooks) => wordBooks.User)
   WordBooks: WordBooks[];
+
+  @OneToMany(() => WordBooks, (wordBooks) => wordBooks.User)
+  Exams: Exams[];
+
+  // @OneToMany(() => EmailVerifications)
 }
