@@ -1,0 +1,142 @@
+{
+  "sentences": [
+    { "text": { "content": "Hello, world...", "beginOffset": 0 }, "sentiment": null },
+    { "text": { "content": "you bastard.", "beginOffset": 16 }, "sentiment": null }
+  ],
+  "tokens": [
+    {
+      "text": { "content": "Hello", "beginOffset": 0 },
+      "partOfSpeech": {
+        "tag": "X",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 2, "label": "DISCOURSE" },
+      "lemma": "Hello"
+    },
+    {
+      "text": { "content": ",", "beginOffset": 5 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 2, "label": "P" },
+      "lemma": ","
+    },
+    {
+      "text": { "content": "world", "beginOffset": 7 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "SINGULAR",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 2, "label": "ROOT" },
+      "lemma": "world"
+    },
+    {
+      "text": { "content": "...", "beginOffset": 12 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 2, "label": "P" },
+      "lemma": "..."
+    },
+    {
+      "text": { "content": "you", "beginOffset": 16 },
+      "partOfSpeech": {
+        "tag": "PRON",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "NOMINATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "SECOND",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 5, "label": "NSUBJ" },
+      "lemma": "you"
+    },
+    {
+      "text": { "content": "bastard", "beginOffset": 20 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "INDICATIVE",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PRESENT",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 5, "label": "ROOT" },
+      "lemma": "bastard"
+    },
+    {
+      "text": { "content": ".", "beginOffset": 27 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER_UNKNOWN",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 5, "label": "P" },
+      "lemma": "."
+    }
+  ],
+  "language": "en"
+}

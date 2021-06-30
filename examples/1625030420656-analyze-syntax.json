@@ -1,0 +1,2464 @@
+{
+  "sentences": [
+    { "text": { "content": "今度の週末にお祭りがあります。", "beginOffset": 0 }, "sentiment": null },
+    {
+      "text": {
+        "content": "お祭りに行く時は普通の服でもいいですが、私は浴衣が着たいと思いました。",
+        "beginOffset": 45
+      },
+      "sentiment": null
+    },
+    { "text": { "content": "それで、昨日百貨店に行きました。", "beginOffset": 150 }, "sentiment": null },
+    { "text": { "content": "近所の店には着物しかなかったからです。", "beginOffset": 198 }, "sentiment": null },
+    {
+      "text": {
+        "content": "百貨店の着物売り場には、たくさんの着物がありましたが、ここにも浴衣は少ししかありませんでした。",
+        "beginOffset": 255
+      },
+      "sentiment": null
+    },
+    {
+      "text": {
+        "content": "浴衣の種類が少なくて、色々な浴衣を試せないのが残念でしたが、その中から気に入った浴衣を見つけました。",
+        "beginOffset": 396
+      },
+      "sentiment": null
+    },
+    { "text": { "content": "この浴衣を早くみんなに見せたいです。", "beginOffset": 546 }, "sentiment": null }
+  ],
+  "tokens": [
+    {
+      "text": { "content": "今度", "beginOffset": 0 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 2, "label": "NN" },
+      "lemma": "今度"
+    },
+    {
+      "text": { "content": "の", "beginOffset": 6 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "GENITIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 0, "label": "PRT" },
+      "lemma": "の"
+    },
+    {
+      "text": { "content": "週末", "beginOffset": 9 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 7, "label": "ADVPHMOD" },
+      "lemma": "週末"
+    },
+    {
+      "text": { "content": "に", "beginOffset": 15 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ADVERBIAL",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 2, "label": "PRT" },
+      "lemma": "に"
+    },
+    {
+      "text": { "content": "お", "beginOffset": 18 },
+      "partOfSpeech": {
+        "tag": "AFFIX",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 5, "label": "PREF" },
+      "lemma": "お"
+    },
+    {
+      "text": { "content": "祭り", "beginOffset": 21 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 7, "label": "NSUBJ" },
+      "lemma": "祭り"
+    },
+    {
+      "text": { "content": "が", "beginOffset": 27 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "NOMINATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 5, "label": "PRT" },
+      "lemma": "が"
+    },
+    {
+      "text": { "content": "あり", "beginOffset": 30 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 7, "label": "ROOT" },
+      "lemma": "あり"
+    },
+    {
+      "text": { "content": "ます", "beginOffset": 36 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 7, "label": "AUX" },
+      "lemma": "ます"
+    },
+    {
+      "text": { "content": "。", "beginOffset": 42 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 7, "label": "P" },
+      "lemma": "。"
+    },
+    {
+      "text": { "content": "お", "beginOffset": 45 },
+      "partOfSpeech": {
+        "tag": "AFFIX",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 11, "label": "PREF" },
+      "lemma": "お"
+    },
+    {
+      "text": { "content": "祭り", "beginOffset": 48 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 13, "label": "ADVPHMOD" },
+      "lemma": "祭り"
+    },
+    {
+      "text": { "content": "に", "beginOffset": 54 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ADVERBIAL",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 11, "label": "PRT" },
+      "lemma": "に"
+    },
+    {
+      "text": { "content": "行く", "beginOffset": 57 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "ADNOMIAL",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 14, "label": "RCMOD" },
+      "lemma": "行く"
+    },
+    {
+      "text": { "content": "時", "beginOffset": 63 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 27, "label": "TMOD" },
+      "lemma": "時"
+    },
+    {
+      "text": { "content": "は", "beginOffset": 66 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 14, "label": "PRT" },
+      "lemma": "は"
+    },
+    {
+      "text": { "content": "普通", "beginOffset": 69 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 18, "label": "NN" },
+      "lemma": "普通"
+    },
+    {
+      "text": { "content": "の", "beginOffset": 75 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "GENITIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 16, "label": "PRT" },
+      "lemma": "の"
+    },
+    {
+      "text": { "content": "服", "beginOffset": 78 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 27, "label": "ADVCL" },
+      "lemma": "服"
+    },
+    {
+      "text": { "content": "でもいい", "beginOffset": 81 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 18, "label": "AUX" },
+      "lemma": "でもいい"
+    },
+    {
+      "text": { "content": "です", "beginOffset": 93 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 18, "label": "AUX" },
+      "lemma": "だ"
+    },
+    {
+      "text": { "content": "が", "beginOffset": 99 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 18, "label": "PRT" },
+      "lemma": "が"
+    },
+    {
+      "text": { "content": "、", "beginOffset": 102 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 27, "label": "P" },
+      "lemma": "、"
+    },
+    {
+      "text": { "content": "私", "beginOffset": 105 },
+      "partOfSpeech": {
+        "tag": "PRON",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "FIRST",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 27, "label": "ADVPHMOD" },
+      "lemma": "私"
+    },
+    {
+      "text": { "content": "は", "beginOffset": 108 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 23, "label": "PRT" },
+      "lemma": "は"
+    },
+    {
+      "text": { "content": "浴衣", "beginOffset": 111 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 27, "label": "NSUBJ" },
+      "lemma": "浴衣"
+    },
+    {
+      "text": { "content": "が", "beginOffset": 117 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "NOMINATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 25, "label": "PRT" },
+      "lemma": "が"
+    },
+    {
+      "text": { "content": "着", "beginOffset": 120 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 30, "label": "CCOMP" },
+      "lemma": "着る"
+    },
+    {
+      "text": { "content": "たい", "beginOffset": 123 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 27, "label": "AUX" },
+      "lemma": "たい"
+    },
+    {
+      "text": { "content": "と", "beginOffset": 129 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "COMPLEMENTIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 27, "label": "PRT" },
+      "lemma": "と"
+    },
+    {
+      "text": { "content": "思い", "beginOffset": 132 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 30, "label": "ROOT" },
+      "lemma": "思い"
+    },
+    {
+      "text": { "content": "まし", "beginOffset": 138 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 30, "label": "AUX" },
+      "lemma": "まし"
+    },
+    {
+      "text": { "content": "た", "beginOffset": 144 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PAST",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 30, "label": "AUX" },
+      "lemma": "た"
+    },
+    {
+      "text": { "content": "。", "beginOffset": 147 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 30, "label": "P" },
+      "lemma": "。"
+    },
+    {
+      "text": { "content": "それで", "beginOffset": 150 },
+      "partOfSpeech": {
+        "tag": "CONJ",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 40, "label": "MARK" },
+      "lemma": "それで"
+    },
+    {
+      "text": { "content": "、", "beginOffset": 159 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 40, "label": "P" },
+      "lemma": "、"
+    },
+    {
+      "text": { "content": "昨日", "beginOffset": 162 },
+      "partOfSpeech": {
+        "tag": "ADV",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 40, "label": "ADVMOD" },
+      "lemma": "昨日"
+    },
+    {
+      "text": { "content": "百貨", "beginOffset": 168 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 40, "label": "ADVPHMOD" },
+      "lemma": "百貨"
+    },
+    {
+      "text": { "content": "店", "beginOffset": 174 },
+      "partOfSpeech": {
+        "tag": "AFFIX",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 37, "label": "SUFF" },
+      "lemma": "店"
+    },
+    {
+      "text": { "content": "に", "beginOffset": 177 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ADVERBIAL",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 37, "label": "PRT" },
+      "lemma": "に"
+    },
+    {
+      "text": { "content": "行き", "beginOffset": 180 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 40, "label": "ROOT" },
+      "lemma": "行き"
+    },
+    {
+      "text": { "content": "まし", "beginOffset": 186 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 40, "label": "AUX" },
+      "lemma": "まし"
+    },
+    {
+      "text": { "content": "た", "beginOffset": 192 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PAST",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 40, "label": "AUX" },
+      "lemma": "た"
+    },
+    {
+      "text": { "content": "。", "beginOffset": 195 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 40, "label": "P" },
+      "lemma": "。"
+    },
+    {
+      "text": { "content": "近所", "beginOffset": 198 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 46, "label": "NN" },
+      "lemma": "近所"
+    },
+    {
+      "text": { "content": "の", "beginOffset": 204 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "GENITIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 44, "label": "PRT" },
+      "lemma": "の"
+    },
+    {
+      "text": { "content": "店", "beginOffset": 207 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 51, "label": "ADVPHMOD" },
+      "lemma": "店"
+    },
+    {
+      "text": { "content": "に", "beginOffset": 210 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ADVERBIAL",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 46, "label": "PRT" },
+      "lemma": "に"
+    },
+    {
+      "text": { "content": "は", "beginOffset": 213 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 46, "label": "PRT" },
+      "lemma": "は"
+    },
+    {
+      "text": { "content": "着物", "beginOffset": 216 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 51, "label": "NSUBJ" },
+      "lemma": "着物"
+    },
+    {
+      "text": { "content": "しか", "beginOffset": 222 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 49, "label": "PRT" },
+      "lemma": "しか"
+    },
+    {
+      "text": { "content": "なかっ", "beginOffset": 228 },
+      "partOfSpeech": {
+        "tag": "ADJ",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 53, "label": "NOMC" },
+      "lemma": "なかっ"
+    },
+    {
+      "text": { "content": "た", "beginOffset": 237 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PAST",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 51, "label": "AUX" },
+      "lemma": "た"
+    },
+    {
+      "text": { "content": "から", "beginOffset": 240 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 53, "label": "ROOT" },
+      "lemma": "から"
+    },
+    {
+      "text": { "content": "です", "beginOffset": 246 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 53, "label": "AUX" },
+      "lemma": "だ"
+    },
+    {
+      "text": { "content": "。", "beginOffset": 252 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 53, "label": "P" },
+      "lemma": "。"
+    },
+    {
+      "text": { "content": "百貨", "beginOffset": 255 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 59, "label": "NN" },
+      "lemma": "百貨"
+    },
+    {
+      "text": { "content": "店", "beginOffset": 261 },
+      "partOfSpeech": {
+        "tag": "AFFIX",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 56, "label": "SUFF" },
+      "lemma": "店"
+    },
+    {
+      "text": { "content": "の", "beginOffset": 264 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "GENITIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 56, "label": "PRT" },
+      "lemma": "の"
+    },
+    {
+      "text": { "content": "着物", "beginOffset": 267 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 69, "label": "NSUBJ" },
+      "lemma": "着物"
+    },
+    {
+      "text": { "content": "売り", "beginOffset": 273 },
+      "partOfSpeech": {
+        "tag": "AFFIX",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 59, "label": "SUFF" },
+      "lemma": "売り"
+    },
+    {
+      "text": { "content": "場", "beginOffset": 279 },
+      "partOfSpeech": {
+        "tag": "AFFIX",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 59, "label": "SUFF" },
+      "lemma": "場"
+    },
+    {
+      "text": { "content": "に", "beginOffset": 282 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ADVERBIAL",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 59, "label": "PRT" },
+      "lemma": "に"
+    },
+    {
+      "text": { "content": "は", "beginOffset": 285 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 59, "label": "PRT" },
+      "lemma": "は"
+    },
+    {
+      "text": { "content": "、", "beginOffset": 288 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 69, "label": "P" },
+      "lemma": "、"
+    },
+    {
+      "text": { "content": "たくさん", "beginOffset": 291 },
+      "partOfSpeech": {
+        "tag": "ADV",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 67, "label": "NN" },
+      "lemma": "たくさん"
+    },
+    {
+      "text": { "content": "の", "beginOffset": 303 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "GENITIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 65, "label": "PRT" },
+      "lemma": "の"
+    },
+    {
+      "text": { "content": "着物", "beginOffset": 306 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 69, "label": "NSUBJ" },
+      "lemma": "着物"
+    },
+    {
+      "text": { "content": "が", "beginOffset": 312 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "NOMINATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 67, "label": "PRT" },
+      "lemma": "が"
+    },
+    {
+      "text": { "content": "あり", "beginOffset": 315 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "ADVCL" },
+      "lemma": "あり"
+    },
+    {
+      "text": { "content": "まし", "beginOffset": 321 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 69, "label": "AUX" },
+      "lemma": "まし"
+    },
+    {
+      "text": { "content": "た", "beginOffset": 327 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PAST",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 69, "label": "AUX" },
+      "lemma": "た"
+    },
+    {
+      "text": { "content": "が", "beginOffset": 330 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 69, "label": "PRT" },
+      "lemma": "が"
+    },
+    {
+      "text": { "content": "、", "beginOffset": 333 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "P" },
+      "lemma": "、"
+    },
+    {
+      "text": { "content": "ここ", "beginOffset": 336 },
+      "partOfSpeech": {
+        "tag": "PRON",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "THIRD",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "ADVPHMOD" },
+      "lemma": "ここ"
+    },
+    {
+      "text": { "content": "に", "beginOffset": 342 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ADVERBIAL",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 74, "label": "PRT" },
+      "lemma": "に"
+    },
+    {
+      "text": { "content": "も", "beginOffset": 345 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 74, "label": "PRT" },
+      "lemma": "も"
+    },
+    {
+      "text": { "content": "浴衣", "beginOffset": 348 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "NSUBJ" },
+      "lemma": "浴衣"
+    },
+    {
+      "text": { "content": "は", "beginOffset": 354 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 77, "label": "PRT" },
+      "lemma": "は"
+    },
+    {
+      "text": { "content": "少し", "beginOffset": 357 },
+      "partOfSpeech": {
+        "tag": "ADV",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "ADVMOD" },
+      "lemma": "少し"
+    },
+    {
+      "text": { "content": "しか", "beginOffset": 363 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 79, "label": "PRT" },
+      "lemma": "しか"
+    },
+    {
+      "text": { "content": "あり", "beginOffset": 369 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "ROOT" },
+      "lemma": "あり"
+    },
+    {
+      "text": { "content": "ませ", "beginOffset": 375 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "IRREALIS",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "AUX" },
+      "lemma": "ませ"
+    },
+    {
+      "text": { "content": "ん", "beginOffset": 381 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "NEG" },
+      "lemma": "ん"
+    },
+    {
+      "text": { "content": "でし", "beginOffset": 384 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "AUX" },
+      "lemma": "でし"
+    },
+    {
+      "text": { "content": "た", "beginOffset": 390 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PAST",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "AUX" },
+      "lemma": "た"
+    },
+    {
+      "text": { "content": "。", "beginOffset": 393 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 81, "label": "P" },
+      "lemma": "。"
+    },
+    {
+      "text": { "content": "浴衣", "beginOffset": 396 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 89, "label": "NN" },
+      "lemma": "浴衣"
+    },
+    {
+      "text": { "content": "の", "beginOffset": 402 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "GENITIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 87, "label": "PRT" },
+      "lemma": "の"
+    },
+    {
+      "text": { "content": "種類", "beginOffset": 405 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 91, "label": "NSUBJ" },
+      "lemma": "種類"
+    },
+    {
+      "text": { "content": "が", "beginOffset": 411 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "NOMINATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 89, "label": "PRT" },
+      "lemma": "が"
+    },
+    {
+      "text": { "content": "少なく", "beginOffset": 414 },
+      "partOfSpeech": {
+        "tag": "ADJ",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 91, "label": "ROOT" },
+      "lemma": "少ない"
+    },
+    {
+      "text": { "content": "て", "beginOffset": 423 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 91, "label": "PRT" },
+      "lemma": "て"
+    },
+    {
+      "text": { "content": "、", "beginOffset": 426 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 91, "label": "P" },
+      "lemma": "、"
+    },
+    {
+      "text": { "content": "色々", "beginOffset": 429 },
+      "partOfSpeech": {
+        "tag": "ADJ",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 96, "label": "AMOD" },
+      "lemma": "色々"
+    },
+    {
+      "text": { "content": "な", "beginOffset": 435 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "ADNOMIAL",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 94, "label": "AUX" },
+      "lemma": "だ"
+    },
+    {
+      "text": { "content": "浴衣", "beginOffset": 438 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 98, "label": "DOBJ" },
+      "lemma": "浴衣"
+    },
+    {
+      "text": { "content": "を", "beginOffset": 444 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ACCUSATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 96, "label": "PRT" },
+      "lemma": "を"
+    },
+    {
+      "text": { "content": "試せ", "beginOffset": 447 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "IRREALIS",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 100, "label": "NOMC" },
+      "lemma": "試せ"
+    },
+    {
+      "text": { "content": "ない", "beginOffset": 453 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "ADNOMIAL",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 98, "label": "NEG" },
+      "lemma": "ない"
+    },
+    {
+      "text": { "content": "の", "beginOffset": 459 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 102, "label": "NOMCSUBJ" },
+      "lemma": "の"
+    },
+    {
+      "text": { "content": "が", "beginOffset": 462 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "NOMINATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 100, "label": "PRT" },
+      "lemma": "が"
+    },
+    {
+      "text": { "content": "残念", "beginOffset": 465 },
+      "partOfSpeech": {
+        "tag": "ADJ",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 114, "label": "ADVCL" },
+      "lemma": "残念だ"
+    },
+    {
+      "text": { "content": "でし", "beginOffset": 471 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 102, "label": "AUX" },
+      "lemma": "でし"
+    },
+    {
+      "text": { "content": "た", "beginOffset": 477 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PAST",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 102, "label": "AUX" },
+      "lemma": "た"
+    },
+    {
+      "text": { "content": "が", "beginOffset": 480 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 102, "label": "PRT" },
+      "lemma": "が"
+    },
+    {
+      "text": { "content": "、", "beginOffset": 483 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 114, "label": "P" },
+      "lemma": "、"
+    },
+    {
+      "text": { "content": "その", "beginOffset": 486 },
+      "partOfSpeech": {
+        "tag": "DET",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 108, "label": "DET" },
+      "lemma": "その"
+    },
+    {
+      "text": { "content": "中", "beginOffset": 492 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 110, "label": "ADVPHMOD" },
+      "lemma": "中"
+    },
+    {
+      "text": { "content": "から", "beginOffset": 495 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ADVERBIAL",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 108, "label": "PRT" },
+      "lemma": "から"
+    },
+    {
+      "text": { "content": "気に入っ", "beginOffset": 501 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 112, "label": "RCMOD" },
+      "lemma": "気に入っ"
+    },
+    {
+      "text": { "content": "た", "beginOffset": 513 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "ADNOMIAL",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PAST",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 110, "label": "AUX" },
+      "lemma": "た"
+    },
+    {
+      "text": { "content": "浴衣", "beginOffset": 516 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 114, "label": "DOBJ" },
+      "lemma": "浴衣"
+    },
+    {
+      "text": { "content": "を", "beginOffset": 522 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ACCUSATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 112, "label": "PRT" },
+      "lemma": "を"
+    },
+    {
+      "text": { "content": "見つけ", "beginOffset": 525 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 91, "label": "PARATAXIS" },
+      "lemma": "見つけ"
+    },
+    {
+      "text": { "content": "まし", "beginOffset": 534 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 114, "label": "AUX" },
+      "lemma": "まし"
+    },
+    {
+      "text": { "content": "た", "beginOffset": 540 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "PAST",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 114, "label": "AUX" },
+      "lemma": "た"
+    },
+    {
+      "text": { "content": "。", "beginOffset": 543 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 91, "label": "P" },
+      "lemma": "。"
+    },
+    {
+      "text": { "content": "この", "beginOffset": 546 },
+      "partOfSpeech": {
+        "tag": "DET",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 119, "label": "DET" },
+      "lemma": "この"
+    },
+    {
+      "text": { "content": "浴衣", "beginOffset": 552 },
+      "partOfSpeech": {
+        "tag": "NOUN",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 124, "label": "DOBJ" },
+      "lemma": "浴衣"
+    },
+    {
+      "text": { "content": "を", "beginOffset": 558 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ACCUSATIVE",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 119, "label": "PRT" },
+      "lemma": "を"
+    },
+    {
+      "text": { "content": "早く", "beginOffset": 561 },
+      "partOfSpeech": {
+        "tag": "ADJ",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 122, "label": "AMOD" },
+      "lemma": "早い"
+    },
+    {
+      "text": { "content": "みんな", "beginOffset": 567 },
+      "partOfSpeech": {
+        "tag": "PRON",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "PLURAL",
+        "person": "THIRD",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 124, "label": "ADVPHMOD" },
+      "lemma": "みんな"
+    },
+    {
+      "text": { "content": "に", "beginOffset": 576 },
+      "partOfSpeech": {
+        "tag": "PRT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "ADVERBIAL",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 122, "label": "PRT" },
+      "lemma": "に"
+    },
+    {
+      "text": { "content": "見せ", "beginOffset": 579 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "GERUND",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 124, "label": "ROOT" },
+      "lemma": "見せ"
+    },
+    {
+      "text": { "content": "たい", "beginOffset": 585 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 124, "label": "AUX" },
+      "lemma": "たい"
+    },
+    {
+      "text": { "content": "です", "beginOffset": 591 },
+      "partOfSpeech": {
+        "tag": "VERB",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FINAL_ENDING",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 124, "label": "AUX" },
+      "lemma": "だ"
+    },
+    {
+      "text": { "content": "。", "beginOffset": 597 },
+      "partOfSpeech": {
+        "tag": "PUNCT",
+        "aspect": "ASPECT_UNKNOWN",
+        "case": "CASE_UNKNOWN",
+        "form": "FORM_UNKNOWN",
+        "gender": "GENDER_UNKNOWN",
+        "mood": "MOOD_UNKNOWN",
+        "number": "NUMBER_UNKNOWN",
+        "person": "PERSON_UNKNOWN",
+        "proper": "NOT_PROPER",
+        "reciprocity": "RECIPROCITY_UNKNOWN",
+        "tense": "TENSE_UNKNOWN",
+        "voice": "VOICE_UNKNOWN"
+      },
+      "dependencyEdge": { "headTokenIndex": 124, "label": "P" },
+      "lemma": "。"
+    }
+  ],
+  "language": "ja"
+}
