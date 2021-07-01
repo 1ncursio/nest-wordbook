@@ -5,9 +5,11 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { ExamWords } from './ExamWords';
 import { Users } from './Users';
 
 @Entity({ schema: 'word_test_app', name: 'exams' })
@@ -33,7 +35,13 @@ export class Exams {
   @DeleteDateColumn()
   deletedAt: Date;
 
+  @Column('int', { name: 'UserId' })
+  UserId: number;
+
   @ManyToOne(() => Users, (users) => users.Exams)
   @JoinColumn([{ name: 'UserId', referencedColumnName: 'id' }])
-  User: Users;
+  Examinee: Users;
+
+  @OneToMany(() => ExamWords, (examWords) => examWords.Exam)
+  Words: ExamWords[];
 }

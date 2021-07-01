@@ -1,11 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
+  IsBoolean,
   IsEmail,
   IsNotEmpty,
   IsString,
-  MinLength,
   MaxLength,
-  IsBoolean,
+  MinLength,
 } from 'class-validator';
 import {
   Column,
@@ -94,10 +94,10 @@ export class Users {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  @OneToMany(() => WordBooks, (wordBooks) => wordBooks.User)
+  @OneToMany(() => WordBooks, (wordBooks) => wordBooks.Owner)
   WordBooks: WordBooks[];
 
-  @OneToMany(() => WordBooks, (wordBooks) => wordBooks.User)
+  @OneToMany(() => Exams, (exams) => exams.Examinee)
   Exams: Exams[];
 
   // @OneToMany(() => EmailVerifications)

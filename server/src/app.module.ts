@@ -3,13 +3,17 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { AuthModule } from './auth/auth.module';
-import { Users } from './entities/Users';
-import { UsersModule } from './users/users.module';
-import { WordBooks } from './entities/WordBooks';
-import { Words } from './entities/Words';
 import { Exams } from './entities/Exams';
+import { ExamWords } from './entities/ExamWords';
+import { PartsOfSpeech } from './entities/PartsOfSpeech';
+import { Users } from './entities/Users';
+import { WordBooks } from './entities/WordBooks';
+import { WordPartsOfSpeech } from './entities/WordPartsOfSpeech';
+import { Words } from './entities/Words';
+import { WordSenses } from './entities/WordSenses';
+import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -21,7 +25,16 @@ import { Exams } from './entities/Exams';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [Users, WordBooks, Words, Exams],
+      entities: [
+        Users,
+        WordBooks,
+        Words,
+        Exams,
+        ExamWords,
+        WordSenses,
+        PartsOfSpeech,
+        WordPartsOfSpeech,
+      ],
       synchronize: true,
     }),
     AuthModule,

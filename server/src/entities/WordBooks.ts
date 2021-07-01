@@ -42,9 +42,12 @@ export class WordBooks {
   @DeleteDateColumn()
   deletedAt: Date;
 
+  @Column('int', { name: 'OwnerId' })
+  OwnerId: number;
+
   @ManyToOne(() => Users, (users) => users.WordBooks)
-  @JoinColumn([{ name: 'UserId', referencedColumnName: 'id' }])
-  User: Users;
+  @JoinColumn([{ name: 'OwnerId', referencedColumnName: 'id' }])
+  Owner: Users;
 
   @OneToMany(() => Words, (words) => words.WordBook)
   Words: Words[];
