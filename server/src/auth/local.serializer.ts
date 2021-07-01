@@ -23,9 +23,8 @@ export class LocalSerializer extends PassportSerializer {
       .findOneOrFail({ id: +userId }, { select: ['id', 'email', 'nickname'] })
       .then((user) => {
         console.log('user', user);
+        done(null, user);
       })
-      .catch((error) => {
-        done(error);
-      });
+      .catch((error) => done(error));
   }
 }

@@ -82,6 +82,7 @@ export class Users {
   @Column('boolean', {
     name: 'enabled',
     nullable: false,
+    default: true /* 이메일 인증 전까지 비활성화 해야됨 */,
   })
   enabled: boolean;
 

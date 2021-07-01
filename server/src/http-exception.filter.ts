@@ -13,12 +13,12 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const status = exception.getStatus();
     const err = exception.getResponse() as
-      | { message: any; statusCode: number }
+      | string
       | { error: string; statusCode: 400; message: string[] };
 
     console.log(status, err);
 
-    if (typeof err !== 'string' && err.statusCode === 400) {
+    if (typeof err !== 'string' && err.error === 'Bad Request') {
       return response.status(status).json({
         success: false,
         code: status,
@@ -29,7 +29,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
     response.status(status).json({
       success: false,
       code: status,
-      data: err.message,
+      data: err,
     });
   }
 }
