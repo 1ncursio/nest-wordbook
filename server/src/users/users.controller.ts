@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  ForbiddenException,
   Get,
   Post,
   UseGuards,
@@ -32,9 +33,23 @@ export class UsersController {
     return user;
   }
 
+  @ApiOperation({ summary: '회원가입' })
   @UseGuards(NotLoggedInGuard)
   @Post()
   async join(@Body() data: JoinUserDto) {
-    await this.usersService.join(data.email, data.nickname, data.password);
+    const user = await this.usersService.findByEmail(data.email);
+    if (user) {
+      throw new ForbiddenException('이미 존재하는 유저입니다.');
+    }
+    const result = await this.usersService.join(
+      data.email,
+      data.nickname,
+      data.password,
+    );
+    if (result) {
+      return 'ok';
+    } else {
+      throw new ForbiddenException();
+    }
   }
 }
