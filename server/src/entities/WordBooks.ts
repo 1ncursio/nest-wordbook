@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsInt, IsNotEmpty, IsString } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -19,14 +20,17 @@ export class WordBooks {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @ApiProperty({ example: '내 단어장 1', description: '단어장 이름' })
   @IsNotEmpty()
   @IsString()
-  @ApiProperty({ example: '내 단어장 1', description: '단어장 이름' })
   @Column('varchar', { name: 'name', nullable: false })
   name: string;
 
-  @IsNumber()
-  @Column('tinyint', {
+  @ApiProperty({ example: 1, description: '공개 여부' })
+  @IsNotEmpty()
+  @IsInt()
+  @Type(() => Number)
+  @Column('int', {
     name: 'visibility',
     nullable: false,
     default: 0 /* 0 공개 1 비공개 */,

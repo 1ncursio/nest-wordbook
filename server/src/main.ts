@@ -36,19 +36,19 @@ async function bootstrap() {
     });
   }
 
-  app.use(cookieParser());
-  app.use(
-    session({
-      resave: false,
-      saveUninitialized: false,
-      secret: process.env.COOKIE_SECRET,
-      cookie: {
-        httpOnly: true,
-      },
-    }),
-  );
+  // app.use(cookieParser());
+  // app.use(
+  //   session({
+  //     resave: false,
+  //     saveUninitialized: false,
+  //     secret: process.env.COOKIE_SECRET,
+  //     cookie: {
+  //       httpOnly: true,
+  //     },
+  //   }),
+  // );
   app.use(passport.initialize());
-  app.use(passport.session());
+  // app.use(passport.session());
 
   await app.listen(port);
   console.log(`Server listening at ${port} port`);

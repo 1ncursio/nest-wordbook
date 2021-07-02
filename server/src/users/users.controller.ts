@@ -8,6 +8,8 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
+import { AuthService } from 'src/auth/auth.service';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { LocalAuthGuard } from 'src/auth/local-auth.guard';
 import { NotLoggedInGuard } from 'src/auth/not-logged-in.guard';
 import { UndefinedToNullInterceptor } from 'src/common/interceptors/undefinedToNull.interceptor';
@@ -21,17 +23,18 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @Get()
-  getProfile(@User() user: Users) {
-    return user || false;
-  }
+  // @UseGuards(JwtAuthGuard)
+  // @Get()
+  // getProfile(@User() user: Users) {
+  //   return user || false;
+  // }
 
-  @ApiOperation({ summary: '로그인' })
-  @UseGuards(LocalAuthGuard)
-  @Post('login')
-  async login(@User() user: Users) {
-    return user;
-  }
+  // @ApiOperation({ summary: '로그인' })
+  // @UseGuards(LocalAuthGuard)
+  // @Post('login')
+  // async login(@User() user: Users) {
+  //   return this.authService.login(user);
+  // }
 
   @ApiOperation({ summary: '회원가입' })
   @UseGuards(NotLoggedInGuard)
