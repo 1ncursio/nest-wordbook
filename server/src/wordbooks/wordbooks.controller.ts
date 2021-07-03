@@ -10,7 +10,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { LoggedInGuard } from 'src/auth/logged-in.guard';
 import { User } from 'src/decorators/user.decorator';
 import { Users } from 'src/entities/Users';
 import { CreateWordBookDto } from './dto/create-word-book.dto';
