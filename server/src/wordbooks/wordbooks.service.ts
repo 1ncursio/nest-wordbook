@@ -20,14 +20,22 @@ export class WordbooksService {
     return this.wordBooksRepository.findOne({ where: { id: wordBookId } });
   }
 
-  async createWordBook(name: string, visibility: number, userId: number) {
+  async createWordBook({
+    name,
+    visibility,
+    ownerId,
+  }: {
+    name: string;
+    visibility: number;
+    ownerId: number;
+  }) {
     const wordBook = new WordBooks();
-    console.log(name, visibility, userId);
+    console.log(name, visibility, ownerId);
     wordBook.name = name;
     wordBook.visibility = visibility;
-    wordBook.OwnerId = userId;
+    wordBook.OwnerId = ownerId;
 
-    await this.wordBooksRepository.save(wordBook);
+    return this.wordBooksRepository.save(wordBook);
   }
 
   async updateWordBook() {
