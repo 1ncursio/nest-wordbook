@@ -11,6 +11,7 @@ declare const module: any;
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   const port = process.env.PORT || 3000;
+
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalInterceptors(new TransformResponseInterceptor());
@@ -50,7 +51,7 @@ async function bootstrap() {
   // app.use(passport.session());
 
   await app.listen(port);
-  console.log(`Server listening at ${port} port`);
+  console.log(`Nest Server listening at ${port} port...`);
 
   if (module.hot) {
     module.hot.accept();

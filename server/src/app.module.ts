@@ -18,7 +18,7 @@ import { WordbooksModule } from './wordbooks/wordbooks.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ cache: true }),
+    ConfigModule.forRoot({ isGlobal: true, cache: true }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
