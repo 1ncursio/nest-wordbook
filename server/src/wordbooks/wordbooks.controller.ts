@@ -32,12 +32,11 @@ export class WordbooksController {
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async createWordBook(@User() user: Users, @Body() data: CreateWordBookDto) {
-    return this.wordbooksService.createWordBook({
-      name: data.name,
-      visibility: data.visibility,
-      ownerId: user.id,
-    });
+  async createWordBook(
+    @User() user: Users,
+    @Body() createWordBookDto: CreateWordBookDto,
+  ) {
+    return this.wordbooksService.createWordBook(createWordBookDto, user.id);
   }
 
   @Patch(':wordbookId')

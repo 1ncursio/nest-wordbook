@@ -26,14 +26,14 @@ export class WordBooks {
   @Column('varchar', { name: 'name', nullable: false })
   name: string;
 
-  @ApiProperty({ example: 1, description: '공개 여부' })
+  @ApiProperty({ example: 0, description: '공개 여부' })
   @IsNotEmpty()
   @IsInt()
   @Type(() => Number)
   @Column('int', {
     name: 'visibility',
     nullable: false,
-    default: 0 /* 0 공개 1 비공개 */,
+    default: 0 /* 0 비공개 1 일부 공개 2 공개 */,
   })
   visibility: number;
 

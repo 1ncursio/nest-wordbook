@@ -15,6 +15,7 @@ import { WordSenses } from './entities/WordSenses';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { UsersModule } from './users/users.module';
 import { WordbooksModule } from './wordbooks/wordbooks.module';
+import { WordsModule } from './words/words.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { WordbooksModule } from './wordbooks/wordbooks.module';
     AuthModule,
     UsersModule,
     WordbooksModule,
+    WordsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

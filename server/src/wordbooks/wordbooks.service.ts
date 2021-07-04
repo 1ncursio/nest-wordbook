@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Users } from 'src/entities/Users';
 import { WordBooks } from 'src/entities/WordBooks';
 import { Repository } from 'typeorm';
+import { CreateWordBookDto } from './dto/create-word-book.dto';
 
 @Injectable()
 export class WordbooksService {
@@ -20,25 +21,18 @@ export class WordbooksService {
     return this.wordBooksRepository.findOne({ where: { id: wordBookId } });
   }
 
-  async createWordBook({
-    name,
-    visibility,
-    ownerId,
-  }: {
-    name: string;
-    visibility: number;
-    ownerId: number;
-  }) {
+  async createWordBook(createWordBookDto: CreateWordBookDto, userId: number) {
     const wordBook = new WordBooks();
-    console.log(name, visibility, ownerId);
-    wordBook.name = name;
-    wordBook.visibility = visibility;
-    wordBook.OwnerId = ownerId;
+    console.log(createWordBookDto);
+    wordBook.name = createWordBookDto.name;
+    wordBook.visibility = createWordBookDto.visibility;
+    wordBook.OwnerId = userId;
 
     return this.wordBooksRepository.save(wordBook);
   }
 
   async updateWordBook() {
+    // this.wordBooksRepository.update();
     throw new Error('Method not implemented.');
   }
 

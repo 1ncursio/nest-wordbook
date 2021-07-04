@@ -9,7 +9,7 @@ import {
 import { ApiOperation } from '@nestjs/swagger';
 import { NotLoggedInGuard } from 'src/auth/not-logged-in.guard';
 import { UndefinedToNullInterceptor } from 'src/common/interceptors/undefinedToNull.interceptor';
-import { JoinUserDto } from './dto/join.user.dto';
+import { JoinUserDto } from './dto/join-user.dto';
 import { UsersService } from './users.service';
 
 @UseInterceptors(UndefinedToNullInterceptor)
