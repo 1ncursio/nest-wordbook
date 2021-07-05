@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { WordbookSpace } from 'src/entities/wordbook-space.entity';
-import { Repository } from 'typeorm';
+import { Repository, Transaction } from 'typeorm';
 import { CreateWordbookSpaceDto } from './dto/create-wordbook-space.dto';
 import { UpdateWordbookSpaceDto } from './dto/update-wordbook-space.dto';
 
@@ -12,6 +12,7 @@ export class WordbookspacesService {
     private wordbookSpaceRepository: Repository<WordbookSpace>,
   ) {}
 
+  @Transaction()
   create(createWordbookSpaceDto: CreateWordbookSpaceDto, userId: string) {
     const wordbookSpace = new WordbookSpace();
     console.log(createWordbookSpaceDto);
