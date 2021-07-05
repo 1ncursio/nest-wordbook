@@ -21,8 +21,8 @@ export class WordSense {
   @Column('varchar', { name: 'definition', length: 100 })
   definition: string;
 
-  @Column('int', { name: 'word_id' })
-  WordId: number;
+  @Column('uuid', { name: 'word_id' })
+  WordId: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

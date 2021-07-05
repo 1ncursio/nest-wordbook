@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -17,24 +17,40 @@ export class WordbookSpaceRole {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @IsNotEmpty()
   @IsString()
   @Column('varchar', { name: 'name', unique: true, length: 20 })
   name: string;
 
+  @IsNotEmpty()
+  @IsBoolean()
   @Column('boolean', { name: 'can_create' })
   canCreate: boolean;
 
+  @IsNotEmpty()
+  @IsBoolean()
   @Column('boolean', { name: 'can_update' })
   canUpdate: boolean;
 
+  @IsNotEmpty()
+  @IsBoolean()
   @Column('boolean', { name: 'can_delete' })
   canDelete: boolean;
 
+  @IsNotEmpty()
+  @IsBoolean()
   @Column('boolean', { name: 'can_invite' })
   canInvite: boolean;
 
+  @IsNotEmpty()
+  @IsBoolean()
   @Column('boolean', { name: 'can_kick' })
   canKick: boolean;
+
+  @IsNotEmpty()
+  @IsBoolean()
+  @Column('boolean', { name: 'can_grant' })
+  canGrant: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

@@ -46,8 +46,8 @@ export class Word {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
 
-  @Column('int', { name: 'wordbook_id' })
-  WordbookId: number;
+  @Column('uuid', { name: 'wordbook_id' })
+  WordbookId: string;
 
   @ManyToOne(() => Wordbook, (wordbooks) => wordbooks.Words)
   @JoinColumn([{ name: 'wordbook_id', referencedColumnName: 'id' }])
