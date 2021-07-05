@@ -10,8 +10,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { User } from 'src/decorators/user.decorator';
-import { Users } from 'src/entities/Users';
+import { UserDecorator } from 'src/decorators/user.decorator';
+import { Users } from 'src/entities/user.entity';
 import { CreateWordBookDto } from './dto/create-word-book.dto';
 import { UpdateWordBookDto } from './dto/update-word-book.dto';
 import { WordbooksService } from './wordbooks.service';
@@ -33,14 +33,17 @@ export class WordbooksController {
   @UseGuards(JwtAuthGuard)
   @Post()
   async createWordBook(
-    @User() user: Users,
+    @UserDecorator() user: Users,
     @Body() createWordBookDto: CreateWordBookDto,
   ) {
     return this.wordbooksService.createWordBook(createWordBookDto, user.id);
   }
 
   @Patch(':wordbookId')
-  async updateWordBook(@User() user: Users, @Body() data: UpdateWordBookDto) {
+  async updateWordBook(
+    @UserDecorator() user: Users,
+    @Body() data: UpdateWordBookDto,
+  ) {
     return this.wordbooksService.updateWordBook();
   }
 

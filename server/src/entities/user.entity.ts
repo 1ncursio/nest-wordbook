@@ -17,8 +17,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exams } from './Exams';
-import { WordBooks } from './WordBooks';
+import { Exams } from './exam.entity';
+import { WordBooks } from './wordbook.entity';
 
 @Index('email', ['email'], { unique: true })
 @Entity({ schema: 'word_test_app', name: 'users' })

@@ -10,14 +10,20 @@ import {
 import { WordsService } from './words.service';
 import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
+import { UserDecorator } from 'src/decorators/user.decorator';
+import { Users } from 'src/entities/user.entity';
 
 @Controller('wordbooks/:wordBookId/words')
 export class WordsController {
   constructor(private readonly wordsService: WordsService) {}
 
   @Post()
-  async create(@Body() createWordDto: CreateWordDto) {
-    return this.wordsService.create(createWordDto);
+  async create(
+    @Param('wordBookId') wordBookId: string,
+    @Body() createWordDto: CreateWordDto,
+    @UserDecorator() user: Users,
+  ) {
+    return this.wordsService.create(+wordBookId, createWordDto, user.id);
   }
 
   @Get()
@@ -32,10 +38,17 @@ export class WordsController {
 
   @Patch(':wordId')
   async update(
+    @Param('wordBookId') wordBookId: string,
     @Param('wordId') wordId: string,
     @Body() updateWordDto: UpdateWordDto,
+    @UserDecorator() user: Users,
   ) {
-    return this.wordsService.update(+wordId, updateWordDto);
+    return this.wordsService.update(
+      +wordBookId,
+      +wordId,
+      updateWordDto,
+      user.id,
+    );
   }
 
   @Delete(':wordId')

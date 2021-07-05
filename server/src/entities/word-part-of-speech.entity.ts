@@ -7,8 +7,8 @@ import {
   ManyToOne,
   UpdateDateColumn,
 } from 'typeorm';
-import { PartsOfSpeech } from './PartsOfSpeech';
-import { Words } from './Words';
+import { PartsOfSpeech } from './part-of-speech.entity';
+import { Words } from './word.entity';
 
 @Entity('wordpartsofspeech', { schema: 'word_test_app' })
 export class WordPartsOfSpeech {

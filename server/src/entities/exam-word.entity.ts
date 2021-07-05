@@ -7,8 +7,8 @@ import {
   ManyToOne,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exams } from './Exams';
-import { Words } from './Words';
+import { Exams } from './exam.entity';
+import { Words } from './word.entity';
 
 @Entity('examwords', { schema: 'word_test_app' })
 export class ExamWords {

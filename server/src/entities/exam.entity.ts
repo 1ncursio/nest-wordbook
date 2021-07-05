@@ -9,8 +9,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ExamWords } from './ExamWords';
-import { Users } from './Users';
+import { ExamWords } from './exam-word.entity';
+import { Users } from './user.entity';
 
 @Entity({ schema: 'word_test_app', name: 'exams' })
 export class Exams {

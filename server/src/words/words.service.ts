@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Users } from 'src/entities/Users';
-import { WordBooks } from 'src/entities/WordBooks';
-import { Words } from 'src/entities/Words';
+import { Users } from 'src/entities/user.entity';
+import { WordBooks } from 'src/entities/wordbook.entity';
+import { Words } from 'src/entities/word.entity';
 import { Repository } from 'typeorm';
 import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
@@ -16,8 +16,22 @@ export class WordsService {
     @InjectRepository(Words) private wordsRepository: Repository<Words>,
   ) {}
 
-  async create(createWordDto: CreateWordDto) {
-    return 'This action adds a new word';
+  async create(
+    wordBookId: number,
+    createWordDto: CreateWordDto,
+    userId: number,
+  ) {
+    const word = await this.wordsRepository.findOne({
+      where: { WordBookId: wordBookId, OwnerId: userId },
+    });
+    if (!word) {
+      throw new NotFoundException('존재하지 않는 단어장입니다.');
+    }
+    word.kanji = createWordDto.kanji;
+    word.hiragana = createWordDto.hiragana;
+    word.katakana = createWordDto.katakana;
+
+    return this.wordsRepository.save(word);
   }
 
   async findAll(wordBookId: number) {
@@ -35,8 +49,23 @@ export class WordsService {
     return `This action returns a #${id} word`;
   }
 
-  async update(id: number, updateWordDto: UpdateWordDto) {
-    return `This action updates a #${id} word`;
+  async update(
+    wordBookId: number,
+    wordId: number,
+    updateWordDto: UpdateWordDto,
+    userId: number,
+  ) {
+    const word = await this.wordsRepository.findOne({
+      where: { WordBookId: wordBookId, id: wordId, OwnerId: userId },
+    });
+    if (!word) {
+      throw new NotFoundException('존재하지 않는 단어 혹은 단어장입니다.');
+    }
+    word.kanji = updateWordDto.kanji;
+    word.hiragana = updateWordDto.hiragana;
+    word.katakana = updateWordDto.katakana;
+
+    return this.wordsRepository.save(word);
   }
 
   async remove(id: number) {

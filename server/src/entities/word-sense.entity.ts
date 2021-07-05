@@ -9,7 +9,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Words } from './Words';
+import { Words } from './word.entity';
 
 @Entity('wordsenses', { schema: 'word_test_app' })
 export class WordSenses {

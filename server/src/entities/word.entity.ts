@@ -10,11 +10,11 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exams } from './Exams';
-import { ExamWords } from './ExamWords';
-import { WordBooks } from './WordBooks';
-import { WordPartsOfSpeech } from './WordPartsOfSpeech';
-import { WordSenses } from './WordSenses';
+import { Exams } from './exam.entity';
+import { ExamWords } from './exam-word.entity';
+import { WordBooks } from './wordbook.entity';
+import { WordPartsOfSpeech } from './word-part-of-speech.entity';
+import { WordSenses } from './word-sense.entity';
 
 @Entity({ schema: 'word_test_app', name: 'words' })
 export class Words {

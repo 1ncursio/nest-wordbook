@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Users } from 'src/entities/Users';
-import { WordBooks } from 'src/entities/WordBooks';
+import { Users } from 'src/entities/user.entity';
+import { WordBooks } from 'src/entities/wordbook.entity';
 import { Repository } from 'typeorm';
 import { CreateWordBookDto } from './dto/create-word-book.dto';
 

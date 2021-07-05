@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { WordPartsOfSpeech } from './WordPartsOfSpeech';
+import { WordPartsOfSpeech } from './word-part-of-speech.entity';
 
 @Entity('partsofspeech', { schema: 'word_test_app' })
 export class PartsOfSpeech {

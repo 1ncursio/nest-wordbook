@@ -12,8 +12,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Users } from './Users';
-import { Words } from './Words';
+import { Users } from './user.entity';
+import { Words } from './word.entity';
 
 @Entity({ schema: 'word_test_app', name: 'wordbooks' })
 export class WordBooks {
