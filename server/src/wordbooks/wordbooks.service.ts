@@ -25,7 +25,7 @@ export class WordbooksService {
     const wordbook = new Wordbook();
     console.log(createWordbookDto);
     wordbook.name = createWordbookDto.name;
-    wordbook.OwnerId = userId;
+    // wordbook.OwnerId = userId;
 
     return this.wordbooksRepository.save(wordbook);
   }

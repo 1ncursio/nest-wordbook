@@ -19,6 +19,7 @@ import { WordsModule } from './words/words.module';
 import { WordbookSpace } from './entities/wordbook-space.entity';
 import { WordbookSpaceMember } from './entities/wordbook-space-member.entity';
 import { WordbookSpaceRole } from './entities/wordbook-space-role.entity';
+import { WordbookspacesModule } from './wordbookspaces/wordbook-spaces.module';
 
 @Module({
   imports: [
@@ -51,6 +52,7 @@ import { WordbookSpaceRole } from './entities/wordbook-space-role.entity';
     UsersModule,
     WordbooksModule,
     WordsModule,
+    WordbookspacesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

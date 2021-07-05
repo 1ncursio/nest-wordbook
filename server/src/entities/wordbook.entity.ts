@@ -21,9 +21,6 @@ export class Wordbook {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('uuid', { name: 'owner_id' })
-  OwnerId: string;
-
   @Column('uuid', { name: 'wordbook_space_id' })
   WordbookSpaceId: string;
 
@@ -45,10 +42,6 @@ export class Wordbook {
 
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
-
-  @ManyToOne(() => User, (users) => users.Wordbooks)
-  @JoinColumn([{ name: 'owner_id', referencedColumnName: 'id' }])
-  Owner: User;
 
   @OneToMany(() => Word, (words) => words.Wordbook)
   Words: Word[];

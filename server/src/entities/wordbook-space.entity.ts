@@ -5,10 +5,13 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { User } from './user.entity';
 import { WordbookSpaceMember } from './wordbook-space-member.entity';
 import { WordbookSpaceRole } from './wordbook-space-role.entity';
 import { Wordbook } from './wordbook.entity';
@@ -18,23 +21,24 @@ export class WordbookSpace {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column('uuid', { name: 'owner_id' })
+  OwnerId: string;
+
   @IsNotEmpty()
   @IsString()
   @Column('varchar', { name: 'name', length: 100 })
   name: string;
 
-  @ApiProperty({ example: 0, description: '공개 여부' })
+  @ApiProperty({ example: 'public', description: '공개 여부' })
   @IsNotEmpty()
   @IsString()
   @IsIn(['public', 'limited', 'private'])
   @Column('varchar', {
     name: 'visibility',
-    nullable: false,
   })
-  visibility: number;
+  visibility: string;
 
-  @IsString()
-  @Column('varchar', { name: 'image', length: 255 })
+  @Column('varchar', { name: 'image', length: 255, nullable: true })
   image: string | null;
 
   @IsString()
@@ -49,6 +53,10 @@ export class WordbookSpace {
 
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
+
+  @ManyToOne(() => User, (users) => users.WordbookSpaces)
+  @JoinColumn([{ name: 'owner_id', referencedColumnName: 'id' }])
+  Owner: User;
 
   @OneToMany(() => Wordbook, (wordbook) => wordbook.WordbookSpace)
   Wordbooks: Wordbook[];

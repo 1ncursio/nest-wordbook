@@ -19,7 +19,7 @@ import {
 } from 'typeorm';
 import { Exam } from './exam.entity';
 import { WordbookSpaceMember } from './wordbook-space-member.entity';
-import { Wordbook } from './wordbook.entity';
+import { WordbookSpace } from './wordbook-space.entity';
 
 @Index('email', ['email'], { unique: true })
 @Entity('users', { schema: 'word_test_app' })
@@ -96,8 +96,8 @@ export class User {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
 
-  @OneToMany(() => Wordbook, (wordbooks) => wordbooks.Owner)
-  Wordbooks: Wordbook[];
+  @OneToMany(() => WordbookSpace, (wordbooks) => wordbooks.Owner)
+  WordbookSpaces: WordbookSpace[];
 
   @OneToMany(() => Exam, (exams) => exams.Examinee)
   Exams: Exam[];
