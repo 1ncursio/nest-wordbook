@@ -12,11 +12,11 @@ import { Word } from './word.entity';
 
 @Entity('word_parts_of_speech', { schema: 'word_test_app' })
 export class WordPartOfSpeech {
-  @Column('int', { primary: true, name: 'word_id' })
-  WordId: number;
+  @Column('uuid', { primary: true, name: 'word_id' })
+  WordId: string;
 
-  @Column('int', { primary: true, name: 'part_of_speech_id' })
-  PartOfSpeechId: number;
+  @Column('uuid', { primary: true, name: 'part_of_speech_id' })
+  PartOfSpeechId: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

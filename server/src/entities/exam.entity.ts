@@ -14,8 +14,8 @@ import { User } from './user.entity';
 
 @Entity('exams', { schema: 'word_test_app' })
 export class Exam {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column('varchar', { name: 'name' })
   name: string;
@@ -35,8 +35,8 @@ export class Exam {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
 
-  @Column('int', { name: 'user_id' })
-  UserId: number;
+  @Column('uuid', { name: 'user_id' })
+  UserId: string;
 
   @ManyToOne(() => User, (users) => users.Exams)
   @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])

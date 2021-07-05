@@ -12,8 +12,8 @@ import {
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { UserDecorator } from 'src/decorators/user.decorator';
 import { User } from 'src/entities/user.entity';
-import { CreateWordBookDto } from './dto/create-word-book.dto';
-import { UpdateWordBookDto } from './dto/update-word-book.dto';
+import { CreateWordbookDto } from './dto/create-word-book.dto';
+import { UpdateWordbookDto } from './dto/update-word-book.dto';
 import { WordbooksService } from './wordbooks.service';
 
 @Controller('wordbooks')
@@ -21,34 +21,34 @@ export class WordbooksController {
   constructor(private wordbooksService: WordbooksService) {}
 
   @Get()
-  async findWordBooks() {
-    return this.wordbooksService.findWordBooks();
+  async findWordbooks() {
+    return this.wordbooksService.findWordbooks();
   }
 
-  @Get(':wordBookId')
-  async findOneWordBook(@Param('wordBookId', ParseIntPipe) wordBookId: number) {
-    return this.wordbooksService.findOneWordBook(wordBookId);
+  @Get(':wordbookId')
+  async findOneWordbook(@Param('wordbookId', ParseIntPipe) wordbookId: number) {
+    return this.wordbooksService.findOneWordbook(wordbookId);
   }
 
   @UseGuards(JwtAuthGuard)
   @Post()
-  async createWordBook(
+  async createWordbook(
     @UserDecorator() user: User,
-    @Body() createWordBookDto: CreateWordBookDto,
+    @Body() createWordbookDto: CreateWordbookDto,
   ) {
-    return this.wordbooksService.createWordBook(createWordBookDto, user.id);
+    return this.wordbooksService.createWordbook(createWordbookDto, user.id);
   }
 
   @Patch(':wordbookId')
-  async updateWordBook(
+  async updateWordbook(
     @UserDecorator() user: User,
-    @Body() data: UpdateWordBookDto,
+    @Body() data: UpdateWordbookDto,
   ) {
-    return this.wordbooksService.updateWordBook();
+    return this.wordbooksService.updateWordbook();
   }
 
   @Delete(':wordbookId')
-  async deleteWordBook() {
-    return this.wordbooksService.deleteWordBook();
+  async deleteWordbook() {
+    return this.wordbooksService.deleteWordbook();
   }
 }

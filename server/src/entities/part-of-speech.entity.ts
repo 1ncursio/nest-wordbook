@@ -12,8 +12,8 @@ import { WordPartOfSpeech } from './word-part-of-speech.entity';
 
 @Entity('parts_of_speech', { schema: 'word_test_app' })
 export class PartOfSpeech {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @IsNotEmpty()
   @IsString()

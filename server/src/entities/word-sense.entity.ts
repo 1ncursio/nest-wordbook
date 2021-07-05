@@ -13,8 +13,8 @@ import { Word } from './word.entity';
 
 @Entity('word_senses', { schema: 'word_test_app' })
 export class WordSense {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @IsNotEmpty()
   @IsString()

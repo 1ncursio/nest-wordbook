@@ -8,7 +8,7 @@ import { Exam } from './entities/exam.entity';
 import { ExamWord } from './entities/exam-word.entity';
 import { PartOfSpeech } from './entities/part-of-speech.entity';
 import { User } from './entities/user.entity';
-import { WordBook } from './entities/wordbook.entity';
+import { Wordbook } from './entities/wordbook.entity';
 import { WordPartOfSpeech } from './entities/word-part-of-speech.entity';
 import { Word } from './entities/word.entity';
 import { WordSense } from './entities/word-sense.entity';
@@ -16,6 +16,7 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { UsersModule } from './users/users.module';
 import { WordbooksModule } from './wordbooks/wordbooks.module';
 import { WordsModule } from './words/words.module';
+import { WordbookSpace } from './entities/wordbook-space.entity';
 
 @Module({
   imports: [
@@ -29,13 +30,14 @@ import { WordsModule } from './words/words.module';
       database: process.env.DB_DATABASE,
       entities: [
         User,
-        WordBook,
+        Wordbook,
         Word,
         Exam,
         ExamWord,
         WordSense,
         PartOfSpeech,
         WordPartOfSpeech,
+        WordbookSpace,
       ],
       synchronize: process.env.NODE_ENV !== 'production',
       logging: true,

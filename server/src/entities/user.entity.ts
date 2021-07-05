@@ -18,13 +18,13 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Exam } from './exam.entity';
-import { WordBook } from './wordbook.entity';
+import { Wordbook } from './wordbook.entity';
 
 @Index('email', ['email'], { unique: true })
 @Entity('users', { schema: 'word_test_app' })
 export class User {
-  @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @IsEmail()
   @IsNotEmpty()
@@ -95,8 +95,8 @@ export class User {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
 
-  @OneToMany(() => WordBook, (wordBooks) => wordBooks.Owner)
-  WordBooks: WordBook[];
+  @OneToMany(() => Wordbook, (wordbooks) => wordbooks.Owner)
+  Wordbooks: Wordbook[];
 
   @OneToMany(() => Exam, (exams) => exams.Examinee)
   Exams: Exam[];

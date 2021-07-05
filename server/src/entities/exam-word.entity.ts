@@ -12,11 +12,11 @@ import { Word } from './word.entity';
 
 @Entity('exam_words', { schema: 'word_test_app' })
 export class ExamWord {
-  @Column('int', { primary: true, name: 'word_id' })
-  WordId: number;
+  @Column('uuid', { primary: true, name: 'word_id' })
+  WordId: string;
 
-  @Column('int', { primary: true, name: 'exam_id' })
-  ExamId: number;
+  @Column('uuid', { primary: true, name: 'exam_id' })
+  ExamId: string;
 
   @Column('boolean', { name: 'is_correct' })
   isCorrect: boolean;

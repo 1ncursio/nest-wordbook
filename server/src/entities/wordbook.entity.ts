@@ -14,11 +14,12 @@ import {
 } from 'typeorm';
 import { User } from './user.entity';
 import { Word } from './word.entity';
+import { WordbookSpace } from './wordbook-space.entity';
 
 @Entity('wordbooks', { schema: 'word_test_app' })
-export class WordBook {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class Wordbook {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @ApiProperty({ example: '내 단어장 1', description: '단어장 이름' })
   @IsNotEmpty()
@@ -46,13 +47,20 @@ export class WordBook {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
 
-  @Column('int', { name: 'owner_id' })
-  OwnerId: number;
+  @Column('uuid', { name: 'owner_id' })
+  OwnerId: string;
 
-  @ManyToOne(() => User, (users) => users.WordBooks)
+  @ManyToOne(() => User, (users) => users.Wordbooks)
   @JoinColumn([{ name: 'owner_id', referencedColumnName: 'id' }])
   Owner: User;
 
-  @OneToMany(() => Word, (words) => words.WordBook)
+  @OneToMany(() => Word, (words) => words.Wordbook)
   Words: Word[];
+
+  @Column('uuid', { name: 'wordbook_space_id' })
+  WordbookSpaceId: string;
+
+  @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Wordbooks)
+  @JoinColumn({ name: 'wordbook_space_id', referencedColumnName: 'id' })
+  WordbookSpace: WordbookSpace;
 }

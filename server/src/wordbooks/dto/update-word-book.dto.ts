@@ -1,7 +1,7 @@
 import { PickType } from '@nestjs/swagger';
-import { WordBook } from 'src/entities/wordbook.entity';
+import { Wordbook } from 'src/entities/wordbook.entity';
 
-export class UpdateWordBookDto extends PickType(WordBook, [
+export class UpdateWordbookDto extends PickType(Wordbook, [
   'id',
   'name',
   'visibility',

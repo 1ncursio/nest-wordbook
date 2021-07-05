@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
-import { WordBook } from 'src/entities/wordbook.entity';
+import { Wordbook } from 'src/entities/wordbook.entity';
 import { WordbooksController } from './wordbooks.controller';
 import { WordbooksService } from './wordbooks.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, WordBook])],
+  imports: [TypeOrmModule.forFeature([User, Wordbook])],
   controllers: [WordbooksController],
   providers: [WordbooksService],
 })

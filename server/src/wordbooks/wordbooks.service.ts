@@ -1,42 +1,42 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
-import { WordBook } from 'src/entities/wordbook.entity';
+import { Wordbook } from 'src/entities/wordbook.entity';
 import { Repository } from 'typeorm';
-import { CreateWordBookDto } from './dto/create-word-book.dto';
+import { CreateWordbookDto } from './dto/create-word-book.dto';
 
 @Injectable()
 export class WordbooksService {
   constructor(
     @InjectRepository(User) private usersRepository: Repository<User>,
-    @InjectRepository(WordBook)
-    private wordBooksRepository: Repository<WordBook>,
+    @InjectRepository(Wordbook)
+    private wordbooksRepository: Repository<Wordbook>,
   ) {}
 
-  async findWordBooks() {
-    return this.wordBooksRepository.find({ order: { createdAt: 'DESC' } });
+  async findWordbooks() {
+    return this.wordbooksRepository.find({ order: { createdAt: 'DESC' } });
   }
 
-  async findOneWordBook(wordBookId: number) {
-    return this.wordBooksRepository.findOne({ where: { id: wordBookId } });
+  async findOneWordbook(wordbookId: number) {
+    return this.wordbooksRepository.findOne({ where: { id: wordbookId } });
   }
 
-  async createWordBook(createWordBookDto: CreateWordBookDto, userId: number) {
-    const wordBook = new WordBook();
-    console.log(createWordBookDto);
-    wordBook.name = createWordBookDto.name;
-    wordBook.visibility = createWordBookDto.visibility;
-    wordBook.OwnerId = userId;
+  async createWordbook(createWordbookDto: CreateWordbookDto, userId: string) {
+    const wordbook = new Wordbook();
+    console.log(createWordbookDto);
+    wordbook.name = createWordbookDto.name;
+    wordbook.visibility = createWordbookDto.visibility;
+    wordbook.OwnerId = userId;
 
-    return this.wordBooksRepository.save(wordBook);
+    return this.wordbooksRepository.save(wordbook);
   }
 
-  async updateWordBook() {
-    // this.wordBooksRepository.update();
+  async updateWordbook() {
+    // this.wordbooksRepository.update();
     throw new Error('Method not implemented.');
   }
 
-  async deleteWordBook() {
+  async deleteWordbook() {
     throw new Error('Method not implemented.');
   }
 }

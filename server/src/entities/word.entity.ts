@@ -12,14 +12,14 @@ import {
 } from 'typeorm';
 import { Exam } from './exam.entity';
 import { ExamWord } from './exam-word.entity';
-import { WordBook } from './wordbook.entity';
+import { Wordbook } from './wordbook.entity';
 import { WordPartOfSpeech } from './word-part-of-speech.entity';
 import { WordSense } from './word-sense.entity';
 
 @Entity('words', { schema: 'word_test_app' })
 export class Word {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @IsString()
   @Column('varchar', { name: 'kanji' })
@@ -47,11 +47,11 @@ export class Word {
   deletedAt: Date | null;
 
   @Column('int', { name: 'wordbook_id' })
-  WordBookId: number;
+  WordbookId: number;
 
-  @ManyToOne(() => WordBook, (wordBooks) => wordBooks.Words)
+  @ManyToOne(() => Wordbook, (wordbooks) => wordbooks.Words)
   @JoinColumn([{ name: 'wordbook_id', referencedColumnName: 'id' }])
-  WordBook: WordBook;
+  Wordbook: Wordbook;
 
   @OneToMany(() => WordSense, (wordSenses) => wordSenses.Word)
   Senses: WordSense[];

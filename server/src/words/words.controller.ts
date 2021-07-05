@@ -13,22 +13,22 @@ import { UpdateWordDto } from './dto/update-word.dto';
 import { UserDecorator } from 'src/decorators/user.decorator';
 import { User } from 'src/entities/user.entity';
 
-@Controller('wordbooks/:wordBookId/words')
+@Controller('wordbooks/:wordbookId/words')
 export class WordsController {
   constructor(private readonly wordsService: WordsService) {}
 
   @Post()
   async create(
-    @Param('wordBookId') wordBookId: string,
+    @Param('wordbookId') wordbookId: string,
     @Body() createWordDto: CreateWordDto,
     @UserDecorator() user: User,
   ) {
-    return this.wordsService.create(+wordBookId, createWordDto, user.id);
+    return this.wordsService.create(+wordbookId, createWordDto, user.id);
   }
 
   @Get()
-  async findAll(@Param('wordBookId') wordBookId: string) {
-    return this.wordsService.findAll(+wordBookId);
+  async findAll(@Param('wordbookId') wordbookId: string) {
+    return this.wordsService.findAll(+wordbookId);
   }
 
   @Get(':wordId')
@@ -38,13 +38,13 @@ export class WordsController {
 
   @Patch(':wordId')
   async update(
-    @Param('wordBookId') wordBookId: string,
+    @Param('wordbookId') wordbookId: string,
     @Param('wordId') wordId: string,
     @Body() updateWordDto: UpdateWordDto,
     @UserDecorator() user: User,
   ) {
     return this.wordsService.update(
-      +wordBookId,
+      +wordbookId,
       +wordId,
       updateWordDto,
       user.id,

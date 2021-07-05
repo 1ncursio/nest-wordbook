@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
-import { WordBook } from 'src/entities/wordbook.entity';
+import { Wordbook } from 'src/entities/wordbook.entity';
 import { Word } from 'src/entities/word.entity';
 import { Repository } from 'typeorm';
 import { CreateWordDto } from './dto/create-word.dto';
@@ -11,18 +11,18 @@ import { UpdateWordDto } from './dto/update-word.dto';
 export class WordsService {
   constructor(
     @InjectRepository(User) private usersRepository: Repository<User>,
-    @InjectRepository(WordBook)
-    private wordBooksRepository: Repository<WordBook>,
+    @InjectRepository(Wordbook)
+    private wordbooksRepository: Repository<Wordbook>,
     @InjectRepository(Word) private wordsRepository: Repository<Word>,
   ) {}
 
   async create(
-    wordBookId: number,
+    wordbookId: number,
     createWordDto: CreateWordDto,
-    userId: number,
+    userId: string,
   ) {
     const word = await this.wordsRepository.findOne({
-      where: { WordBookId: wordBookId, OwnerId: userId },
+      where: { WordbookId: wordbookId, OwnerId: userId },
     });
     if (!word) {
       throw new NotFoundException('존재하지 않는 단어장입니다.');
@@ -34,15 +34,15 @@ export class WordsService {
     return this.wordsRepository.save(word);
   }
 
-  async findAll(wordBookId: number) {
-    const wordBook = await this.wordBooksRepository.findOne({
-      where: { id: wordBookId },
+  async findAll(wordbookId: number) {
+    const wordbook = await this.wordbooksRepository.findOne({
+      where: { id: wordbookId },
     });
-    if (!wordBook) {
+    if (!wordbook) {
       throw new NotFoundException('존재하지 않는 단어장입니다.');
     }
 
-    return this.wordsRepository.find({ where: { WordBookId: wordBookId } });
+    return this.wordsRepository.find({ where: { WordbookId: wordbookId } });
   }
 
   async findOne(id: number) {
@@ -50,13 +50,13 @@ export class WordsService {
   }
 
   async update(
-    wordBookId: number,
+    wordbookId: number,
     wordId: number,
     updateWordDto: UpdateWordDto,
-    userId: number,
+    userId: string,
   ) {
     const word = await this.wordsRepository.findOne({
-      where: { WordBookId: wordBookId, id: wordId, OwnerId: userId },
+      where: { WordbookId: wordbookId, id: wordId, OwnerId: userId },
     });
     if (!word) {
       throw new NotFoundException('존재하지 않는 단어 혹은 단어장입니다.');
