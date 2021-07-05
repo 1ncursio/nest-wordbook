@@ -21,22 +21,21 @@ export class Wordbook {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @Column('uuid', { name: 'owner_id' })
+  OwnerId: string;
+
+  @Column('uuid', { name: 'wordbook_space_id' })
+  WordbookSpaceId: string;
+
   @ApiProperty({ example: '내 단어장 1', description: '단어장 이름' })
   @IsNotEmpty()
   @IsString()
   @Column('varchar', { name: 'name', nullable: false })
   name: string;
 
-  @ApiProperty({ example: 0, description: '공개 여부' })
-  @IsNotEmpty()
-  @IsInt()
-  @Type(() => Number)
-  @Column('int', {
-    name: 'visibility',
-    nullable: false,
-    default: 0 /* 0 비공개 1 일부 공개 2 공개 */,
-  })
-  visibility: number;
+  @IsString()
+  @Column('varchar', { name: 'image', length: 255 })
+  image: string | null;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
@@ -47,18 +46,12 @@ export class Wordbook {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
 
-  @Column('uuid', { name: 'owner_id' })
-  OwnerId: string;
-
   @ManyToOne(() => User, (users) => users.Wordbooks)
   @JoinColumn([{ name: 'owner_id', referencedColumnName: 'id' }])
   Owner: User;
 
   @OneToMany(() => Word, (words) => words.Wordbook)
   Words: Word[];
-
-  @Column('uuid', { name: 'wordbook_space_id' })
-  WordbookSpaceId: string;
 
   @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Wordbooks)
   @JoinColumn({ name: 'wordbook_space_id', referencedColumnName: 'id' })

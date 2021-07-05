@@ -1,3 +1,4 @@
+import { IsString } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -17,6 +18,7 @@ export class Exam {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @IsString()
   @Column('varchar', { name: 'name' })
   name: string;
 

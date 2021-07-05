@@ -17,7 +17,7 @@ export class PartOfSpeech {
 
   @IsNotEmpty()
   @IsString()
-  @Column('varchar', { name: 'name', length: 10 })
+  @Column('varchar', { name: 'name', unique: true, length: 10 })
   name: string;
 
   @CreateDateColumn({ name: 'created_at' })

@@ -17,6 +17,8 @@ import { UsersModule } from './users/users.module';
 import { WordbooksModule } from './wordbooks/wordbooks.module';
 import { WordsModule } from './words/words.module';
 import { WordbookSpace } from './entities/wordbook-space.entity';
+import { WordbookSpaceMember } from './entities/wordbook-space-member.entity';
+import { WordbookSpaceRole } from './entities/wordbook-space-role.entity';
 
 @Module({
   imports: [
@@ -38,6 +40,8 @@ import { WordbookSpace } from './entities/wordbook-space.entity';
         PartOfSpeech,
         WordPartOfSpeech,
         WordbookSpace,
+        WordbookSpaceMember,
+        WordbookSpaceRole,
       ],
       synchronize: process.env.NODE_ENV !== 'production',
       logging: true,

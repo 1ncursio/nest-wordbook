@@ -21,6 +21,9 @@ export class WordSense {
   @Column('varchar', { name: 'definition', length: 100 })
   definition: string;
 
+  @Column('int', { name: 'word_id' })
+  WordId: number;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
@@ -29,9 +32,6 @@ export class WordSense {
 
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
-
-  @Column('int', { name: 'word_id' })
-  WordId: number;
 
   @ManyToOne(() => Word, (words) => words.Senses)
   @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])

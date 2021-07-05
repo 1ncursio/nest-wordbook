@@ -18,6 +18,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Exam } from './exam.entity';
+import { WordbookSpaceMember } from './wordbook-space-member.entity';
 import { Wordbook } from './wordbook.entity';
 
 @Index('email', ['email'], { unique: true })
@@ -101,5 +102,10 @@ export class User {
   @OneToMany(() => Exam, (exams) => exams.Examinee)
   Exams: Exam[];
 
+  @OneToMany(
+    () => WordbookSpaceMember,
+    (wordbookSpaceMember) => wordbookSpaceMember.Member,
+  )
+  WordbookSpaceMembers: WordbookSpaceMember[];
   // @OneToMany(() => EmailVerifications)
 }

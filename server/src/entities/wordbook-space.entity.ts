@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
-import { IsNotEmpty, IsInt } from 'class-validator';
+import { IsIn, IsNotEmpty, IsString } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -10,6 +9,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { WordbookSpaceMember } from './wordbook-space-member.entity';
+import { WordbookSpaceRole } from './wordbook-space-role.entity';
 import { Wordbook } from './wordbook.entity';
 
 @Entity('wordbook_space', { schema: 'word_test_app' })
@@ -17,20 +18,26 @@ export class WordbookSpace {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @IsNotEmpty()
+  @IsString()
   @Column('varchar', { name: 'name', length: 100 })
   name: string;
 
   @ApiProperty({ example: 0, description: '공개 여부' })
   @IsNotEmpty()
-  @IsInt()
-  @Type(() => Number)
-  @Column('int', {
+  @IsString()
+  @IsIn(['public', 'limited', 'private'])
+  @Column('varchar', {
     name: 'visibility',
     nullable: false,
-    default: 0 /* 0 비공개 1 일부 공개 2 공개 */,
   })
   visibility: number;
 
+  @IsString()
+  @Column('varchar', { name: 'image', length: 255 })
+  image: string | null;
+
+  @IsString()
   @Column('varchar', { name: 'description', length: 100 })
   description: string;
 
@@ -45,4 +52,16 @@ export class WordbookSpace {
 
   @OneToMany(() => Wordbook, (wordbook) => wordbook.WordbookSpace)
   Wordbooks: Wordbook[];
+
+  @OneToMany(
+    () => WordbookSpaceMember,
+    (wordbookSpaceMember) => wordbookSpaceMember.WordbookSpace,
+  )
+  Members: WordbookSpaceMember[];
+
+  @OneToMany(
+    () => WordbookSpaceRole,
+    (wordbookSpaceRole) => wordbookSpaceRole.WordbookSpace,
+  )
+  Roles: WordbookSpaceRole[];
 }

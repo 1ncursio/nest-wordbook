@@ -1,3 +1,4 @@
+import { IsBoolean } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -18,6 +19,7 @@ export class ExamWord {
   @Column('uuid', { primary: true, name: 'exam_id' })
   ExamId: string;
 
+  @IsBoolean()
   @Column('boolean', { name: 'is_correct' })
   isCorrect: boolean;
 
