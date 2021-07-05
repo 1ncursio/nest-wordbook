@@ -11,7 +11,7 @@ import { WordsService } from './words.service';
 import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
 import { UserDecorator } from 'src/decorators/user.decorator';
-import { Users } from 'src/entities/user.entity';
+import { User } from 'src/entities/user.entity';
 
 @Controller('wordbooks/:wordBookId/words')
 export class WordsController {
@@ -21,7 +21,7 @@ export class WordsController {
   async create(
     @Param('wordBookId') wordBookId: string,
     @Body() createWordDto: CreateWordDto,
-    @UserDecorator() user: Users,
+    @UserDecorator() user: User,
   ) {
     return this.wordsService.create(+wordBookId, createWordDto, user.id);
   }
@@ -41,7 +41,7 @@ export class WordsController {
     @Param('wordBookId') wordBookId: string,
     @Param('wordId') wordId: string,
     @Body() updateWordDto: UpdateWordDto,
-    @UserDecorator() user: Users,
+    @UserDecorator() user: User,
   ) {
     return this.wordsService.update(
       +wordBookId,

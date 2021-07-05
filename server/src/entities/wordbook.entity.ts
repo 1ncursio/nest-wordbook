@@ -12,11 +12,11 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Users } from './user.entity';
-import { Words } from './word.entity';
+import { User } from './user.entity';
+import { Word } from './word.entity';
 
-@Entity({ schema: 'word_test_app', name: 'wordbooks' })
-export class WordBooks {
+@Entity('wordbooks', { schema: 'word_test_app' })
+export class WordBook {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -37,22 +37,22 @@ export class WordBooks {
   })
   visibility: number;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date;
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: Date | null;
 
-  @Column('int', { name: 'OwnerId' })
+  @Column('int', { name: 'owner_id' })
   OwnerId: number;
 
-  @ManyToOne(() => Users, (users) => users.WordBooks)
-  @JoinColumn([{ name: 'OwnerId', referencedColumnName: 'id' }])
-  Owner: Users;
+  @ManyToOne(() => User, (users) => users.WordBooks)
+  @JoinColumn([{ name: 'owner_id', referencedColumnName: 'id' }])
+  Owner: User;
 
-  @OneToMany(() => Words, (words) => words.WordBook)
-  Words: Words[];
+  @OneToMany(() => Word, (words) => words.WordBook)
+  Words: Word[];
 }

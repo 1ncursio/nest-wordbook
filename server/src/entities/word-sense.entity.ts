@@ -9,10 +9,10 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Words } from './word.entity';
+import { Word } from './word.entity';
 
-@Entity('wordsenses', { schema: 'word_test_app' })
-export class WordSenses {
+@Entity('word_senses', { schema: 'word_test_app' })
+export class WordSense {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -21,19 +21,19 @@ export class WordSenses {
   @Column('varchar', { name: 'definition', length: 100 })
   definition: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date;
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: Date | null;
 
-  @Column('int', { name: 'WordId' })
+  @Column('int', { name: 'word_id' })
   WordId: number;
 
-  @ManyToOne(() => Words, (words) => words.Senses)
-  @JoinColumn([{ name: 'WordId', referencedColumnName: 'id' }])
-  Word: Words;
+  @ManyToOne(() => Word, (words) => words.Senses)
+  @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])
+  Word: Word;
 }

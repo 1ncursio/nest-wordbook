@@ -9,39 +9,39 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ExamWords } from './exam-word.entity';
-import { Users } from './user.entity';
+import { ExamWord } from './exam-word.entity';
+import { User } from './user.entity';
 
-@Entity({ schema: 'word_test_app', name: 'exams' })
-export class Exams {
+@Entity('exams', { schema: 'word_test_app' })
+export class Exam {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column('varchar', { name: 'name' })
   name: string;
 
-  @Column('tinyint', { name: 'minLevel' })
+  @Column('tinyint', { name: 'min_level' })
   minLevel: number;
 
-  @Column('tinyint', { name: 'maxLevel' })
+  @Column('tinyint', { name: 'max_level' })
   maxLevel: number;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date;
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: Date | null;
 
-  @Column('int', { name: 'UserId' })
+  @Column('int', { name: 'user_id' })
   UserId: number;
 
-  @ManyToOne(() => Users, (users) => users.Exams)
-  @JoinColumn([{ name: 'UserId', referencedColumnName: 'id' }])
-  Examinee: Users;
+  @ManyToOne(() => User, (users) => users.Exams)
+  @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
+  Examinee: User;
 
-  @OneToMany(() => ExamWords, (examWords) => examWords.Exam)
-  Words: ExamWords[];
+  @OneToMany(() => ExamWord, (examWords) => examWords.Exam)
+  Words: ExamWord[];
 }

@@ -7,31 +7,31 @@ import {
   ManyToOne,
   UpdateDateColumn,
 } from 'typeorm';
-import { PartsOfSpeech } from './part-of-speech.entity';
-import { Words } from './word.entity';
+import { PartOfSpeech } from './part-of-speech.entity';
+import { Word } from './word.entity';
 
-@Entity('wordpartsofspeech', { schema: 'word_test_app' })
-export class WordPartsOfSpeech {
-  @Column('int', { primary: true, name: 'WordId' })
+@Entity('word_parts_of_speech', { schema: 'word_test_app' })
+export class WordPartOfSpeech {
+  @Column('int', { primary: true, name: 'word_id' })
   WordId: number;
 
-  @Column('int', { primary: true, name: 'PartOfSpeechId' })
+  @Column('int', { primary: true, name: 'part_of_speech_id' })
   PartOfSpeechId: number;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date;
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: Date | null;
 
-  @ManyToOne(() => Words, (words) => words.PartsOfSpeech)
-  @JoinColumn([{ name: 'WordId', referencedColumnName: 'id' }])
-  Word: Words;
+  @ManyToOne(() => Word, (words) => words.PartsOfSpeech)
+  @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])
+  Word: Word;
 
-  @ManyToOne(() => PartsOfSpeech, (partsOfSpeech) => partsOfSpeech.Words)
-  @JoinColumn([{ name: 'PartOfSpeechId', referencedColumnName: 'id' }])
-  PartOfSpeech: PartsOfSpeech;
+  @ManyToOne(() => PartOfSpeech, (partsOfSpeech) => partsOfSpeech.Words)
+  @JoinColumn([{ name: 'part_of_speech_id', referencedColumnName: 'id' }])
+  PartOfSpeech: PartOfSpeech;
 }

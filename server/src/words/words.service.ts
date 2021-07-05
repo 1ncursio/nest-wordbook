@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Users } from 'src/entities/user.entity';
-import { WordBooks } from 'src/entities/wordbook.entity';
-import { Words } from 'src/entities/word.entity';
+import { User } from 'src/entities/user.entity';
+import { WordBook } from 'src/entities/wordbook.entity';
+import { Word } from 'src/entities/word.entity';
 import { Repository } from 'typeorm';
 import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
@@ -10,10 +10,10 @@ import { UpdateWordDto } from './dto/update-word.dto';
 @Injectable()
 export class WordsService {
   constructor(
-    @InjectRepository(Users) private usersRepository: Repository<Users>,
-    @InjectRepository(WordBooks)
-    private wordBooksRepository: Repository<WordBooks>,
-    @InjectRepository(Words) private wordsRepository: Repository<Words>,
+    @InjectRepository(User) private usersRepository: Repository<User>,
+    @InjectRepository(WordBook)
+    private wordBooksRepository: Repository<WordBook>,
+    @InjectRepository(Word) private wordsRepository: Repository<Word>,
   ) {}
 
   async create(

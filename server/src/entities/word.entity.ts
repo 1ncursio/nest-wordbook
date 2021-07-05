@@ -10,14 +10,14 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exams } from './exam.entity';
-import { ExamWords } from './exam-word.entity';
-import { WordBooks } from './wordbook.entity';
-import { WordPartsOfSpeech } from './word-part-of-speech.entity';
-import { WordSenses } from './word-sense.entity';
+import { Exam } from './exam.entity';
+import { ExamWord } from './exam-word.entity';
+import { WordBook } from './wordbook.entity';
+import { WordPartOfSpeech } from './word-part-of-speech.entity';
+import { WordSense } from './word-sense.entity';
 
-@Entity({ schema: 'word_test_app', name: 'words' })
-export class Words {
+@Entity('words', { schema: 'word_test_app' })
+export class Word {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -37,31 +37,31 @@ export class Words {
   @Column('tinyint', { name: 'level' })
   level: number;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date;
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: Date | null;
 
-  @Column('int', { name: 'WordBookId' })
+  @Column('int', { name: 'wordbook_id' })
   WordBookId: number;
 
-  @ManyToOne(() => WordBooks, (wordBooks) => wordBooks.Words)
-  @JoinColumn([{ name: 'WordBookId', referencedColumnName: 'id' }])
-  WordBook: WordBooks;
+  @ManyToOne(() => WordBook, (wordBooks) => wordBooks.Words)
+  @JoinColumn([{ name: 'wordbook_id', referencedColumnName: 'id' }])
+  WordBook: WordBook;
 
-  @OneToMany(() => WordSenses, (wordSenses) => wordSenses.Word)
-  Senses: WordSenses[];
+  @OneToMany(() => WordSense, (wordSenses) => wordSenses.Word)
+  Senses: WordSense[];
 
   @OneToMany(
-    () => WordPartsOfSpeech,
+    () => WordPartOfSpeech,
     (wordPartsOfSpeech) => wordPartsOfSpeech.Word,
   )
-  PartsOfSpeech: WordPartsOfSpeech[];
+  PartsOfSpeech: WordPartOfSpeech[];
 
-  @OneToMany(() => ExamWords, (examWords) => examWords.Word)
-  Exams: Exams[];
+  @OneToMany(() => ExamWord, (examWords) => examWords.Word)
+  Exams: Exam[];
 }

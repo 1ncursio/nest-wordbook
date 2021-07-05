@@ -1,7 +1,7 @@
 import { PickType } from '@nestjs/swagger';
-import { Words } from 'src/entities/word.entity';
+import { Word } from 'src/entities/word.entity';
 
-export class CreateWordDto extends PickType(Words, [
+export class CreateWordDto extends PickType(Word, [
   'kanji',
   'hiragana',
   'katakana',

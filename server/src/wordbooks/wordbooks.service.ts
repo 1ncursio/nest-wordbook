@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Users } from 'src/entities/user.entity';
-import { WordBooks } from 'src/entities/wordbook.entity';
+import { User } from 'src/entities/user.entity';
+import { WordBook } from 'src/entities/wordbook.entity';
 import { Repository } from 'typeorm';
 import { CreateWordBookDto } from './dto/create-word-book.dto';
 
 @Injectable()
 export class WordbooksService {
   constructor(
-    @InjectRepository(Users) private usersRepository: Repository<Users>,
-    @InjectRepository(WordBooks)
-    private wordBooksRepository: Repository<WordBooks>,
+    @InjectRepository(User) private usersRepository: Repository<User>,
+    @InjectRepository(WordBook)
+    private wordBooksRepository: Repository<WordBook>,
   ) {}
 
   async findWordBooks() {
@@ -22,7 +22,7 @@ export class WordbooksService {
   }
 
   async createWordBook(createWordBookDto: CreateWordBookDto, userId: number) {
-    const wordBook = new WordBooks();
+    const wordBook = new WordBook();
     console.log(createWordBookDto);
     wordBook.name = createWordBookDto.name;
     wordBook.visibility = createWordBookDto.visibility;

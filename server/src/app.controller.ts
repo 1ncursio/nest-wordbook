@@ -4,7 +4,7 @@ import { AuthService } from './auth/auth.service';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { UserDecorator } from './decorators/user.decorator';
-import { Users } from './entities/user.entity';
+import { User } from './entities/user.entity';
 
 @Controller()
 export class AppController {
@@ -20,13 +20,13 @@ export class AppController {
 
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
-  async login(@UserDecorator() user: Users) {
+  async login(@UserDecorator() user: User) {
     return this.authService.login(user);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
-  getProfile(@UserDecorator() user: Users) {
+  getProfile(@UserDecorator() user: User) {
     const { deletedAt, ...userData } = user;
     return userData;
   }

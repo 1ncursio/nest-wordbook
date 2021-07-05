@@ -4,14 +4,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { Exams } from './entities/exam.entity';
-import { ExamWords } from './entities/exam-word.entity';
-import { PartsOfSpeech } from './entities/part-of-speech.entity';
-import { Users } from './entities/user.entity';
-import { WordBooks } from './entities/wordbook.entity';
-import { WordPartsOfSpeech } from './entities/word-part-of-speech.entity';
-import { Words } from './entities/word.entity';
-import { WordSenses } from './entities/word-sense.entity';
+import { Exam } from './entities/exam.entity';
+import { ExamWord } from './entities/exam-word.entity';
+import { PartOfSpeech } from './entities/part-of-speech.entity';
+import { User } from './entities/user.entity';
+import { WordBook } from './entities/wordbook.entity';
+import { WordPartOfSpeech } from './entities/word-part-of-speech.entity';
+import { Word } from './entities/word.entity';
+import { WordSense } from './entities/word-sense.entity';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { UsersModule } from './users/users.module';
 import { WordbooksModule } from './wordbooks/wordbooks.module';
@@ -28,14 +28,14 @@ import { WordsModule } from './words/words.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       entities: [
-        Users,
-        WordBooks,
-        Words,
-        Exams,
-        ExamWords,
-        WordSenses,
-        PartsOfSpeech,
-        WordPartsOfSpeech,
+        User,
+        WordBook,
+        Word,
+        Exam,
+        ExamWord,
+        WordSense,
+        PartOfSpeech,
+        WordPartOfSpeech,
       ],
       synchronize: process.env.NODE_ENV !== 'production',
       logging: true,

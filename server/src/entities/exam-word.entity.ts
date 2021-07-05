@@ -7,34 +7,34 @@ import {
   ManyToOne,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exams } from './exam.entity';
-import { Words } from './word.entity';
+import { Exam } from './exam.entity';
+import { Word } from './word.entity';
 
-@Entity('examwords', { schema: 'word_test_app' })
-export class ExamWords {
-  @Column('int', { primary: true, name: 'WordId' })
+@Entity('exam_words', { schema: 'word_test_app' })
+export class ExamWord {
+  @Column('int', { primary: true, name: 'word_id' })
   WordId: number;
 
-  @Column('int', { primary: true, name: 'ExamId' })
+  @Column('int', { primary: true, name: 'exam_id' })
   ExamId: number;
 
-  @Column('boolean', { name: 'isCorrect' })
+  @Column('boolean', { name: 'is_correct' })
   isCorrect: boolean;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date;
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: Date | null;
 
-  @ManyToOne(() => Exams, (exams) => exams.Words)
-  @JoinColumn([{ name: 'ExamId', referencedColumnName: 'id' }])
-  Exam: Exams;
+  @ManyToOne(() => Exam, (exams) => exams.Words)
+  @JoinColumn([{ name: 'exam_id', referencedColumnName: 'id' }])
+  Exam: Exam;
 
-  @ManyToOne(() => Words, (words) => words.Exams)
-  @JoinColumn([{ name: 'WordId', referencedColumnName: 'id' }])
-  Word: Words;
+  @ManyToOne(() => Word, (words) => words.Exams)
+  @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])
+  Word: Word;
 }

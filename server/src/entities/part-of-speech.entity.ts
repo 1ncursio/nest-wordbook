@@ -8,10 +8,10 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { WordPartsOfSpeech } from './word-part-of-speech.entity';
+import { WordPartOfSpeech } from './word-part-of-speech.entity';
 
-@Entity('partsofspeech', { schema: 'word_test_app' })
-export class PartsOfSpeech {
+@Entity('parts_of_speech', { schema: 'word_test_app' })
+export class PartOfSpeech {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -20,18 +20,18 @@ export class PartsOfSpeech {
   @Column('varchar', { name: 'name', length: 10 })
   name: string;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date;
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: Date | null;
 
   @OneToMany(
-    () => WordPartsOfSpeech,
+    () => WordPartOfSpeech,
     (wordPartsOfSpeech) => wordPartsOfSpeech.PartOfSpeech,
   )
-  Words: WordPartsOfSpeech[];
+  Words: WordPartOfSpeech[];
 }

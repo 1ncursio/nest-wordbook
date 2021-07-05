@@ -17,12 +17,12 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exams } from './exam.entity';
-import { WordBooks } from './wordbook.entity';
+import { Exam } from './exam.entity';
+import { WordBook } from './wordbook.entity';
 
 @Index('email', ['email'], { unique: true })
-@Entity({ schema: 'word_test_app', name: 'users' })
-export class Users {
+@Entity('users', { schema: 'word_test_app' })
+export class User {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
   id: number;
 
@@ -86,20 +86,20 @@ export class Users {
   })
   enabled: boolean;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date;
+  @DeleteDateColumn({ name: 'deleted_at' })
+  deletedAt: Date | null;
 
-  @OneToMany(() => WordBooks, (wordBooks) => wordBooks.Owner)
-  WordBooks: WordBooks[];
+  @OneToMany(() => WordBook, (wordBooks) => wordBooks.Owner)
+  WordBooks: WordBook[];
 
-  @OneToMany(() => Exams, (exams) => exams.Examinee)
-  Exams: Exams[];
+  @OneToMany(() => Exam, (exams) => exams.Examinee)
+  Exams: Exam[];
 
   // @OneToMany(() => EmailVerifications)
 }
