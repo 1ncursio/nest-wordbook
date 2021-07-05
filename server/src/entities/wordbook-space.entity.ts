@@ -36,7 +36,7 @@ export class WordbookSpace {
   @Column('varchar', {
     name: 'visibility',
   })
-  visibility: string;
+  visibility: 'public' | 'limited' | 'private';
 
   @Column('varchar', { name: 'image', length: 255, nullable: true })
   image: string | null;

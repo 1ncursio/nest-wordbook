@@ -30,6 +30,12 @@ export class WordbookSpaceRole {
   @Column('boolean', { name: 'can_delete' })
   canDelete: boolean;
 
+  @Column('boolean', { name: 'can_invite' })
+  canInvite: boolean;
+
+  @Column('boolean', { name: 'can_kick' })
+  canKick: boolean;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 

@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
-import { IsInt, IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -12,7 +11,6 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User } from './user.entity';
 import { Word } from './word.entity';
 import { WordbookSpace } from './wordbook-space.entity';
 
@@ -31,7 +29,7 @@ export class Wordbook {
   name: string;
 
   @IsString()
-  @Column('varchar', { name: 'image', length: 255 })
+  @Column('varchar', { name: 'image', length: 255, nullable: true })
   image: string | null;
 
   @CreateDateColumn({ name: 'created_at' })

@@ -69,7 +69,11 @@ export class User {
 
   @IsString()
   @MaxLength(255)
-  @ApiProperty({ example: 'image.jpg', description: '유저 이미지' })
+  @ApiProperty({
+    example: 'image.jpg',
+    description: '유저 이미지',
+    nullable: true,
+  })
   @Column('varchar', {
     name: 'image',
     length: 255,
