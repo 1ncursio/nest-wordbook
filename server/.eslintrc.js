@@ -25,5 +25,15 @@ module.exports = {
       'error',
       { endOfLine: 'auto', 'no-unexpected-multiline': 'error' },
     ],
+    'sort-imports': [
+      'error',
+      {
+        ignoreCase: false,
+        ignoreDeclerationSort: false,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+        allowSeperatedGroups: false,
+      },
+    ],
   },
 };
