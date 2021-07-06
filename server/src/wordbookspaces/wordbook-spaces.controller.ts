@@ -15,13 +15,13 @@ import { UserDecorator } from 'src/decorators/user.decorator';
 import { User } from 'src/entities/user.entity';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('wordbookspaces')
 export class WordbookspacesController {
   constructor(private readonly wordbookspacesService: WordbookspacesService) {}
 
-  @UseGuards(JwtAuthGuard)
   @Post()
-  create(
+  async create(
     @Body() createWordbookSpaceDto: CreateWordbookSpaceDto,
     @UserDecorator() user: User,
   ) {
@@ -30,17 +30,20 @@ export class WordbookspacesController {
   }
 
   @Get()
-  findAll() {
-    return this.wordbookspacesService.findAll();
+  async findAll(@UserDecorator() user: User) {
+    return this.wordbookspacesService.findAllMyWordbookSpaces(user.id);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.wordbookspacesService.findOne(id);
+  async findOneMyWordbookSpace(
+    @Param('id') id: string,
+    @UserDecorator() user: User,
+  ) {
+    return this.wordbookspacesService.findOneMyWordbookSpace(id, user.id);
   }
 
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateWordbookSpaceDto: UpdateWordbookSpaceDto,
     @UserDecorator() user: User,
@@ -53,7 +56,7 @@ export class WordbookspacesController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string, @UserDecorator() user: User) {
-    return this.wordbookspacesService.remove(id, user.id);
+  async remove(@Param('id') id: string, @UserDecorator() user: User) {
+    return this.wordbookspacesService.removeMyWordbookSpace(id, user.id);
   }
 }
