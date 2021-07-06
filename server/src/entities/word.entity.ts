@@ -49,7 +49,10 @@ export class Word {
   @Column('uuid', { name: 'wordbook_id' })
   WordbookId: string;
 
-  @ManyToOne(() => Wordbook, (wordbooks) => wordbooks.Words)
+  @ManyToOne(() => Wordbook, (wordbooks) => wordbooks.Words, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   @JoinColumn([{ name: 'wordbook_id', referencedColumnName: 'id' }])
   Wordbook: Wordbook;
 

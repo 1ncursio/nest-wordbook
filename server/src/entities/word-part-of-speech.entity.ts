@@ -27,7 +27,10 @@ export class WordPartOfSpeech {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
 
-  @ManyToOne(() => Word, (words) => words.PartsOfSpeech)
+  @ManyToOne(() => Word, (words) => words.PartsOfSpeech, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])
   Word: Word;
 

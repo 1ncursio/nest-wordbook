@@ -65,7 +65,10 @@ export class WordbookSpaceRole {
   @Column('uuid', { name: 'wordbook_space_id' })
   WordbookSpaceId: string;
 
-  @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Roles)
+  @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Roles, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   @JoinColumn({ name: 'wordbook_space_id', referencedColumnName: 'id' })
   WordbookSpace: WordbookSpace;
 

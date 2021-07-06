@@ -35,13 +35,17 @@ export class WordbookSpaceMember {
   @JoinColumn({ name: 'member_id', referencedColumnName: 'id' })
   Member: User;
 
-  @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Members)
+  @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Members, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   @JoinColumn({ name: 'wordbook_space_id', referencedColumnName: 'id' })
   WordbookSpace: WordbookSpace;
 
   @ManyToOne(
     () => WordbookSpaceRole,
     (wordbookSpaceRole) => wordbookSpaceRole.Members,
+    { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
   )
   @JoinColumn({ name: 'role_id', referencedColumnName: 'id' })
   Role: WordbookSpaceRole;

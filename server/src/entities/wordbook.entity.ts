@@ -44,7 +44,10 @@ export class Wordbook {
   @OneToMany(() => Word, (words) => words.Wordbook)
   Words: Word[];
 
-  @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Wordbooks)
+  @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Wordbooks, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   @JoinColumn({ name: 'wordbook_space_id', referencedColumnName: 'id' })
   WordbookSpace: WordbookSpace;
 }

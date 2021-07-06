@@ -33,7 +33,10 @@ export class WordSense {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: Date | null;
 
-  @ManyToOne(() => Word, (words) => words.Senses)
+  @ManyToOne(() => Word, (words) => words.Senses, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])
   Word: Word;
 }
