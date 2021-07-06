@@ -43,5 +43,6 @@ export class WordbookSpaceMember {
     () => WordbookSpaceRole,
     (wordbookSpaceRole) => wordbookSpaceRole.Members,
   )
+  @JoinColumn({ name: 'role_id', referencedColumnName: 'id' })
   Role: WordbookSpaceRole;
 }

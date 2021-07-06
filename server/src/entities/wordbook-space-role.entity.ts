@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -19,7 +20,7 @@ export class WordbookSpaceRole {
 
   @IsNotEmpty()
   @IsString()
-  @Column('varchar', { name: 'name', unique: true, length: 20 })
+  @Column('varchar', { name: 'name', length: 20 })
   name: string;
 
   @IsNotEmpty()
@@ -65,6 +66,7 @@ export class WordbookSpaceRole {
   WordbookSpaceId: string;
 
   @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Roles)
+  @JoinColumn({ name: 'wordbook_space_id', referencedColumnName: 'id' })
   WordbookSpace: WordbookSpace;
 
   @OneToMany(
