@@ -14,21 +14,29 @@ import { Wordbook } from '../../entities/wordbook.entity';
 
 export class CreateInitialData implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<void> {
-    /* Create new user */
-    const userId = uuidv4();
-    const hashedPassword = await bcrypt.hash('testtest', 9);
+    /* Create new users */
+    const userId1 = uuidv4();
+    const userId2 = uuidv4();
     await connection
       .createQueryBuilder()
       .insert()
       .into(User)
       .values([
         {
-          id: userId,
+          id: userId1,
           email: 'test@naver.com',
           nickname: '황현종',
           enabled: true,
           role: 'default',
-          password: hashedPassword,
+          password: await bcrypt.hash('testtest', 9),
+        },
+        {
+          id: userId2,
+          email: 'test2@naver.com',
+          nickname: '김진홍',
+          enabled: true,
+          role: 'default',
+          password: await bcrypt.hash('testtest', 9),
         },
       ])
       .execute();
@@ -42,7 +50,7 @@ export class CreateInitialData implements Seeder {
       .values([
         {
           id: wordbookSpaceId,
-          OwnerId: userId,
+          OwnerId: userId1,
           name: '첫번째 단어장 공간',
           description: '첫번째 단어장 공간입니다!',
           visibility: 'private',
@@ -51,14 +59,15 @@ export class CreateInitialData implements Seeder {
       .execute();
 
     /* Create new admin & normal roles in wordbook space's role table */
-    const roleId = uuidv4();
+    const adminRoleId = uuidv4();
+    const normalRoleId = uuidv4();
     await connection
       .createQueryBuilder()
       .insert()
       .into(WordbookSpaceRole)
       .values([
         {
-          id: roleId,
+          id: adminRoleId,
           WordbookSpaceId: wordbookSpaceId,
           name: '관리자',
           canCreate: true,
@@ -69,7 +78,7 @@ export class CreateInitialData implements Seeder {
           canGrant: true,
         },
         {
-          id: uuidv4(),
+          id: normalRoleId,
           WordbookSpaceId: wordbookSpaceId,
           name: '일반 멤버',
           canCreate: true,
@@ -89,9 +98,14 @@ export class CreateInitialData implements Seeder {
       .into(WordbookSpaceMember)
       .values([
         {
-          MemberId: userId,
+          MemberId: userId1,
           WordbookSpaceId: wordbookSpaceId,
-          RoleId: roleId,
+          RoleId: adminRoleId,
+        },
+        {
+          MemberId: userId2,
+          WordbookSpaceId: wordbookSpaceId,
+          RoleId: normalRoleId,
         },
       ])
       .execute();
@@ -105,7 +119,7 @@ export class CreateInitialData implements Seeder {
       .values([
         {
           id: wordbookId,
-          name: '첫번째 단어장',
+          name: '첫 단어장',
           WordbookSpaceId: wordbookSpaceId,
         },
       ])
