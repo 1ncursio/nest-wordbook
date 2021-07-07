@@ -30,11 +30,11 @@ export class WordbookspacesController {
   }
 
   @Post(':id/link')
-  async generateInviteLink(
+  async generateEntryCode(
     @Param('id') id: string,
     @UserDecorator() user: User,
   ) {
-    return this.wordbookspacesService.generateInviteLink(id, user.id);
+    return this.wordbookspacesService.generateEntryCode(id, user.id);
   }
 
   @Get()

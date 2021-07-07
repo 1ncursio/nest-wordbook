@@ -89,7 +89,7 @@ export class WordbookspacesService {
     }
   }
 
-  async generateInviteLink(wordbookSpaceId: string, userId: string) {
+  async generateEntryCode(wordbookSpaceId: string, userId: string) {
     /* wordbookSpace 쿼리 빌더 > 멤버 조인 > 멤버 권한 조인 > 참여 코드 조인 */
     const wordbookSpace = await this.wordbookSpaceRepository
       .createQueryBuilder('space')
