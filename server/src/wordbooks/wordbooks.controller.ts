@@ -16,6 +16,7 @@ import { CreateWordbookDto } from './dto/create-word-book.dto';
 import { UpdateWordbookDto } from './dto/update-word-book.dto';
 import { WordbooksService } from './wordbooks.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('wordbooks')
 export class WordbooksController {
   constructor(private wordbooksService: WordbooksService) {}
@@ -30,7 +31,6 @@ export class WordbooksController {
     return this.wordbooksService.findOneWordbook(wordbookId);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Post()
   async createWordbook(
     @UserDecorator() user: User,

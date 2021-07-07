@@ -3,14 +3,16 @@ import {
   Injectable,
   InternalServerErrorException,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
+import { WordbookSpaceEntryCode } from 'src/entities/wordbook-space-entry-code.entity';
 import { WordbookSpaceMember } from 'src/entities/wordbook-space-member.entity';
 import { WordbookSpaceRole } from 'src/entities/wordbook-space-role.entity';
 import { WordbookSpace } from 'src/entities/wordbook-space.entity';
 import { Wordbook } from 'src/entities/wordbook.entity';
 import { Connection, Repository } from 'typeorm';
-import { inspect } from 'util';
+import { v4 as uuidv4 } from 'uuid';
 import { CreateWordbookSpaceDto } from './dto/create-wordbook-space.dto';
 import { UpdateWordbookSpaceDto } from './dto/update-wordbook-space.dto';
 
@@ -19,6 +21,8 @@ export class WordbookspacesService {
   constructor(
     @InjectRepository(WordbookSpace)
     private wordbookSpaceRepository: Repository<WordbookSpace>,
+    @InjectRepository(WordbookSpaceEntryCode)
+    private wordbookSpaceEntryCodeRepository: Repository<WordbookSpaceEntryCode>,
     @InjectConnection()
     private connection: Connection,
   ) {}
@@ -82,6 +86,51 @@ export class WordbookspacesService {
       );
     } finally {
       await queryRunner.release();
+    }
+  }
+
+  async generateInviteLink(wordbookSpaceId: string, userId: string) {
+    /* wordbookSpace 쿼리 빌더 > 멤버 조인 > 멤버 권한 조인 > 참여 코드 조인 */
+    const wordbookSpace = await this.wordbookSpaceRepository
+      .createQueryBuilder('space')
+      .where('space.id = :wordbookSpaceId', { wordbookSpaceId })
+      .innerJoinAndSelect(
+        'space.Members',
+        'members',
+        'members.MemberId = :userId',
+        {
+          userId,
+        },
+      )
+      .innerJoinAndSelect('members.Role', 'role')
+      .innerJoinAndSelect('space.EntryCode', 'entryCode')
+      .getOne();
+
+    if (!wordbookSpace) {
+      throw new NotFoundException('존재하지 않는 단어장 공간입니다.');
+    }
+
+    if (
+      !wordbookSpace.Members[0].Role.canInvite &&
+      wordbookSpace.OwnerId !== userId
+    ) {
+      throw new UnauthorizedException('권한이 없습니다.');
+    }
+
+    /* entry code expires in 24 hours */
+    const expiresAt = new Date(Date.now() + 60 * 60 * 24 * 1000);
+
+    if (wordbookSpace.EntryCode) {
+      wordbookSpace.EntryCode.code = uuidv4();
+      wordbookSpace.EntryCode.expiresAt = expiresAt;
+      return this.wordbookSpaceEntryCodeRepository.save(
+        wordbookSpace.EntryCode,
+      );
+    } else {
+      return this.wordbookSpaceEntryCodeRepository.save({
+        WordbookSpaceId: wordbookSpaceId,
+        expiresAt: expiresAt,
+      });
     }
   }
 

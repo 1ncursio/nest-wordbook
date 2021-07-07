@@ -29,6 +29,14 @@ export class WordbookspacesController {
     return this.wordbookspacesService.create(createWordbookSpaceDto, user.id);
   }
 
+  @Post(':id/link')
+  async generateInviteLink(
+    @Param('id') id: string,
+    @UserDecorator() user: User,
+  ) {
+    return this.wordbookspacesService.generateInviteLink(id, user.id);
+  }
+
   @Get()
   async findAll(@UserDecorator() user: User) {
     return this.wordbookspacesService.findAllMyWordbookSpaces(user.id);
