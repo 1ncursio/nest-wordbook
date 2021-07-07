@@ -8,10 +8,12 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { User } from './user.entity';
+import { WordbookSpaceEntryCode } from './wordbook-space-entry-code.entity';
 import { WordbookSpaceMember } from './wordbook-space-member.entity';
 import { WordbookSpaceRole } from './wordbook-space-role.entity';
 import { Wordbook } from './wordbook.entity';
@@ -72,4 +74,10 @@ export class WordbookSpace {
     (wordbookSpaceRole) => wordbookSpaceRole.WordbookSpace,
   )
   Roles: WordbookSpaceRole[];
+
+  @OneToOne(
+    () => WordbookSpaceEntryCode,
+    (wordbookSpaceEntryCode) => wordbookSpaceEntryCode.WordbookSpace,
+  )
+  EntryCode: WordbookSpaceEntryCode;
 }

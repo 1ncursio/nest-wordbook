@@ -7,6 +7,7 @@ import { User } from './src/entities/user.entity';
 import { WordPartOfSpeech } from './src/entities/word-part-of-speech.entity';
 import { WordSense } from './src/entities/word-sense.entity';
 import { Word } from './src/entities/word.entity';
+import { WordbookSpaceEntryCode } from './src/entities/wordbook-space-entry-code.entity';
 import { WordbookSpaceMember } from './src/entities/wordbook-space-member.entity';
 import { WordbookSpaceRole } from './src/entities/wordbook-space-role.entity';
 import { WordbookSpace } from './src/entities/wordbook-space.entity';
@@ -32,6 +33,7 @@ const config: TypeOrmModuleOptions = {
     WordbookSpace,
     WordbookSpaceMember,
     WordbookSpaceRole,
+    WordbookSpaceEntryCode,
   ],
   migrations: [__dirname + '/./src/migrations/*.ts'],
   cli: { migrationsDir: './src/migrations' },
