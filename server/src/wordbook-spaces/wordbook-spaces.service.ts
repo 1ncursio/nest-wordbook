@@ -17,7 +17,7 @@ import { CreateWordbookSpaceDto } from './dto/create-wordbook-space.dto';
 import { UpdateWordbookSpaceDto } from './dto/update-wordbook-space.dto';
 
 @Injectable()
-export class WordbookspacesService {
+export class WordbookSpacesService {
   constructor(
     @InjectRepository(WordbookSpace)
     private wordbookSpaceRepository: Repository<WordbookSpace>,

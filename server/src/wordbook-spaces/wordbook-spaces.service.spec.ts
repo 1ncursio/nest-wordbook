@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { WordbookspacesService } from './wordbook-spaces.service';
+import { WordbookSpacesService } from './wordbook-spaces.service';
 
 describe('WordbookspacesService', () => {
-  let service: WordbookspacesService;
+  let service: WordbookSpacesService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [WordbookspacesService],
+      providers: [WordbookSpacesService],
     }).compile();
 
-    service = module.get<WordbookspacesService>(WordbookspacesService);
+    service = module.get<WordbookSpacesService>(WordbookSpacesService);
   });
 
   it('should be defined', () => {

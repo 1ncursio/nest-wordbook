@@ -8,7 +8,7 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { WordbookspacesService } from './wordbook-spaces.service';
+import { WordbookSpacesService } from './wordbook-spaces.service';
 import { CreateWordbookSpaceDto } from './dto/create-wordbook-space.dto';
 import { UpdateWordbookSpaceDto } from './dto/update-wordbook-space.dto';
 import { UserDecorator } from 'src/decorators/user.decorator';
@@ -17,8 +17,8 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @UseGuards(JwtAuthGuard)
 @Controller('wordbookspaces')
-export class WordbookspacesController {
-  constructor(private readonly wordbookspacesService: WordbookspacesService) {}
+export class WordbookSpacesController {
+  constructor(private readonly wordbookSpacesService: WordbookSpacesService) {}
 
   @Post()
   async create(
@@ -26,7 +26,7 @@ export class WordbookspacesController {
     @UserDecorator() user: User,
   ) {
     console.log(user);
-    return this.wordbookspacesService.create(createWordbookSpaceDto, user.id);
+    return this.wordbookSpacesService.create(createWordbookSpaceDto, user.id);
   }
 
   @Post(':id/link')
@@ -34,12 +34,12 @@ export class WordbookspacesController {
     @Param('id') id: string,
     @UserDecorator() user: User,
   ) {
-    return this.wordbookspacesService.generateEntryCode(id, user.id);
+    return this.wordbookSpacesService.generateEntryCode(id, user.id);
   }
 
   @Get()
   async findAll(@UserDecorator() user: User) {
-    return this.wordbookspacesService.findAllMyWordbookSpaces(user.id);
+    return this.wordbookSpacesService.findAllMyWordbookSpaces(user.id);
   }
 
   @Get(':id')
@@ -47,7 +47,7 @@ export class WordbookspacesController {
     @Param('id') id: string,
     @UserDecorator() user: User,
   ) {
-    return this.wordbookspacesService.findOneMyWordbookSpace(id, user.id);
+    return this.wordbookSpacesService.findOneMyWordbookSpace(id, user.id);
   }
 
   @Patch(':id')
@@ -56,7 +56,7 @@ export class WordbookspacesController {
     @Body() updateWordbookSpaceDto: UpdateWordbookSpaceDto,
     @UserDecorator() user: User,
   ) {
-    return this.wordbookspacesService.update(
+    return this.wordbookSpacesService.update(
       id,
       updateWordbookSpaceDto,
       user.id,
@@ -65,6 +65,6 @@ export class WordbookspacesController {
 
   @Delete(':id')
   async remove(@Param('id') id: string, @UserDecorator() user: User) {
-    return this.wordbookspacesService.removeMyWordbookSpace(id, user.id);
+    return this.wordbookSpacesService.removeMyWordbookSpace(id, user.id);
   }
 }

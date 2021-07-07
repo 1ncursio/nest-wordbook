@@ -7,8 +7,9 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { UsersModule } from './users/users.module';
+import { WordbookSpacesMembersModule } from './wordbook-spaces-members/wordbook-spaces-members.module';
+import { WordbookSpacesModule } from './wordbook-spaces/wordbook-spaces.module';
 import { WordbooksModule } from './wordbooks/wordbooks.module';
-import { WordbookspacesModule } from './wordbookspaces/wordbook-spaces.module';
 import { WordsModule } from './words/words.module';
 
 @Module({
@@ -19,7 +20,8 @@ import { WordsModule } from './words/words.module';
     UsersModule,
     WordbooksModule,
     WordsModule,
-    WordbookspacesModule,
+    WordbookSpacesModule,
+    WordbookSpacesMembersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

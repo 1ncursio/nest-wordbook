@@ -5,8 +5,8 @@ import { WordbookSpaceMember } from 'src/entities/wordbook-space-member.entity';
 import { WordbookSpaceRole } from 'src/entities/wordbook-space-role.entity';
 import { WordbookSpace } from 'src/entities/wordbook-space.entity';
 import { Wordbook } from 'src/entities/wordbook.entity';
-import { WordbookspacesController } from './wordbook-spaces.controller';
-import { WordbookspacesService } from './wordbook-spaces.service';
+import { WordbookSpacesController } from './wordbook-spaces.controller';
+import { WordbookSpacesService } from './wordbook-spaces.service';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { WordbookspacesService } from './wordbook-spaces.service';
       Wordbook,
     ]),
   ],
-  controllers: [WordbookspacesController],
-  providers: [WordbookspacesService],
+  controllers: [WordbookSpacesController],
+  providers: [WordbookSpacesService],
 })
-export class WordbookspacesModule {}
+export class WordbookSpacesModule {}
