@@ -4,7 +4,9 @@ import { UpdateWordbookSpacesMemberDto } from './dto/update-wordbook-spaces-memb
 
 @Injectable()
 export class WordbookSpacesMembersService {
-  create(createWordbookSpacesMemberDto: CreateWordbookSpacesMemberDto) {
+  enterMemberIntoWordbookSpace(
+    createWordbookSpacesMemberDto: CreateWordbookSpacesMemberDto,
+  ) {
     return 'This action adds a new wordbookSpacesMember';
   }
 
@@ -12,15 +14,18 @@ export class WordbookSpacesMembersService {
     return `This action returns all wordbookSpacesMembers`;
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return `This action returns a #${id} wordbookSpacesMember`;
   }
 
-  update(id: number, updateWordbookSpacesMemberDto: UpdateWordbookSpacesMemberDto) {
+  update(
+    id: string,
+    updateWordbookSpacesMemberDto: UpdateWordbookSpacesMemberDto,
+  ) {
     return `This action updates a #${id} wordbookSpacesMember`;
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return `This action removes a #${id} wordbookSpacesMember`;
   }
 }

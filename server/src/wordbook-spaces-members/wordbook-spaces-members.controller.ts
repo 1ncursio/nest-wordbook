@@ -1,15 +1,29 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { WordbookSpacesMembersService } from './wordbook-spaces-members.service';
 import { CreateWordbookSpacesMemberDto } from './dto/create-wordbook-spaces-member.dto';
 import { UpdateWordbookSpacesMemberDto } from './dto/update-wordbook-spaces-member.dto';
 
-@Controller('wordbook-spaces-members')
+@Controller('wordbookspaces/:wordbookSpaceId/members')
 export class WordbookSpacesMembersController {
-  constructor(private readonly wordbookSpacesMembersService: WordbookSpacesMembersService) {}
+  constructor(
+    private readonly wordbookSpacesMembersService: WordbookSpacesMembersService,
+  ) {}
 
   @Post()
-  create(@Body() createWordbookSpacesMemberDto: CreateWordbookSpacesMemberDto) {
-    return this.wordbookSpacesMembersService.create(createWordbookSpacesMemberDto);
+  enterMemberIntoWordbookSpace(
+    @Body() createWordbookSpacesMemberDto: CreateWordbookSpacesMemberDto,
+  ) {
+    return this.wordbookSpacesMembersService.enterMemberIntoWordbookSpace(
+      createWordbookSpacesMemberDto,
+    );
   }
 
   @Get()
@@ -17,18 +31,24 @@ export class WordbookSpacesMembersController {
     return this.wordbookSpacesMembersService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.wordbookSpacesMembersService.findOne(+id);
+  @Get(':memberId')
+  findOne(@Param('memberId') memberId: string) {
+    return this.wordbookSpacesMembersService.findOne(memberId);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateWordbookSpacesMemberDto: UpdateWordbookSpacesMemberDto) {
-    return this.wordbookSpacesMembersService.update(+id, updateWordbookSpacesMemberDto);
+  @Patch(':memberId')
+  update(
+    @Param('memberId') memberId: string,
+    @Body() updateWordbookSpacesMemberDto: UpdateWordbookSpacesMemberDto,
+  ) {
+    return this.wordbookSpacesMembersService.update(
+      memberId,
+      updateWordbookSpacesMemberDto,
+    );
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.wordbookSpacesMembersService.remove(+id);
+  @Delete(':memberId')
+  remove(@Param('memberId') memberId: string) {
+    return this.wordbookSpacesMembersService.remove(memberId);
   }
 }
