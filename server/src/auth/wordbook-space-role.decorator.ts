@@ -1,14 +1,5 @@
 import { SetMetadata } from '@nestjs/common';
 
-/* export type RequiredWordbookSpaceRole = {
-  canCreate?: boolean;
-  canUpdate?: boolean;
-  canDelete?: boolean;
-  canInvite?: boolean;
-  canKick?: boolean;
-  canGrant?: boolean;
-}; */
-
 export type RequiredWordbookSpaceRole =
   | 'canCreate'
   | 'canUpdate'

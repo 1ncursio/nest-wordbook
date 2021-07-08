@@ -40,9 +40,6 @@ export class WordbookSpaceRoleGuard {
 
     if (!member) return false;
 
-    /* return Object.keys(requiredRole).every(
-      (role: keyof RequiredWordbookSpaceRole) => member.Role[role] === true,
-    ); */
     return requiredRole.every(
       (role: RequiredWordbookSpaceRole) => member.Role[role] === true,
     );
