@@ -24,7 +24,7 @@ export class WordbookSpaceRoleGuard {
     const { id: userId } = user;
     const { wordbookSpaceId } = request.params;
 
-    const requiredRole = this.reflector.get<RequiredWordbookSpaceRole>(
+    const requiredRole = this.reflector.get<RequiredWordbookSpaceRole[]>(
       WORDBOOK_SPACE_ROLES_KEY,
       context.getHandler(),
     );
@@ -38,8 +38,13 @@ export class WordbookSpaceRoleGuard {
       .innerJoinAndSelect('member.Role', 'role')
       .getOne();
 
-    return Object.keys(requiredRole).every(
+    if (!member) return false;
+
+    /* return Object.keys(requiredRole).every(
       (role: keyof RequiredWordbookSpaceRole) => member.Role[role] === true,
+    ); */
+    return requiredRole.every(
+      (role: RequiredWordbookSpaceRole) => member.Role[role] === true,
     );
   }
 }

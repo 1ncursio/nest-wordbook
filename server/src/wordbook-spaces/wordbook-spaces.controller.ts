@@ -30,7 +30,7 @@ export class WordbookSpacesController {
     return this.wordbookSpacesService.create(createWordbookSpaceDto, user.id);
   }
 
-  @WordbookSpaceRoleDecorator({ canInvite: true })
+  @WordbookSpaceRoleDecorator(['canInvite'])
   @UseGuards(WordbookSpaceRoleGuard)
   @Post(':wordbookSpaceId/link')
   async generateEntryCode(
