@@ -94,27 +94,11 @@ export class WordbookSpacesService {
     const wordbookSpace = await this.wordbookSpaceRepository
       .createQueryBuilder('space')
       .where('space.id = :wordbookSpaceId', { wordbookSpaceId })
-      .innerJoinAndSelect(
-        'space.Members',
-        'members',
-        'members.MemberId = :userId',
-        {
-          userId,
-        },
-      )
-      .innerJoinAndSelect('members.Role', 'role')
       .innerJoinAndSelect('space.EntryCode', 'entryCode')
       .getOne();
 
     if (!wordbookSpace) {
       throw new NotFoundException('존재하지 않는 단어장 공간입니다.');
-    }
-
-    if (
-      !wordbookSpace.Members[0].Role.canInvite &&
-      wordbookSpace.OwnerId !== userId
-    ) {
-      throw new UnauthorizedException('권한이 없습니다.');
     }
 
     /* entry code expires in 24 hours */

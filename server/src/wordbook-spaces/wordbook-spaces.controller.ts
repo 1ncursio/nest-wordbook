@@ -14,6 +14,8 @@ import { UpdateWordbookSpaceDto } from './dto/update-wordbook-space.dto';
 import { UserDecorator } from 'src/decorators/user.decorator';
 import { User } from 'src/entities/user.entity';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { WordbookSpaceRoleGuard } from 'src/auth/wordbook-space-role.guard';
+import { WordbookSpaceRoleDecorator } from 'src/auth/wordbook-space-role.decorator';
 
 @UseGuards(JwtAuthGuard)
 @Controller('wordbookspaces')
@@ -25,16 +27,20 @@ export class WordbookSpacesController {
     @Body() createWordbookSpaceDto: CreateWordbookSpaceDto,
     @UserDecorator() user: User,
   ) {
-    console.log(user);
     return this.wordbookSpacesService.create(createWordbookSpaceDto, user.id);
   }
 
-  @Post(':id/link')
+  @WordbookSpaceRoleDecorator({ canInvite: true })
+  @UseGuards(WordbookSpaceRoleGuard)
+  @Post(':wordbookSpaceId/link')
   async generateEntryCode(
-    @Param('id') id: string,
+    @Param('wordbookSpaceId') wordbookSpaceId: string,
     @UserDecorator() user: User,
   ) {
-    return this.wordbookSpacesService.generateEntryCode(id, user.id);
+    return this.wordbookSpacesService.generateEntryCode(
+      wordbookSpaceId,
+      user.id,
+    );
   }
 
   @Get()
@@ -42,29 +48,38 @@ export class WordbookSpacesController {
     return this.wordbookSpacesService.findAllMyWordbookSpaces(user.id);
   }
 
-  @Get(':id')
+  @Get(':wordbookSpaceId')
   async findOneMyWordbookSpace(
-    @Param('id') id: string,
+    @Param('wordbookSpaceId') wordbookSpaceId: string,
     @UserDecorator() user: User,
   ) {
-    return this.wordbookSpacesService.findOneMyWordbookSpace(id, user.id);
+    return this.wordbookSpacesService.findOneMyWordbookSpace(
+      wordbookSpaceId,
+      user.id,
+    );
   }
 
-  @Patch(':id')
+  @Patch(':wordbookSpaceId')
   async update(
-    @Param('id') id: string,
+    @Param('wordbookSpaceId') wordbookSpaceId: string,
     @Body() updateWordbookSpaceDto: UpdateWordbookSpaceDto,
     @UserDecorator() user: User,
   ) {
     return this.wordbookSpacesService.update(
-      id,
+      wordbookSpaceId,
       updateWordbookSpaceDto,
       user.id,
     );
   }
 
-  @Delete(':id')
-  async remove(@Param('id') id: string, @UserDecorator() user: User) {
-    return this.wordbookSpacesService.removeMyWordbookSpace(id, user.id);
+  @Delete(':wordbookSpaceId')
+  async remove(
+    @Param('wordbookSpaceId') wordbookSpaceId: string,
+    @UserDecorator() user: User,
+  ) {
+    return this.wordbookSpacesService.removeMyWordbookSpace(
+      wordbookSpaceId,
+      user.id,
+    );
   }
 }
