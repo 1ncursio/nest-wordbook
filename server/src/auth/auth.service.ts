@@ -1,14 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { InjectRepository } from '@nestjs/typeorm';
 import bcrypt from 'bcrypt';
 import { User } from 'src/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
   ) {}
 
   async validateUser(email: string, password: string) {
@@ -28,7 +32,26 @@ export class AuthService {
   }
 
   async login(user: User) {
-    const payload = { id: user.id };
+    const payload = { id: user.id, email: user.email };
+    console.log('payload', payload);
     return { access_token: this.jwtService.sign(payload) };
+  }
+
+  async googleLogin(user: User) {
+    const exUser = await this.usersService.findByEmail(user.email);
+
+    if (exUser) {
+      return this.login(exUser);
+    }
+
+    const newUser = await this.userRepository.save({
+      email: user.email,
+      nickname: user.nickname,
+      image: user.image,
+      provider: 'google',
+      authId: user.id,
+    });
+
+    return this.login(newUser);
   }
 }

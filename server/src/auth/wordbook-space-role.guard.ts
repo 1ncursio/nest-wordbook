@@ -15,7 +15,7 @@ export class WordbookSpaceRoleGuard {
   constructor(
     private reflector: Reflector,
     @InjectRepository(WordbookSpaceMember)
-    private wordbookSpaceMember: Repository<WordbookSpaceMember>,
+    private wordbookSpaceMemberRepository: Repository<WordbookSpaceMember>,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -29,7 +29,7 @@ export class WordbookSpaceRoleGuard {
       context.getHandler(),
     );
 
-    const member = await this.wordbookSpaceMember
+    const member = await this.wordbookSpaceMemberRepository
       .createQueryBuilder('member')
       .where('member.MemberId = :userId', { userId })
       .andWhere('member.WordbookSpaceId = :wordbookSpaceId', {

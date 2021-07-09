@@ -39,25 +39,22 @@ export class User {
   email: string;
 
   @IsString()
-  @IsNotEmpty()
-  @ApiProperty({ example: '1ncursio', description: '닉네임' })
+  @ApiProperty({ example: '황현종', description: '닉네임' })
   @Column('varchar', {
     name: 'nickname',
-    length: 30,
-    nullable: false,
+    length: 20,
   })
   nickname: string;
 
   @MinLength(8)
   @MaxLength(100)
   @IsString()
-  @IsNotEmpty()
   @ApiProperty({ example: 'nodejsbook', description: '비밀번호' })
   @Column('varchar', {
     name: 'password',
     length: 100,
     select: false,
-    nullable: false,
+    nullable: true,
   })
   password: string;
 
@@ -79,7 +76,7 @@ export class User {
     length: 255,
     nullable: true,
   })
-  image: string;
+  image: string | null;
 
   @IsBoolean()
   @IsNotEmpty()
@@ -90,6 +87,15 @@ export class User {
     default: true /* 이메일 인증 전까지 비활성화 해야됨 */,
   })
   enabled: boolean;
+
+  @Column('enum', {
+    name: 'provider',
+    enum: ['google', 'apple', 'kakao', 'local'],
+  })
+  provider: 'google' | 'apple' | 'kakao' | 'local';
+
+  @Column('varchar', { name: 'auth_id', unique: true, length: 100 })
+  authId: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

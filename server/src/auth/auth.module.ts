@@ -7,9 +7,11 @@ import { User } from 'src/entities/user.entity';
 import { WordbookSpaceMember } from 'src/entities/wordbook-space-member.entity';
 import { UsersModule } from 'src/users/users.module';
 import { AuthService } from './auth.service';
+import { GoogleStrategy } from './google.strategy';
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
 import { WordbookSpaceRoleGuard } from './wordbook-space-role.guard';
+import { AuthController } from './auth.controller';
 
 @Module({
   imports: [
@@ -24,7 +26,14 @@ import { WordbookSpaceRoleGuard } from './wordbook-space-role.guard';
       }),
     }),
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy, WordbookSpaceRoleGuard],
+  providers: [
+    AuthService,
+    LocalStrategy,
+    JwtStrategy,
+    GoogleStrategy,
+    WordbookSpaceRoleGuard,
+  ],
   exports: [AuthService, WordbookSpaceRoleGuard],
+  controllers: [AuthController],
 })
 export class AuthModule {}
