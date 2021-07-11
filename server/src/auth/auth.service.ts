@@ -49,7 +49,7 @@ export class AuthService {
       username: user.username,
       image: user.image,
       provider: 'google',
-      authId: user.id,
+      socialId: user.id,
     });
 
     return this.login(newUser);
