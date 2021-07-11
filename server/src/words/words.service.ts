@@ -17,7 +17,7 @@ export class WordsService {
   ) {}
 
   async create(
-    wordbookId: number,
+    wordbookId: string,
     createWordDto: CreateWordDto,
     userId: string,
   ) {
@@ -34,7 +34,7 @@ export class WordsService {
     return this.wordsRepository.save(word);
   }
 
-  async findAll(wordbookId: number) {
+  async findAll(wordbookId: string) {
     const wordbook = await this.wordbooksRepository.findOne({
       where: { id: wordbookId },
     });
@@ -45,13 +45,13 @@ export class WordsService {
     return this.wordsRepository.find({ where: { WordbookId: wordbookId } });
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     return `This action returns a #${id} word`;
   }
 
   async update(
-    wordbookId: number,
-    wordId: number,
+    wordbookId: string,
+    wordId: string,
     updateWordDto: UpdateWordDto,
     userId: string,
   ) {
@@ -68,7 +68,7 @@ export class WordsService {
     return this.wordsRepository.save(word);
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     return `This action removes a #${id} word`;
   }
 }

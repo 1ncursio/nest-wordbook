@@ -14,7 +14,11 @@ import { UpdateWordbookSpacesMemberDto } from './dto/update-wordbook-spaces-memb
 import { MemberGuard } from './guards/member.guard';
 import { NotMemberGuard } from './guards/not-member.guard';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { UserDecorator } from 'src/decorators/user.decorator';
+import { User } from 'src/entities/user.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Wordbook Space Members')
 @UseGuards(JwtAuthGuard)
 @Controller('wordbookspaces/:wordbookSpaceId/members')
 export class WordbookSpacesMembersController {
@@ -22,25 +26,35 @@ export class WordbookSpacesMembersController {
     private readonly wordbookSpacesMembersService: WordbookSpacesMembersService,
   ) {}
 
+  @UseGuards(NotMemberGuard)
   @Post()
   enterMemberIntoWordbookSpace(
     @Body() createWordbookSpacesMemberDto: CreateWordbookSpacesMemberDto,
+    @UserDecorator() user: User,
   ) {
     return this.wordbookSpacesMembersService.enterMemberIntoWordbookSpace(
       createWordbookSpacesMemberDto,
+      user.id,
     );
   }
 
   @UseGuards(MemberGuard)
   @Get()
-  findAll() {
-    return this.wordbookSpacesMembersService.findAll();
+  findAllMembersInWordbookSpace(
+    @Param('wordbookSpaceId') wordbookSpaceId: string,
+  ) {
+    return this.wordbookSpacesMembersService.findAllMembersInWordbookSpace(
+      wordbookSpaceId,
+    );
   }
 
   @UseGuards(MemberGuard)
   @Get(':memberId')
-  findOne(@Param('memberId') memberId: string) {
-    return this.wordbookSpacesMembersService.findOne(memberId);
+  findOne(
+    @Param('wordbookSpaceId') wordbookSpaceId: string,
+    @Param('memberId') memberId: string,
+  ) {
+    return this.wordbookSpacesMembersService.findOne(wordbookSpaceId, memberId);
   }
 
   @UseGuards(MemberGuard)

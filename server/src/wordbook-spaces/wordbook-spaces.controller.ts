@@ -16,7 +16,9 @@ import { User } from 'src/entities/user.entity';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { WordbookSpaceRoleGuard } from 'src/auth/wordbook-space-role.guard';
 import { WordbookSpaceRoleDecorator } from 'src/auth/wordbook-space-role.decorator';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Wordbook Spaces')
 @UseGuards(JwtAuthGuard)
 @Controller('wordbookspaces')
 export class WordbookSpacesController {

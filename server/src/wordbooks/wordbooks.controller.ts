@@ -9,6 +9,7 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { UserDecorator } from 'src/decorators/user.decorator';
 import { User } from 'src/entities/user.entity';
@@ -16,6 +17,7 @@ import { CreateWordbookDto } from './dto/create-word-book.dto';
 import { UpdateWordbookDto } from './dto/update-word-book.dto';
 import { WordbooksService } from './wordbooks.service';
 
+@ApiTags('Wordbooks')
 @UseGuards(JwtAuthGuard)
 @Controller('wordbooks')
 export class WordbooksController {

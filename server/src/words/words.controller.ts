@@ -12,7 +12,9 @@ import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
 import { UserDecorator } from 'src/decorators/user.decorator';
 import { User } from 'src/entities/user.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Words')
 @Controller('wordbooks/:wordbookId/words')
 export class WordsController {
   constructor(private readonly wordsService: WordsService) {}
@@ -23,17 +25,17 @@ export class WordsController {
     @Body() createWordDto: CreateWordDto,
     @UserDecorator() user: User,
   ) {
-    return this.wordsService.create(+wordbookId, createWordDto, user.id);
+    return this.wordsService.create(wordbookId, createWordDto, user.id);
   }
 
   @Get()
   async findAll(@Param('wordbookId') wordbookId: string) {
-    return this.wordsService.findAll(+wordbookId);
+    return this.wordsService.findAll(wordbookId);
   }
 
   @Get(':wordId')
   async findOne(@Param('wordId') wordId: string) {
-    return this.wordsService.findOne(+wordId);
+    return this.wordsService.findOne(wordId);
   }
 
   @Patch(':wordId')
@@ -43,16 +45,11 @@ export class WordsController {
     @Body() updateWordDto: UpdateWordDto,
     @UserDecorator() user: User,
   ) {
-    return this.wordsService.update(
-      +wordbookId,
-      +wordId,
-      updateWordDto,
-      user.id,
-    );
+    return this.wordsService.update(wordbookId, wordId, updateWordDto, user.id);
   }
 
   @Delete(':wordId')
   async remove(@Param('wordId') wordId: string) {
-    return this.wordsService.remove(+wordId);
+    return this.wordsService.remove(wordId);
   }
 }
