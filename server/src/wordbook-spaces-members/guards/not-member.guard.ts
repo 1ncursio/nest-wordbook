@@ -26,7 +26,6 @@ export class NotMemberGuard {
       })
       .getOne();
 
-    if (member) return false;
-    return true;
+    return !member;
   }
 }

@@ -26,7 +26,6 @@ export class MemberGuard {
       })
       .getOne();
 
-    if (member) return true;
-    return false;
+    return !!member;
   }
 }
