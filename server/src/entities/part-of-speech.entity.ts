@@ -13,25 +13,25 @@ import { WordPartOfSpeech } from './word-part-of-speech.entity';
 @Entity('parts_of_speech', { schema: 'word_test_app' })
 export class PartOfSpeech {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @IsNotEmpty()
   @IsString()
   @Column('varchar', { name: 'name', unique: true, length: 10 })
-  name: string;
+  name!: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @OneToMany(
     () => WordPartOfSpeech,
     (wordPartsOfSpeech) => wordPartsOfSpeech.PartOfSpeech,
   )
-  Words: WordPartOfSpeech[];
+  Words!: WordPartOfSpeech[];
 }

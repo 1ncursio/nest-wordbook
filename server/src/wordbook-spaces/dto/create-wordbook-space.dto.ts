@@ -3,7 +3,7 @@ import { WordbookSpace } from 'src/entities/wordbook-space.entity';
 
 export class CreateWordbookSpaceDto extends PickType(WordbookSpace, [
   'name',
-  'description',
+  'shortBio',
   'visibility',
   'image',
 ] as const) {}

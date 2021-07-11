@@ -13,28 +13,28 @@ import { Word } from './word.entity';
 @Entity('word_parts_of_speech', { schema: 'word_test_app' })
 export class WordPartOfSpeech {
   @Column('uuid', { primary: true, name: 'word_id' })
-  WordId: string;
+  WordId!: string;
 
   @Column('uuid', { primary: true, name: 'part_of_speech_id' })
-  PartOfSpeechId: string;
+  PartOfSpeechId!: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @ManyToOne(() => Word, (words) => words.PartsOfSpeech, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])
-  Word: Word;
+  Word!: Word;
 
   @ManyToOne(() => PartOfSpeech, (partsOfSpeech) => partsOfSpeech.Words)
   @JoinColumn([{ name: 'part_of_speech_id', referencedColumnName: 'id' }])
-  PartOfSpeech: PartOfSpeech;
+  PartOfSpeech!: PartOfSpeech;
 }

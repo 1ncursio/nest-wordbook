@@ -21,63 +21,63 @@ import { Wordbook } from './wordbook.entity';
 @Entity('wordbook_space', { schema: 'word_test_app' })
 export class WordbookSpace {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column('uuid', { name: 'owner_id' })
-  OwnerId: string;
+  OwnerId!: string;
 
   @IsNotEmpty()
   @IsString()
   @Column('varchar', { name: 'name', length: 100 })
-  name: string;
+  name!: string;
 
   @ApiProperty({ example: 'public', description: '공개 여부' })
   @IsNotEmpty()
   @IsString()
-  @IsIn(['public', 'limited', 'private'])
-  @Column('varchar', {
+  @Column('enum', {
     name: 'visibility',
+    enum: ['public', 'limited', 'private'],
   })
-  visibility: 'public' | 'limited' | 'private';
+  visibility!: 'public' | 'limited' | 'private';
 
   @Column('varchar', { name: 'image', length: 255, nullable: true })
-  image: string | null;
+  image?: string;
 
   @IsString()
-  @Column('varchar', { name: 'description', length: 100 })
-  description: string;
+  @Column('varchar', { name: 'short_bio', length: 100, nullable: true })
+  shortBio?: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @ManyToOne(() => User, (users) => users.WordbookSpaces)
   @JoinColumn([{ name: 'owner_id', referencedColumnName: 'id' }])
-  Owner: User;
+  Owner!: User;
 
   @OneToMany(() => Wordbook, (wordbook) => wordbook.WordbookSpace)
-  Wordbooks: Wordbook[];
+  Wordbooks!: Wordbook[];
 
   @OneToMany(
     () => WordbookSpaceMember,
     (wordbookSpaceMember) => wordbookSpaceMember.WordbookSpace,
   )
-  Members: WordbookSpaceMember[];
+  Members!: WordbookSpaceMember[];
 
   @OneToMany(
     () => WordbookSpaceRole,
     (wordbookSpaceRole) => wordbookSpaceRole.WordbookSpace,
   )
-  Roles: WordbookSpaceRole[];
+  Roles!: WordbookSpaceRole[];
 
   @OneToOne(
     () => WordbookSpaceEntryCode,
     (wordbookSpaceEntryCode) => wordbookSpaceEntryCode.WordbookSpace,
   )
-  EntryCode: WordbookSpaceEntryCode;
+  EntryCode!: WordbookSpaceEntryCode;
 }

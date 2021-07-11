@@ -17,37 +17,37 @@ import { WordbookSpace } from './wordbook-space.entity';
 @Entity('wordbooks', { schema: 'word_test_app' })
 export class Wordbook {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @Column('uuid', { name: 'wordbook_space_id' })
-  WordbookSpaceId: string;
+  WordbookSpaceId!: string;
 
   @ApiProperty({ example: '내 단어장 1', description: '단어장 이름' })
   @IsNotEmpty()
   @IsString()
-  @Column('varchar', { name: 'name', nullable: false })
-  name: string;
+  @Column('varchar', { name: 'name' })
+  name!: string;
 
   @IsString()
   @Column('varchar', { name: 'image', length: 255, nullable: true })
-  image: string | null;
+  image?: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @OneToMany(() => Word, (words) => words.Wordbook)
-  Words: Word[];
+  Words!: Word[];
 
   @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Wordbooks, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   @JoinColumn({ name: 'wordbook_space_id', referencedColumnName: 'id' })
-  WordbookSpace: WordbookSpace;
+  WordbookSpace!: WordbookSpace;
 }

@@ -14,29 +14,29 @@ import { Word } from './word.entity';
 @Entity('word_senses', { schema: 'word_test_app' })
 export class WordSense {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @IsNotEmpty()
   @IsString()
   @Column('varchar', { name: 'definition', length: 100 })
-  definition: string;
+  definition!: string;
 
   @Column('uuid', { name: 'word_id' })
-  WordId: string;
+  WordId!: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @ManyToOne(() => Word, (words) => words.Senses, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])
-  Word: Word;
+  Word!: Word;
 }

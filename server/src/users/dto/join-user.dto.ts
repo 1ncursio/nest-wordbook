@@ -3,6 +3,6 @@ import { User } from 'src/entities/user.entity';
 
 export class JoinUserDto extends PickType(User, [
   'email',
-  'nickname',
+  'username',
   'password',
 ] as const) {}

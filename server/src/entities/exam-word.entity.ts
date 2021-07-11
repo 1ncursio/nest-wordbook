@@ -14,29 +14,29 @@ import { Word } from './word.entity';
 @Entity('exam_words', { schema: 'word_test_app' })
 export class ExamWord {
   @Column('uuid', { primary: true, name: 'word_id' })
-  WordId: string;
+  WordId!: string;
 
   @Column('uuid', { primary: true, name: 'exam_id' })
-  ExamId: string;
+  ExamId!: string;
 
   @IsBoolean()
   @Column('boolean', { name: 'is_correct' })
-  isCorrect: boolean;
+  isCorrect!: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @ManyToOne(() => Exam, (exams) => exams.Words)
   @JoinColumn([{ name: 'exam_id', referencedColumnName: 'id' }])
-  Exam: Exam;
+  Exam!: Exam;
 
   @ManyToOne(() => Word, (words) => words.Exams)
   @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])
-  Word: Word;
+  Word!: Word;
 }

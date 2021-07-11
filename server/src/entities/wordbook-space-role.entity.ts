@@ -16,65 +16,65 @@ import { WordbookSpace } from './wordbook-space.entity';
 @Entity('wordbook_space_roles', { schema: 'word_test_app' })
 export class WordbookSpaceRole {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @IsNotEmpty()
   @IsString()
   @Column('varchar', { name: 'name', length: 20 })
-  name: string;
+  name!: string;
 
   @IsNotEmpty()
   @IsBoolean()
   @Column('boolean', { name: 'can_create' })
-  canCreate: boolean;
+  canCreate!: boolean;
 
   @IsNotEmpty()
   @IsBoolean()
   @Column('boolean', { name: 'can_update' })
-  canUpdate: boolean;
+  canUpdate!: boolean;
 
   @IsNotEmpty()
   @IsBoolean()
   @Column('boolean', { name: 'can_delete' })
-  canDelete: boolean;
+  canDelete!: boolean;
 
   @IsNotEmpty()
   @IsBoolean()
   @Column('boolean', { name: 'can_invite' })
-  canInvite: boolean;
+  canInvite!: boolean;
 
   @IsNotEmpty()
   @IsBoolean()
   @Column('boolean', { name: 'can_kick' })
-  canKick: boolean;
+  canKick!: boolean;
 
   @IsNotEmpty()
   @IsBoolean()
   @Column('boolean', { name: 'can_grant' })
-  canGrant: boolean;
+  canGrant!: boolean;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @Column('uuid', { name: 'wordbook_space_id' })
-  WordbookSpaceId: string;
+  WordbookSpaceId!: string;
 
   @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Roles, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   @JoinColumn({ name: 'wordbook_space_id', referencedColumnName: 'id' })
-  WordbookSpace: WordbookSpace;
+  WordbookSpace!: WordbookSpace;
 
   @OneToMany(
     () => WordbookSpaceMember,
     (wordbookSpaceMember) => wordbookSpaceMember.Role,
   )
-  Members: WordbookSpaceMember[];
+  Members!: WordbookSpaceMember[];
 }

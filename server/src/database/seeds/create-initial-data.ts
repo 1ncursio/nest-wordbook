@@ -25,7 +25,7 @@ export class CreateInitialData implements Seeder {
         {
           id: userId1,
           email: 'test@naver.com',
-          nickname: '황현종',
+          username: '황현종',
           enabled: true,
           role: 'default',
           password: await bcrypt.hash('testtest', 9),
@@ -33,7 +33,7 @@ export class CreateInitialData implements Seeder {
         {
           id: userId2,
           email: 'test2@naver.com',
-          nickname: '김진홍',
+          username: '김진홍',
           enabled: true,
           role: 'default',
           password: await bcrypt.hash('testtest', 9),
@@ -52,7 +52,7 @@ export class CreateInitialData implements Seeder {
           id: wordbookSpaceId,
           OwnerId: userId1,
           name: '첫번째 단어장 공간',
-          description: '첫번째 단어장 공간입니다!',
+          shortBio: '첫번째 단어장 공간입니다!',
           visibility: 'private',
         },
       ])

@@ -23,7 +23,7 @@ export class UsersService {
 
     await this.usersRepository.save({
       email: joinUserDto.email,
-      nickname: joinUserDto.nickname,
+      username: joinUserDto.username,
       password: hashedPassword,
     });
 

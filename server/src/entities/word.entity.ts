@@ -19,52 +19,52 @@ import { WordSense } from './word-sense.entity';
 @Entity('words', { schema: 'word_test_app' })
 export class Word {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @IsString()
   @Column('varchar', { name: 'kanji' })
-  kanji: string;
+  kanji!: string;
 
   @IsString()
   @Column('varchar', { name: 'hiragana' })
-  hiragana: string;
+  hiragana!: string;
 
   @IsString()
   @Column('varchar', { name: 'katakana' })
-  katakana: string;
+  katakana!: string;
 
   @IsNumber()
   @Column('tinyint', { name: 'level' })
-  level: number;
+  level!: number;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @Column('uuid', { name: 'wordbook_id' })
-  WordbookId: string;
+  WordbookId!: string;
 
   @ManyToOne(() => Wordbook, (wordbooks) => wordbooks.Words, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   @JoinColumn([{ name: 'wordbook_id', referencedColumnName: 'id' }])
-  Wordbook: Wordbook;
+  Wordbook!: Wordbook;
 
   @OneToMany(() => WordSense, (wordSenses) => wordSenses.Word)
-  Senses: WordSense[];
+  Senses!: WordSense[];
 
   @OneToMany(
     () => WordPartOfSpeech,
     (wordPartsOfSpeech) => wordPartsOfSpeech.Word,
   )
-  PartsOfSpeech: WordPartOfSpeech[];
+  PartsOfSpeech!: WordPartOfSpeech[];
 
   @OneToMany(() => ExamWord, (examWords) => examWords.Word)
-  Exams: Exam[];
+  Exams!: Exam[];
 }

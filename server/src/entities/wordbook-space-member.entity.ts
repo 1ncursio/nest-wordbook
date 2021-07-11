@@ -14,33 +14,33 @@ import { WordbookSpace } from './wordbook-space.entity';
 @Entity('wordbook_space_members', { schema: 'word_test_app' })
 export class WordbookSpaceMember {
   @Column('uuid', { primary: true, name: 'wordbook_space_id' })
-  WordbookSpaceId: string;
+  WordbookSpaceId!: string;
 
   @Column('uuid', { primary: true, name: 'member_id' })
-  MemberId: string;
+  MemberId!: string;
 
   @Column('uuid', { name: 'role_id' })
-  RoleId: string;
+  RoleId!: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @ManyToOne(() => User, (user) => user.WordbookSpaceMembers)
   @JoinColumn({ name: 'member_id', referencedColumnName: 'id' })
-  Member: User;
+  Member!: User;
 
   @ManyToOne(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Members, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   @JoinColumn({ name: 'wordbook_space_id', referencedColumnName: 'id' })
-  WordbookSpace: WordbookSpace;
+  WordbookSpace!: WordbookSpace;
 
   @ManyToOne(
     () => WordbookSpaceRole,
@@ -48,5 +48,5 @@ export class WordbookSpaceMember {
     { onDelete: 'CASCADE', onUpdate: 'CASCADE' },
   )
   @JoinColumn({ name: 'role_id', referencedColumnName: 'id' })
-  Role: WordbookSpaceRole;
+  Role!: WordbookSpaceRole;
 }

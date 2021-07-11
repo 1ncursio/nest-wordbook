@@ -46,7 +46,7 @@ export class AuthService {
 
     const newUser = await this.userRepository.save({
       email: user.email,
-      nickname: user.nickname,
+      username: user.username,
       image: user.image,
       provider: 'google',
       authId: user.id,

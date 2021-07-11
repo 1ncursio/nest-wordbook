@@ -25,7 +25,7 @@ import { WordbookSpace } from './wordbook-space.entity';
 @Entity('users', { schema: 'word_test_app' })
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @IsEmail()
   @IsNotEmpty()
@@ -34,17 +34,16 @@ export class User {
     name: 'email',
     unique: true,
     length: 30,
-    nullable: false,
   })
-  email: string;
+  email!: string;
 
   @IsString()
   @ApiProperty({ example: '황현종', description: '닉네임' })
   @Column('varchar', {
-    name: 'nickname',
+    name: 'username',
     length: 20,
   })
-  nickname: string;
+  username!: string;
 
   @MinLength(8)
   @MaxLength(100)
@@ -56,13 +55,13 @@ export class User {
     select: false,
     nullable: true,
   })
-  password: string;
+  password?: string;
 
   @IsString()
   @IsNotEmpty()
   @ApiProperty({ example: 'default', description: '권한' })
-  @Column('varchar', { name: 'role', nullable: false, default: 'default' })
-  role: string;
+  @Column('varchar', { name: 'role', default: 'default' })
+  role!: string;
 
   @IsString()
   @MaxLength(255)
@@ -76,46 +75,49 @@ export class User {
     length: 255,
     nullable: true,
   })
-  image: string | null;
+  image?: string;
 
   @IsBoolean()
   @IsNotEmpty()
   @ApiProperty({ example: true, description: '계정 사용가능 여부' })
   @Column('boolean', {
     name: 'enabled',
-    nullable: false,
     default: true /* 이메일 인증 전까지 비활성화 해야됨 */,
   })
-  enabled: boolean;
+  enabled!: boolean;
 
   @Column('enum', {
     name: 'provider',
     enum: ['google', 'apple', 'kakao', 'local'],
   })
-  provider: 'google' | 'apple' | 'kakao' | 'local';
+  provider!: 'google' | 'apple' | 'kakao' | 'local';
 
-  @Column('varchar', { name: 'auth_id', unique: true, length: 100 })
-  authId: string;
+  @Column('varchar', {
+    name: 'social_id',
+    unique: true,
+    length: 100,
+    nullable: true,
+  })
+  socialId?: string;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @OneToMany(() => WordbookSpace, (wordbooks) => wordbooks.Owner)
-  WordbookSpaces: WordbookSpace[];
+  WordbookSpaces!: WordbookSpace[];
 
   @OneToMany(() => Exam, (exams) => exams.Examinee)
-  Exams: Exam[];
+  Exams!: Exam[];
 
   @OneToMany(
     () => WordbookSpaceMember,
     (wordbookSpaceMember) => wordbookSpaceMember.Member,
   )
-  WordbookSpaceMembers: WordbookSpaceMember[];
-  // @OneToMany(() => EmailVerifications)
+  WordbookSpaceMembers!: WordbookSpaceMember[];
 }

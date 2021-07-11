@@ -171,7 +171,7 @@ export class WordbookSpacesService {
     }
 
     wordbookSpace.name = updateWordbookSpaceDto.name;
-    wordbookSpace.description = updateWordbookSpaceDto.description;
+    wordbookSpace.shortBio = updateWordbookSpaceDto.shortBio;
     wordbookSpace.visibility = updateWordbookSpaceDto.visibility;
     wordbookSpace.image = updateWordbookSpaceDto.image;
 

@@ -16,34 +16,34 @@ import { User } from './user.entity';
 @Entity('exams', { schema: 'word_test_app' })
 export class Exam {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
   @IsString()
   @Column('varchar', { name: 'name' })
-  name: string;
+  name!: string;
 
   @Column('tinyint', { name: 'min_level' })
-  minLevel: number;
+  minLevel!: number;
 
   @Column('tinyint', { name: 'max_level' })
-  maxLevel: number;
+  maxLevel!: number;
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @DeleteDateColumn({ name: 'deleted_at' })
-  deletedAt: Date | null;
+  deletedAt?: Date;
 
   @Column('uuid', { name: 'user_id' })
-  UserId: string;
+  UserId!: string;
 
   @ManyToOne(() => User, (users) => users.Exams)
   @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
-  Examinee: User;
+  Examinee!: User;
 
   @OneToMany(() => ExamWord, (examWords) => examWords.Exam)
-  Words: ExamWord[];
+  Words!: ExamWord[];
 }
