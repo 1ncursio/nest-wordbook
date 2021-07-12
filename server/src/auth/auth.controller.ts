@@ -29,8 +29,9 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@UserDecorator() user: User) {
-    const { deletedAt, ...userData } = user;
-    return userData;
+    /* const { deletedAt, ...userData } = user;
+    return userData; */
+    return user;
   }
 
   @UseGuards(GoogleAuthGuard)
@@ -44,27 +45,20 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response,
   ) {
     /* google strategy 에서 넘겨준 user */
-    let exUser = await this.usersService.findByEmail(user.email);
 
-    if (!exUser) {
-      exUser = await this.usersService.joinGoogleUser(user);
-    }
+    const accessToken = this.authService.getCookieWithJwtToken(user.id);
+    const refreshToken = this.authService.getCookieWithJwtRefreshToken(user.id);
 
-    const accessTokenCookie = this.authService.getCookieWithJwtToken(exUser.id);
-    const refreshToken = this.authService.getCookieWithJwtRefreshToken(
-      exUser.id,
-    );
+    await this.usersService.setCurrentRefreshToken(refreshToken, user.id);
 
-    await this.usersService.setCurrentRefreshToken(refreshToken, exUser.id);
-
-    response.cookie('Authentication', accessTokenCookie, {
+    response.cookie('Authentication', accessToken, {
       httpOnly: true,
       path: '/',
       maxAge: this.configService.get<number>(
         'JWT_ACCESS_TOKEN_EXPIRATION_TIME',
       ),
     });
-    response.setHeader('Authorization', `Bearer ${accessTokenCookie}`);
+    response.setHeader('Authorization', `Bearer ${accessToken}`);
 
     response.cookie('Refresh', refreshToken, {
       httpOnly: true,
@@ -74,7 +68,7 @@ export class AuthController {
       ),
     });
 
-    return exUser;
+    return user;
   }
 
   @UseGuards(JwtRefreshGuard)
@@ -83,8 +77,14 @@ export class AuthController {
     @UserDecorator() user: User,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const accessTokenCookie = this.authService.getCookieWithJwtToken(user.id);
-    response.cookie('Authentication', accessTokenCookie);
+    const accessToken = this.authService.getCookieWithJwtToken(user.id);
+    response.cookie('Authentication', accessToken, {
+      httpOnly: true,
+      path: '/',
+      maxAge: this.configService.get<number>(
+        'JWT_ACCESS_TOKEN_EXPIRATION_TIME',
+      ),
+    });
 
     return user;
   }

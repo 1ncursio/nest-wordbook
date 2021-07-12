@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import bcrypt from 'bcrypt';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
+import { JoinGoogleUserDto } from './dto/join-google-user.dto';
 import { JoinUserDto } from './dto/join-user.dto';
 
 @Injectable()
@@ -18,6 +19,25 @@ export class UsersService {
     });
   }
 
+  async findOrCreate(joinGoogleUserDto: JoinGoogleUserDto) {
+    const exUser = await this.userRepository.findOne({
+      where: { email: joinGoogleUserDto.email },
+    });
+    if (exUser) return exUser;
+
+    await this.userRepository.save({
+      socialId: joinGoogleUserDto.socialId,
+      email: joinGoogleUserDto.email,
+      username: joinGoogleUserDto.username,
+      image: joinGoogleUserDto.image,
+      provider: joinGoogleUserDto.provider,
+    });
+
+    return this.userRepository.findOne({
+      where: { email: joinGoogleUserDto.email },
+    });
+  }
+
   async join(joinUserDto: JoinUserDto) {
     const hashedPassword = await bcrypt.hash(joinUserDto.password, 9);
 
@@ -28,16 +48,6 @@ export class UsersService {
     });
 
     return true;
-  }
-
-  async joinGoogleUser(user: User) {
-    return this.userRepository.save({
-      email: user.email,
-      username: user.username,
-      image: user.image,
-      provider: 'google',
-      socialId: user.socialId,
-    });
   }
 
   async setCurrentRefreshToken(refreshToken: string, userId: string) {

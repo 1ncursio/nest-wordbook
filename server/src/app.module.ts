@@ -14,7 +14,11 @@ import { WordsModule } from './words/words.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, cache: true }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      cache: true,
+      envFilePath: ['.env.development'],
+    }),
     TypeOrmModule.forRoot(ormconfig),
     AuthModule,
     UsersModule,

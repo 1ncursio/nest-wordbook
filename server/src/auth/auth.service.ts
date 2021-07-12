@@ -14,8 +14,6 @@ export class AuthService {
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
-    @InjectRepository(User)
-    private userRepository: Repository<User>,
   ) {}
 
   async validateUser(email: string, password: string) {
@@ -34,26 +32,6 @@ export class AuthService {
     return null;
   }
 
-  async googleLogin(user: User) {
-    const exUser = await this.usersService.findByEmail(user.email);
-
-    if (exUser) {
-      const accessTokenCookie = this.getCookieWithJwtToken(exUser.id);
-      const refreshToken = this.getCookieWithJwtRefreshToken(exUser.id);
-      await this.usersService.setCurrentRefreshToken(refreshToken, user.id);
-    }
-
-    const newUser = await this.userRepository.save({
-      email: user.email,
-      username: user.username,
-      image: user.image,
-      provider: 'google',
-      socialId: user.id,
-    });
-
-    return this.getCookieWithJwtToken(newUser.id);
-  }
-
   public getCookieWithJwtToken(userId: string) {
     const payload: TokenPayload = { userId };
     const token = this.jwtService.sign(payload, {
@@ -62,9 +40,7 @@ export class AuthService {
         'JWT_ACCESS_TOKEN_EXPIRATION_TIME',
       )}s`,
     });
-    /* const cookie = `${token}; HttpOnly; Path=/; Max-Age=${this.configService.get<string>(
-      'JWT_ACCESS_TOKEN_EXPIRATION_TIME',
-    )}`; */
+
     return token;
   }
 
@@ -76,10 +52,7 @@ export class AuthService {
         'JWT_REFRESH_TOKEN_EXPIRATION_TIME',
       )}s`,
     });
-    /* const cookie = `${token}; HttpOnly; Path=/; Max-Age=${this.configService.get<string>(
-      'JWT_REFRESH_TOKEN_EXPIRATION_TIME',
-    )}`; */
-    // return { cookie, token };
+
     return token;
   }
 }
