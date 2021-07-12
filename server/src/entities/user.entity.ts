@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
 import {
   IsBoolean,
   IsEmail,
@@ -56,6 +57,15 @@ export class User {
     nullable: true,
   })
   password?: string;
+
+  @Exclude()
+  @ApiProperty({ example: 'agasjhaduiggaidu', description: '리프레시 토큰' })
+  @Column('varchar', {
+    name: 'hashed_refresh_token',
+    select: false,
+    nullable: true,
+  })
+  hashedRefreshToken?: string;
 
   @IsString()
   @IsNotEmpty()

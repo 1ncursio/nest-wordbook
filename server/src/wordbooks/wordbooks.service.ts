@@ -8,7 +8,7 @@ import { CreateWordbookDto } from './dto/create-word-book.dto';
 @Injectable()
 export class WordbooksService {
   constructor(
-    @InjectRepository(User) private usersRepository: Repository<User>,
+    @InjectRepository(User) private userRepository: Repository<User>,
     @InjectRepository(Wordbook)
     private wordbooksRepository: Repository<Wordbook>,
   ) {}

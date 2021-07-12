@@ -12,6 +12,7 @@ import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
 import { WordbookSpaceRoleGuard } from './wordbook-space-role.guard';
 import { AuthController } from './auth.controller';
+import { JwtRefreshTokenStrategy } from './jwt-refresh-token.strategy';
 
 @Module({
   imports: [
@@ -21,9 +22,11 @@ import { AuthController } from './auth.controller';
     JwtModule.registerAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET'),
+        secret: configService.get<string>('JWT_ACCESS_TOKEN_SECRET'),
         signOptions: {
-          expiresIn: configService.get<string>('ACCESS_TOKEN_EXPIRES_IN'),
+          expiresIn: `${configService.get<number>(
+            'JWT_ACCESS_TOKEN_EXPIRATION_TIME',
+          )}s`,
         },
       }),
     }),
@@ -32,6 +35,7 @@ import { AuthController } from './auth.controller';
     AuthService,
     LocalStrategy,
     JwtStrategy,
+    JwtRefreshTokenStrategy,
     GoogleStrategy,
     WordbookSpaceRoleGuard,
   ],

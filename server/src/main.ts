@@ -2,6 +2,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
 import { TransformResponseInterceptor } from './common/interceptors/transfromResponse.interceptor';
 import { HttpExceptionFilter } from './http-exception.filter';
@@ -36,7 +37,7 @@ async function bootstrap() {
     });
   }
 
-  // app.use(cookieParser());
+  app.use(cookieParser());
   // app.use(
   //   session({
   //     resave: false,

@@ -10,7 +10,7 @@ import { UpdateWordDto } from './dto/update-word.dto';
 @Injectable()
 export class WordsService {
   constructor(
-    @InjectRepository(User) private usersRepository: Repository<User>,
+    @InjectRepository(User) private userRepository: Repository<User>,
     @InjectRepository(Wordbook)
     private wordbooksRepository: Repository<Wordbook>,
     @InjectRepository(Word) private wordsRepository: Repository<Word>,

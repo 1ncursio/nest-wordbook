@@ -7,7 +7,7 @@ import { Repository } from 'typeorm';
 export class WordbookSpacesMembersService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User>,
+    private userRepository: Repository<User>,
   ) {}
 
   async kickMemberFromWordbookSpace() {}
