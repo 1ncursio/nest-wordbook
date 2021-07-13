@@ -1,11 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import { InjectRepository } from '@nestjs/typeorm';
 import bcrypt from 'bcrypt';
-import { User } from 'src/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
-import { Repository } from 'typeorm';
 import { TokenPayload } from './token-payload.interface';
 
 @Injectable()
@@ -17,7 +14,8 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, password: string) {
-    const user = await this.usersService.findByEmail(email);
+    const user =
+      await this.usersService.findByEmailWithPasswordForLocalStrategy(email);
 
     if (!user) {
       return null;

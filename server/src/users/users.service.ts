@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import bcrypt from 'bcrypt';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
-import { JoinGoogleUserDto } from './dto/join-google-user.dto';
+import { JoinOAuthUserDto } from './dto/join-google-user.dto';
 import { JoinUserDto } from './dto/join-user.dto';
 
 @Injectable()
@@ -12,29 +12,45 @@ export class UsersService {
     @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
 
-  async findByEmail(email: string) {
+  async findByEmailWithPasswordForLocalStrategy(
+    email: string,
+  ): Promise<User | undefined> {
+    return this.userRepository
+      .createQueryBuilder('user')
+      .where('user.email = :email', { email })
+      .andWhere('user.provider = :provider', { provider: 'local' })
+      .addSelect('user.password')
+      .getOne();
+  }
+
+  async findByEmail(email: string): Promise<User | undefined> {
     return this.userRepository.findOne({
       where: { email },
-      // select: ['id', 'email', 'password'],
     });
   }
 
-  async findOrCreate(joinGoogleUserDto: JoinGoogleUserDto) {
+  async findOrCreate(joinOAuthUserDto: JoinOAuthUserDto) {
     const exUser = await this.userRepository.findOne({
-      where: { email: joinGoogleUserDto.email },
+      where: {
+        email: joinOAuthUserDto.email,
+        provider: joinOAuthUserDto.provider,
+      },
     });
     if (exUser) return exUser;
 
-    await this.userRepository.save({
-      socialId: joinGoogleUserDto.socialId,
-      email: joinGoogleUserDto.email,
-      username: joinGoogleUserDto.username,
-      image: joinGoogleUserDto.image,
-      provider: joinGoogleUserDto.provider,
+    this.userRepository.save({
+      socialId: joinOAuthUserDto.socialId,
+      email: joinOAuthUserDto.email,
+      username: joinOAuthUserDto.username,
+      image: joinOAuthUserDto.image,
+      provider: joinOAuthUserDto.provider,
     });
 
     return this.userRepository.findOne({
-      where: { email: joinGoogleUserDto.email },
+      where: {
+        email: joinOAuthUserDto.email,
+        provider: joinOAuthUserDto.provider,
+      },
     });
   }
 
@@ -48,44 +64,5 @@ export class UsersService {
     });
 
     return true;
-  }
-
-  async setCurrentRefreshToken(refreshToken: string, userId: string) {
-    const hashedRefreshToken = await bcrypt.hash(refreshToken, 9);
-    await this.userRepository.update(userId, { hashedRefreshToken });
-  }
-
-  async getUserIfRefreshTokenMatches(refreshToken: string, userId: string) {
-    const user = await this.userRepository.findOne({
-      where: { id: userId },
-      select: [
-        'id',
-        'email',
-        'username',
-        'image',
-        'enabled',
-        'image',
-        'provider',
-        'createdAt',
-        'updatedAt',
-        'role',
-        'hashedRefreshToken',
-      ],
-    });
-    const isRefreshTokenMatching = await bcrypt.compare(
-      refreshToken,
-      user.hashedRefreshToken,
-    );
-
-    if (isRefreshTokenMatching) {
-      const { hashedRefreshToken, ...withoutHashedRefreshTokenUser } = user;
-      return withoutHashedRefreshTokenUser;
-    }
-  }
-
-  async removeRefreshToken(userId: string) {
-    return this.userRepository.update(userId, {
-      hashedRefreshToken: null,
-    });
   }
 }

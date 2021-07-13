@@ -1,35 +1,25 @@
 import { Module } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
 import { WordbookSpaceMember } from 'src/entities/wordbook-space-member.entity';
 import { UsersModule } from 'src/users/users.module';
+import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
+import { GithubStrategy } from './github.strategy';
 import { GoogleStrategy } from './google.strategy';
+import { JwtRefreshTokenStrategy } from './jwt-refresh-token.strategy';
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
 import { WordbookSpaceRoleGuard } from './wordbook-space-role.guard';
-import { AuthController } from './auth.controller';
-import { JwtRefreshTokenStrategy } from './jwt-refresh-token.strategy';
 
 @Module({
   imports: [
     UsersModule,
     PassportModule,
     TypeOrmModule.forFeature([User, WordbookSpaceMember]),
-    JwtModule.registerAsync({
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_ACCESS_TOKEN_SECRET'),
-        signOptions: {
-          expiresIn: `${configService.get<number>(
-            'JWT_ACCESS_TOKEN_EXPIRATION_TIME',
-          )}s`,
-        },
-      }),
-    }),
+    JwtModule.register({}),
   ],
   providers: [
     AuthService,
@@ -37,6 +27,7 @@ import { JwtRefreshTokenStrategy } from './jwt-refresh-token.strategy';
     JwtStrategy,
     JwtRefreshTokenStrategy,
     GoogleStrategy,
+    GithubStrategy,
     WordbookSpaceRoleGuard,
   ],
   exports: [AuthService, WordbookSpaceRoleGuard],

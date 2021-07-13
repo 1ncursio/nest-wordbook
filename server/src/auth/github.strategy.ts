@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { Profile, Strategy, VerifyCallback } from 'passport-google-oauth20';
+import { Strategy } from 'passport-github2';
 import { JoinOAuthUserDto } from 'src/users/dto/join-google-user.dto';
 import { UsersService } from 'src/users/users.service';
 
 @Injectable()
-export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
-  constructor(private usersService: UsersService) {
+export class GithubStrategy extends PassportStrategy(Strategy, 'github') {
+  constructor(private readonly usersService: UsersService) {
     super({
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://localhost:3095/auth/google/redirect',
-      scope: ['email', 'profile'],
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      callbackURL: 'http://localhost:3095/auth/github/redirect',
+      scope: ['user:email'],
     });
   }
 
@@ -19,8 +19,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     accessToken: string,
     refreshToken: string,
     profile: any,
-    done: VerifyCallback,
-  ): Promise<void> {
+    done: (err?: Error | null, profile?: any) => void,
+  ) {
     const { id, displayName, emails, photos, provider } = profile;
 
     const joinOAuthUserDto: JoinOAuthUserDto = {

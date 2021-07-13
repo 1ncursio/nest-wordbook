@@ -6,10 +6,12 @@ import { UserDecorator } from 'src/decorators/user.decorator';
 import { User } from 'src/entities/user.entity';
 import { UsersService } from 'src/users/users.service';
 import { AuthService } from './auth.service';
+import { GithubAuthGuard } from './github-auth.guard';
 import { GoogleAuthGuard } from './google-auth.guard';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { JwtRefreshGuard } from './jwt-refresh.guard';
 import { LocalAuthGuard } from './local-auth.guard';
+import { NotLoggedInGuard } from './not-logged-in.guard';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -22,8 +24,33 @@ export class AuthController {
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(@UserDecorator() user: User) {
-    return this.authService.getCookieWithJwtToken(user.id);
+  async login(
+    @UserDecorator() user: User,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const accessToken = this.authService.getCookieWithJwtToken(user.id);
+    const refreshToken = this.authService.getCookieWithJwtRefreshToken(user.id);
+
+    response.cookie('Authentication', accessToken, {
+      httpOnly: true,
+      path: '/',
+      sameSite: 'lax',
+      maxAge:
+        this.configService.get<number>('JWT_ACCESS_TOKEN_EXPIRATION_TIME') *
+        1000,
+    });
+    response.setHeader('Authorization', `Bearer ${accessToken}`);
+
+    response.cookie('Refresh', refreshToken, {
+      httpOnly: true,
+      path: '/',
+      sameSite: 'lax',
+      maxAge:
+        this.configService.get<number>('JWT_REFRESH_TOKEN_EXPIRATION_TIME') *
+        1000,
+    });
+
+    return user;
   }
 
   @UseGuards(JwtAuthGuard)
@@ -34,38 +61,75 @@ export class AuthController {
     return user;
   }
 
+  @UseGuards(NotLoggedInGuard)
   @UseGuards(GoogleAuthGuard)
   @Get('google')
   async googleAuth() {}
 
+  @UseGuards(NotLoggedInGuard)
   @UseGuards(GoogleAuthGuard)
   @Get('google/redirect')
   async googleAuthRedirect(
     @UserDecorator() user: User,
     @Res({ passthrough: true }) response: Response,
   ) {
-    /* google strategy 에서 넘겨준 user */
-
     const accessToken = this.authService.getCookieWithJwtToken(user.id);
     const refreshToken = this.authService.getCookieWithJwtRefreshToken(user.id);
-
-    await this.usersService.setCurrentRefreshToken(refreshToken, user.id);
 
     response.cookie('Authentication', accessToken, {
       httpOnly: true,
       path: '/',
-      maxAge: this.configService.get<number>(
-        'JWT_ACCESS_TOKEN_EXPIRATION_TIME',
-      ),
+      sameSite: 'lax',
+      maxAge:
+        this.configService.get<number>('JWT_ACCESS_TOKEN_EXPIRATION_TIME') *
+        1000,
     });
     response.setHeader('Authorization', `Bearer ${accessToken}`);
 
     response.cookie('Refresh', refreshToken, {
       httpOnly: true,
       path: '/',
-      maxAge: this.configService.get<number>(
-        'JWT_REFRESH_TOKEN_EXPIRATION_TIME',
-      ),
+      sameSite: 'lax',
+      maxAge:
+        this.configService.get<number>('JWT_REFRESH_TOKEN_EXPIRATION_TIME') *
+        1000,
+    });
+
+    return user;
+  }
+
+  @UseGuards(NotLoggedInGuard)
+  @UseGuards(GithubAuthGuard)
+  @Get('github')
+  async githubAuth() {}
+
+  @UseGuards(NotLoggedInGuard)
+  @UseGuards(GithubAuthGuard)
+  @Get('github/redirect')
+  async githubAuthRedirect(
+    @UserDecorator() user: User,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const accessToken = this.authService.getCookieWithJwtToken(user.id);
+    const refreshToken = this.authService.getCookieWithJwtRefreshToken(user.id);
+
+    response.cookie('Authentication', accessToken, {
+      httpOnly: true,
+      path: '/',
+      sameSite: 'lax',
+      maxAge:
+        this.configService.get<number>('JWT_ACCESS_TOKEN_EXPIRATION_TIME') *
+        1000,
+    });
+    response.setHeader('Authorization', `Bearer ${accessToken}`);
+
+    response.cookie('Refresh', refreshToken, {
+      httpOnly: true,
+      path: '/',
+      sameSite: 'lax',
+      maxAge:
+        this.configService.get<number>('JWT_REFRESH_TOKEN_EXPIRATION_TIME') *
+        1000,
     });
 
     return user;
@@ -78,12 +142,16 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response,
   ) {
     const accessToken = this.authService.getCookieWithJwtToken(user.id);
+
+    response.setHeader('Authorization', `Bearer ${accessToken}`);
+
     response.cookie('Authentication', accessToken, {
       httpOnly: true,
       path: '/',
-      maxAge: this.configService.get<number>(
-        'JWT_ACCESS_TOKEN_EXPIRATION_TIME',
-      ),
+      sameSite: 'lax',
+      maxAge:
+        this.configService.get<number>('JWT_ACCESS_TOKEN_EXPIRATION_TIME') *
+        1000,
     });
 
     return user;
@@ -91,11 +159,7 @@ export class AuthController {
 
   @UseGuards(JwtAuthGuard)
   @Post('logout')
-  async logOut(
-    @UserDecorator() user: User,
-    @Res({ passthrough: true }) response: Response,
-  ) {
-    await this.usersService.removeRefreshToken(user.id);
+  async logOut(@Res({ passthrough: true }) response: Response) {
     response.cookie('Authentication', null, {
       httpOnly: true,
       path: '/',
