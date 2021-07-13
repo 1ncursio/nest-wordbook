@@ -1,4 +1,5 @@
 import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -10,22 +11,25 @@ import { HttpExceptionFilter } from './http-exception.filter';
 declare const module: any;
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  const port = process.env.PORT || 3000;
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    logger: true,
+  });
+  const configService = app.get(ConfigService);
+  const port = configService.get<number>('PORT', 3000);
 
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalInterceptors(new TransformResponseInterceptor());
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('Nest Wordbook')
+    .setDescription('Nest Wordbook API 문서')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  if (process.env.NODE_ENV === 'production') {
+  if (configService.get<string>('NODE_ENV') === 'production') {
     app.enableCors({
       origin: false,
       credentials: true,
@@ -38,18 +42,6 @@ async function bootstrap() {
   }
 
   app.use(cookieParser());
-  // app.use(
-  //   session({
-  //     resave: false,
-  //     saveUninitialized: false,
-  //     secret: process.env.COOKIE_SECRET,
-  //     cookie: {
-  //       httpOnly: true,
-  //     },
-  //   }),
-  // );
-  // app.use(passport.initialize());
-  // app.use(passport.session());
 
   await app.listen(port);
   console.log(`Nest Server listening at ${port} port...`);

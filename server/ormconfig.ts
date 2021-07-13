@@ -13,7 +13,7 @@ import { WordbookSpaceRole } from './src/entities/wordbook-space-role.entity';
 import { WordbookSpace } from './src/entities/wordbook-space.entity';
 import { Wordbook } from './src/entities/wordbook.entity';
 
-dotenv.config();
+dotenv.config({ path: '.env.development' });
 const config: TypeOrmModuleOptions = {
   type: 'mysql',
   host: 'localhost',
