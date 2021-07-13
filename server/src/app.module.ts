@@ -1,7 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import ormconfig from 'ormconfig';
+import ormconfig from './config/ormconfig';
+import loggerConfig from './config/logger-config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -11,6 +12,7 @@ import { WordbookSpacesMembersModule } from './wordbook-spaces-members/wordbook-
 import { WordbookSpacesModule } from './wordbook-spaces/wordbook-spaces.module';
 import { WordbooksModule } from './wordbooks/wordbooks.module';
 import { WordsModule } from './words/words.module';
+import { LoggerModule } from 'nestjs-pino';
 
 @Module({
   imports: [
@@ -20,6 +22,7 @@ import { WordsModule } from './words/words.module';
       envFilePath: ['.env.development'],
     }),
     TypeOrmModule.forRoot(ormconfig),
+    LoggerModule.forRoot(loggerConfig),
     AuthModule,
     UsersModule,
     WordbooksModule,

@@ -38,13 +38,16 @@ export class UsersService {
     });
     if (exUser) return exUser;
 
-    this.userRepository.save({
-      socialId: joinOAuthUserDto.socialId,
-      email: joinOAuthUserDto.email,
-      username: joinOAuthUserDto.username,
-      image: joinOAuthUserDto.image,
-      provider: joinOAuthUserDto.provider,
-    });
+    this.userRepository.save(
+      {
+        socialId: joinOAuthUserDto.socialId,
+        email: joinOAuthUserDto.email,
+        username: joinOAuthUserDto.username,
+        image: joinOAuthUserDto.image,
+        provider: joinOAuthUserDto.provider,
+      },
+      { reload: false },
+    );
 
     return this.userRepository.findOne({
       where: {
