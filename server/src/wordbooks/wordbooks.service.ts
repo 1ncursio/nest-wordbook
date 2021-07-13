@@ -23,7 +23,6 @@ export class WordbooksService {
 
   async createWordbook(createWordbookDto: CreateWordbookDto, userId: string) {
     const wordbook = new Wordbook();
-    console.log(createWordbookDto);
     wordbook.name = createWordbookDto.name;
     // wordbook.OwnerId = userId;
 

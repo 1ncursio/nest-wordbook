@@ -34,7 +34,6 @@ export class WordbookSpacesService {
     await queryRunner.startTransaction();
 
     /* transaction => wordbook_space, wordbook_member, default wordbook, default wordbook_role */
-    console.log(createWordbookSpaceDto);
     try {
       const wordbookSpace = await queryRunner.manager
         .getRepository(WordbookSpace)
