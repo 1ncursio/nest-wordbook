@@ -16,7 +16,7 @@ import { WordsModule } from './words/words.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      cache: true,
+      cache: false,
       envFilePath: ['.env.development'],
     }),
     TypeOrmModule.forRoot(ormconfig),
@@ -32,6 +32,6 @@ import { WordsModule } from './words/words.module';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware).forRoutes('*');
+    // consumer.apply(LoggerMiddleware).forRoutes('*');
   }
 }
