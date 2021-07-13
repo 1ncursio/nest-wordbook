@@ -22,7 +22,7 @@ import { Exam } from './exam.entity';
 import { WordbookSpaceMember } from './wordbook-space-member.entity';
 import { WordbookSpace } from './wordbook-space.entity';
 
-@Index('email', ['email'], { unique: true })
+@Index('users_uq_email_provider', ['email', 'provider'], { unique: true })
 @Entity('users', { schema: 'word_test_app' })
 export class User {
   @PrimaryGeneratedColumn('uuid')
@@ -33,7 +33,6 @@ export class User {
   @ApiProperty({ example: '1ncursio@gmail.com', description: '이메일' })
   @Column('varchar', {
     name: 'email',
-    unique: true,
     length: 30,
   })
   email!: string;
@@ -57,15 +56,6 @@ export class User {
     nullable: true,
   })
   password?: string;
-
-  @Exclude()
-  @ApiProperty({ example: 'agasjhaduiggaidu', description: '리프레시 토큰' })
-  @Column('varchar', {
-    name: 'hashed_refresh_token',
-    select: false,
-    nullable: true,
-  })
-  hashedRefreshToken?: string;
 
   @IsString()
   @IsNotEmpty()
@@ -98,9 +88,9 @@ export class User {
 
   @Column('enum', {
     name: 'provider',
-    enum: ['google', 'apple', 'kakao', 'local'],
+    enum: ['google', 'apple', 'github', 'local'],
   })
-  provider!: 'google' | 'apple' | 'kakao' | 'local';
+  provider!: 'google' | 'apple' | 'github' | 'local';
 
   @Column('varchar', {
     name: 'social_id',
