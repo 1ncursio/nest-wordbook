@@ -12,21 +12,13 @@ export class UsersService {
     @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
 
-  async findByEmailWithPasswordForLocalStrategy(
-    email: string,
-  ): Promise<User | undefined> {
+  async findByEmailWithPassword(email: string): Promise<User | undefined> {
     return this.userRepository
       .createQueryBuilder('user')
       .where('user.email = :email', { email })
       .andWhere('user.provider = :provider', { provider: 'local' })
       .addSelect('user.password')
       .getOne();
-  }
-
-  async findByEmail(email: string): Promise<User | undefined> {
-    return this.userRepository.findOne({
-      where: { email },
-    });
   }
 
   async findOrCreate(joinOAuthUserDto: JoinOAuthUserDto) {

@@ -21,7 +21,9 @@ export class UsersController {
   @UseGuards(NotLoggedInGuard)
   @Post()
   async join(@Body() joinUserDto: JoinUserDto) {
-    const user = await this.usersService.findByEmail(joinUserDto.email);
+    const user = await this.usersService.findByEmailWithPassword(
+      joinUserDto.email,
+    );
     if (user) {
       throw new ForbiddenException('이미 존재하는 유저입니다.');
     }
