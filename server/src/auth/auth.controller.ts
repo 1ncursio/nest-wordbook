@@ -10,6 +10,7 @@ import { GithubAuthGuard } from './github-auth.guard';
 import { GoogleAuthGuard } from './google-auth.guard';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { JwtRefreshGuard } from './jwt-refresh.guard';
+import { KakaoAuthGuard } from './kakao-auth.guard';
 import { LocalAuthGuard } from './local-auth.guard';
 import { NotLoggedInGuard } from './not-logged-in.guard';
 
@@ -107,6 +108,43 @@ export class AuthController {
   @UseGuards(GithubAuthGuard)
   @Get('github/redirect')
   async githubAuthRedirect(
+    @UserDecorator() user: User,
+    @Res({ passthrough: true }) response: Response,
+  ) {
+    const accessToken = this.authService.getCookieWithJwtToken(user.id);
+    const refreshToken = this.authService.getCookieWithJwtRefreshToken(user.id);
+
+    response.cookie('Authentication', accessToken, {
+      httpOnly: true,
+      path: '/',
+      sameSite: 'lax',
+      maxAge:
+        this.configService.get<number>('JWT_ACCESS_TOKEN_EXPIRATION_TIME') *
+        1000,
+    });
+    response.setHeader('Authorization', `Bearer ${accessToken}`);
+
+    response.cookie('Refresh', refreshToken, {
+      httpOnly: true,
+      path: '/',
+      sameSite: 'lax',
+      maxAge:
+        this.configService.get<number>('JWT_REFRESH_TOKEN_EXPIRATION_TIME') *
+        1000,
+    });
+
+    return user;
+  }
+
+  @UseGuards(NotLoggedInGuard)
+  @UseGuards(KakaoAuthGuard)
+  @Get('kakao')
+  async kakaoAuth() {}
+
+  @UseGuards(NotLoggedInGuard)
+  @UseGuards(KakaoAuthGuard)
+  @Get('kakao/redirect')
+  async kakaoAuthRedirect(
     @UserDecorator() user: User,
     @Res({ passthrough: true }) response: Response,
   ) {

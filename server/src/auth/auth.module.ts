@@ -11,6 +11,7 @@ import { GithubStrategy } from './github.strategy';
 import { GoogleStrategy } from './google.strategy';
 import { JwtRefreshTokenStrategy } from './jwt-refresh-token.strategy';
 import { JwtStrategy } from './jwt.strategy';
+import { KakaoStrategy } from './kakao.strategy';
 import { LocalStrategy } from './local.strategy';
 import { WordbookSpaceRoleGuard } from './wordbook-space-role.guard';
 
@@ -28,6 +29,7 @@ import { WordbookSpaceRoleGuard } from './wordbook-space-role.guard';
     JwtRefreshTokenStrategy,
     GoogleStrategy,
     GithubStrategy,
+    KakaoStrategy,
     WordbookSpaceRoleGuard,
   ],
   exports: [AuthService, WordbookSpaceRoleGuard],
