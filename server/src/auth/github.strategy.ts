@@ -25,9 +25,9 @@ export class GithubStrategy extends PassportStrategy(Strategy, 'github') {
 
     const joinOAuthUserDto: JoinOAuthUserDto = {
       socialId: id,
-      email: emails[0].value,
+      email: emails?.[0].value ?? null,
       username: displayName,
-      image: photos[0].value ?? null,
+      image: photos?.[0].value ?? null,
       provider: provider,
     };
 
