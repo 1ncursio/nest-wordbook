@@ -13,7 +13,7 @@ import {
 import { ExamWord } from './exam-word.entity';
 import { User } from './user.entity';
 
-@Entity('exams', { schema: 'word_test_app' })
+@Entity('exams')
 export class Exam {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

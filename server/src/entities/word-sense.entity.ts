@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 import { Word } from './word.entity';
 
-@Entity('word_senses', { schema: 'word_test_app' })
+@Entity('word_senses')
 export class WordSense {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

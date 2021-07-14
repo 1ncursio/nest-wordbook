@@ -11,7 +11,7 @@ import { User } from './user.entity';
 import { WordbookSpaceRole } from './wordbook-space-role.entity';
 import { WordbookSpace } from './wordbook-space.entity';
 
-@Entity('wordbook_space_members', { schema: 'word_test_app' })
+@Entity('wordbook_space_members')
 export class WordbookSpaceMember {
   @Column('uuid', { primary: true, name: 'wordbook_space_id' })
   WordbookSpaceId!: string;

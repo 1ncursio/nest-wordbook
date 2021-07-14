@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { WordPartOfSpeech } from './word-part-of-speech.entity';
 
-@Entity('parts_of_speech', { schema: 'word_test_app' })
+@Entity('parts_of_speech')
 export class PartOfSpeech {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

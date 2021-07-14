@@ -14,7 +14,7 @@ import {
 import { Word } from './word.entity';
 import { WordbookSpace } from './wordbook-space.entity';
 
-@Entity('wordbooks', { schema: 'word_test_app' })
+@Entity('wordbooks')
 export class Wordbook {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

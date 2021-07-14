@@ -23,7 +23,7 @@ import { WordbookSpaceMember } from './wordbook-space-member.entity';
 import { WordbookSpace } from './wordbook-space.entity';
 
 @Index('users_uq_email_provider', ['email', 'provider'], { unique: true })
-@Entity('users', { schema: 'word_test_app' })
+@Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

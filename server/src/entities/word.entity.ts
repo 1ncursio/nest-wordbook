@@ -16,7 +16,7 @@ import { Wordbook } from './wordbook.entity';
 import { WordPartOfSpeech } from './word-part-of-speech.entity';
 import { WordSense } from './word-sense.entity';
 
-@Entity('words', { schema: 'word_test_app' })
+@Entity('words')
 export class Word {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

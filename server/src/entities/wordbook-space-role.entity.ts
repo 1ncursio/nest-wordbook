@@ -13,7 +13,7 @@ import {
 import { WordbookSpaceMember } from './wordbook-space-member.entity';
 import { WordbookSpace } from './wordbook-space.entity';
 
-@Entity('wordbook_space_roles', { schema: 'word_test_app' })
+@Entity('wordbook_space_roles')
 export class WordbookSpaceRole {
   @PrimaryGeneratedColumn('uuid')
   id!: string;

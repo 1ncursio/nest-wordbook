@@ -11,7 +11,7 @@ import {
 import { Exam } from './exam.entity';
 import { Word } from './word.entity';
 
-@Entity('exam_words', { schema: 'word_test_app' })
+@Entity('exam_words')
 export class ExamWord {
   @Column('uuid', { primary: true, name: 'word_id' })
   WordId!: string;

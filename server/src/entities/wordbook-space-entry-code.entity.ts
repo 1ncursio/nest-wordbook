@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { WordbookSpace } from './wordbook-space.entity';
 
-@Entity('wordbook_space_entry_codes', { schema: 'word_test_app' })
+@Entity('wordbook_space_entry_codes')
 export class WordbookSpaceEntryCode {
   @PrimaryGeneratedColumn('uuid')
   id: string;

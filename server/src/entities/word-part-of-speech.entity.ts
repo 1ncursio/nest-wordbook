@@ -10,7 +10,7 @@ import {
 import { PartOfSpeech } from './part-of-speech.entity';
 import { Word } from './word.entity';
 
-@Entity('word_parts_of_speech', { schema: 'word_test_app' })
+@Entity('word_parts_of_speech')
 export class WordPartOfSpeech {
   @Column('uuid', { primary: true, name: 'word_id' })
   WordId!: string;
