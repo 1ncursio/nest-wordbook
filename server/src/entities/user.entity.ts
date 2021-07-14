@@ -88,9 +88,9 @@ export class User {
 
   @Column('enum', {
     name: 'provider',
-    enum: ['google', 'apple', 'github', 'local'],
+    enum: ['local', 'google', 'apple', 'github'],
   })
-  provider!: 'google' | 'apple' | 'github' | 'local';
+  provider!: 'local' | 'google' | 'apple' | 'github';
 
   @Column('varchar', {
     name: 'social_id',
