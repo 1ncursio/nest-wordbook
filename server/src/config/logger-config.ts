@@ -4,6 +4,7 @@ import { Params } from 'nestjs-pino';
 dotenv.config({ path: '.env.development' });
 const config: Params = {
   pinoHttp: {
+    name: 'HTTP',
     level: process.env.NODE_ENV !== 'production' ? 'debug' : 'info',
     prettyPrint: {
       colorize: true,
@@ -13,7 +14,6 @@ const config: Params = {
     },
   },
   forRoutes: ['*'],
-  renameContext: 'HTTP',
 };
 
 export default config;
