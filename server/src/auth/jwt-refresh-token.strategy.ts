@@ -2,9 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Request } from 'express';
-import { ExtractJwt, Strategy } from 'passport-jwt';
+import { ExtractJwt, Strategy, VerifiedCallback } from 'passport-jwt';
 import { User } from 'src/entities/user.entity';
-import { UsersService } from 'src/users/users.service';
 import { Repository } from 'typeorm';
 import { TokenPayload } from './token-payload.interface';
 
@@ -24,11 +23,13 @@ export class JwtRefreshTokenStrategy extends PassportStrategy(
         },
       ]),
       secretOrKey: process.env.JWT_REFRESH_TOKEN_SECRET,
-      passReqToCallback: true,
+      // passReqToCallback: true,
+      // true로 할 시에 validate 함수의 인자로 request 객체가 전달됨
     });
   }
 
-  async validate(payload: TokenPayload): Promise<User | undefined> {
-    return this.userRepository.findOne(payload.userId);
+  async validate(payload: TokenPayload, done: VerifiedCallback): Promise<void> {
+    const user = await this.userRepository.findOne(payload.userId);
+    done(null, user);
   }
 }

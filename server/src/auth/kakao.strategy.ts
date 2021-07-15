@@ -1,16 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
+import { Profile, Strategy, VerifyFunction } from 'passport-kakao';
 import { JoinOAuthUserDto } from 'src/users/dto/join-google-user.dto';
 import { UsersService } from 'src/users/users.service';
-import {
-  Strategy,
-  VerifyFunction,
-  StrategyOption,
-  Profile,
-} from 'passport-kakao';
 
 interface KakaoProfile extends Profile {
-  provider: 'local' | 'google' | 'apple' | 'github';
+  provider: 'local' | 'google' | 'kakao' | 'github';
 }
 
 @Injectable()

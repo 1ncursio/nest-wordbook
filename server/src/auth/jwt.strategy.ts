@@ -1,13 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Request } from 'express';
-import {
-  ExtractJwt,
-  Strategy,
-  VerifiedCallback,
-  VerifyCallback,
-} from 'passport-jwt';
+import { ExtractJwt, Strategy, VerifiedCallback } from 'passport-jwt';
 import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { TokenPayload } from './token-payload.interface';
@@ -31,7 +26,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(payload: TokenPayload, done: VerifiedCallback): Promise<void> {
     const user = await this.userRepository.findOne(payload.userId);
-
     done(null, user);
   }
 }
