@@ -30,7 +30,7 @@ export class UsersService {
     });
     if (exUser) return exUser;
 
-    this.userRepository.save(
+    await this.userRepository.save(
       {
         socialId: joinOAuthUserDto.socialId,
         email: joinOAuthUserDto.email,

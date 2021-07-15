@@ -29,8 +29,8 @@ export class AuthController {
     @UserDecorator() user: User,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const accessToken = this.authService.getCookieWithJwtToken(user.id);
-    const refreshToken = this.authService.getCookieWithJwtRefreshToken(user.id);
+    const accessToken = this.authService.getJwtAccessToken(user.id);
+    const refreshToken = this.authService.getJwtRefreshToken(user.id);
 
     response.cookie('Authentication', accessToken, {
       httpOnly: true,
@@ -62,20 +62,18 @@ export class AuthController {
     return user;
   }
 
-  @UseGuards(NotLoggedInGuard)
-  @UseGuards(GoogleAuthGuard)
+  @UseGuards(NotLoggedInGuard, GoogleAuthGuard)
   @Get('google')
   async googleAuth() {}
 
-  @UseGuards(NotLoggedInGuard)
-  @UseGuards(GoogleAuthGuard)
+  @UseGuards(NotLoggedInGuard, GoogleAuthGuard)
   @Get('google/redirect')
   async googleAuthRedirect(
     @UserDecorator() user: User,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const accessToken = this.authService.getCookieWithJwtToken(user.id);
-    const refreshToken = this.authService.getCookieWithJwtRefreshToken(user.id);
+    const accessToken = this.authService.getJwtAccessToken(user.id);
+    const refreshToken = this.authService.getJwtRefreshToken(user.id);
 
     response.cookie('Authentication', accessToken, {
       httpOnly: true,
@@ -99,20 +97,18 @@ export class AuthController {
     return user;
   }
 
-  @UseGuards(NotLoggedInGuard)
-  @UseGuards(GithubAuthGuard)
+  @UseGuards(NotLoggedInGuard, GithubAuthGuard)
   @Get('github')
   async githubAuth() {}
 
-  @UseGuards(NotLoggedInGuard)
-  @UseGuards(GithubAuthGuard)
+  @UseGuards(NotLoggedInGuard, GithubAuthGuard)
   @Get('github/redirect')
   async githubAuthRedirect(
     @UserDecorator() user: User,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const accessToken = this.authService.getCookieWithJwtToken(user.id);
-    const refreshToken = this.authService.getCookieWithJwtRefreshToken(user.id);
+    const accessToken = this.authService.getJwtAccessToken(user.id);
+    const refreshToken = this.authService.getJwtRefreshToken(user.id);
 
     response.cookie('Authentication', accessToken, {
       httpOnly: true,
@@ -136,20 +132,18 @@ export class AuthController {
     return user;
   }
 
-  @UseGuards(NotLoggedInGuard)
-  @UseGuards(KakaoAuthGuard)
+  @UseGuards(NotLoggedInGuard, KakaoAuthGuard)
   @Get('kakao')
   async kakaoAuth() {}
 
-  @UseGuards(NotLoggedInGuard)
-  @UseGuards(KakaoAuthGuard)
+  @UseGuards(NotLoggedInGuard, KakaoAuthGuard)
   @Get('kakao/redirect')
   async kakaoAuthRedirect(
     @UserDecorator() user: User,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const accessToken = this.authService.getCookieWithJwtToken(user.id);
-    const refreshToken = this.authService.getCookieWithJwtRefreshToken(user.id);
+    const accessToken = this.authService.getJwtAccessToken(user.id);
+    const refreshToken = this.authService.getJwtRefreshToken(user.id);
 
     response.cookie('Authentication', accessToken, {
       httpOnly: true,
@@ -179,7 +173,7 @@ export class AuthController {
     @UserDecorator() user: User,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const accessToken = this.authService.getCookieWithJwtToken(user.id);
+    const accessToken = this.authService.getJwtAccessToken(user.id);
 
     response.setHeader('Authorization', `Bearer ${accessToken}`);
 

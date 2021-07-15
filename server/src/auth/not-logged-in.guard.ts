@@ -13,10 +13,10 @@ export class NotLoggedInGuard implements CanActivate {
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
     const request = context.switchToHttp().getRequest<Request>();
-    if (request?.cookies?.Authentication || request?.cookies?.Refresh) {
+    const accessToken = request?.cookies?.Authentication;
+    if (accessToken) {
       throw new UnauthorizedException('로그인한 유저는 접근할 수 없습니다.');
     }
-
     return true;
   }
 }

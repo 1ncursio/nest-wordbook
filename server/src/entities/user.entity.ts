@@ -34,8 +34,9 @@ export class User {
   @Column('varchar', {
     name: 'email',
     length: 30,
+    nullable: true,
   })
-  email!: string;
+  email?: string;
 
   @IsString()
   @ApiProperty({ example: '황현종', description: '닉네임' })
@@ -88,9 +89,9 @@ export class User {
 
   @Column('enum', {
     name: 'provider',
-    enum: ['local', 'google', 'apple', 'github'],
+    enum: ['local', 'google', 'kakao', 'github'],
   })
-  provider!: 'local' | 'google' | 'apple' | 'github';
+  provider!: 'local' | 'google' | 'kakao' | 'github';
 
   @Column('varchar', {
     name: 'social_id',

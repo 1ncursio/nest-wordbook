@@ -29,7 +29,7 @@ export class AuthService {
     return null;
   }
 
-  public getCookieWithJwtToken(userId: string) {
+  public getJwtAccessToken(userId: string) {
     const payload: TokenPayload = { userId };
     const token = this.jwtService.sign(payload, {
       secret: this.configService.get<string>('JWT_ACCESS_TOKEN_SECRET'),
@@ -41,7 +41,7 @@ export class AuthService {
     return token;
   }
 
-  public getCookieWithJwtRefreshToken(userId: string) {
+  public getJwtRefreshToken(userId: string) {
     const payload: TokenPayload = { userId };
     const token = this.jwtService.sign(payload, {
       secret: this.configService.get<string>('JWT_REFRESH_TOKEN_SECRET'),
