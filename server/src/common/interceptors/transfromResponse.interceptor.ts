@@ -4,7 +4,7 @@ import {
   Injectable,
   NestInterceptor,
 } from '@nestjs/common';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -14,8 +14,14 @@ export class TransformResponseInterceptor implements NestInterceptor {
     context: ExecutionContext,
     next: CallHandler<any>,
   ): Observable<any> | Promise<Observable<any>> {
+    const request = context.switchToHttp().getRequest<Request>();
     const response = context.switchToHttp().getResponse<Response>();
     const { statusCode } = response;
+
+    if (request.path.match(/\/auth\/\w+\/redirect/)) {
+      return next.handle();
+    }
+
     return next.handle().pipe(
       map((data) => ({
         success: true,

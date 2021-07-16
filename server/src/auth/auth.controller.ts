@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Res, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Redirect,
+  Res,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
@@ -13,6 +21,7 @@ import { JwtRefreshGuard } from './jwt-refresh.guard';
 import { KakaoAuthGuard } from './kakao-auth.guard';
 import { LocalAuthGuard } from './local-auth.guard';
 import { NotLoggedInGuard } from './not-logged-in.guard';
+import { SetCookieInterceptor } from './set-cookie.interceptor';
 
 @ApiTags('Auth')
 @Controller('auth')
@@ -66,7 +75,9 @@ export class AuthController {
   @Get('google')
   async googleAuth() {}
 
+  @UseInterceptors(SetCookieInterceptor)
   @UseGuards(NotLoggedInGuard, GoogleAuthGuard)
+  @Redirect('http://localhost:3090', 301)
   @Get('google/redirect')
   async googleAuthRedirect(
     @UserDecorator() user: User,
@@ -94,14 +105,16 @@ export class AuthController {
         1000,
     });
 
-    return user;
+    return { accessToken, refreshToken };
   }
 
   @UseGuards(NotLoggedInGuard, GithubAuthGuard)
   @Get('github')
   async githubAuth() {}
 
+  @UseInterceptors()
   @UseGuards(NotLoggedInGuard, GithubAuthGuard)
+  @Redirect('http://localhost:3090', 301)
   @Get('github/redirect')
   async githubAuthRedirect(
     @UserDecorator() user: User,
@@ -129,7 +142,7 @@ export class AuthController {
         1000,
     });
 
-    return user;
+    return { accessToken, refreshToken };
   }
 
   @UseGuards(NotLoggedInGuard, KakaoAuthGuard)
@@ -137,6 +150,7 @@ export class AuthController {
   async kakaoAuth() {}
 
   @UseGuards(NotLoggedInGuard, KakaoAuthGuard)
+  @Redirect('http://localhost:3090', 301)
   @Get('kakao/redirect')
   async kakaoAuthRedirect(
     @UserDecorator() user: User,
@@ -164,7 +178,7 @@ export class AuthController {
         1000,
     });
 
-    return user;
+    return { accessToken, refreshToken };
   }
 
   @UseGuards(JwtRefreshGuard)
