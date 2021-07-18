@@ -1,8 +1,5 @@
-import axios from 'axios';
+import client from './client';
 
-const fetcher = axios.create({
-  withCredentials: true,
-  baseURL: process.env.NODE_ENV === 'development' ? '/' : 'https://api.nestwordbook.com',
-});
+const fetcher = (url: string) => client.get(url).then((res) => res.data);
 
 export default fetcher;

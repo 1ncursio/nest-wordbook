@@ -9,9 +9,17 @@ export type IconTextButtonProps = {
   className?: string;
 };
 
-const IconTextButton = ({ icon, text, onClick, className }: IconTextButtonProps) => {
+const IconTextButton = ({
+  icon,
+  text,
+  onClick,
+  className,
+}: IconTextButtonProps) => {
   return (
-    <button onClick={onClick} className={`rounded-full border-2 border-gray-200 shadow-md ${className}`}>
+    <button
+      onClick={onClick}
+      className={`rounded-full border-2 border-gray-200 shadow-md ${className}`}
+    >
       <Icon name={icon} className="w-12 h-12 " />
       {text}
     </button>
