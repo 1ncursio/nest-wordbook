@@ -6,6 +6,7 @@ import client from '../../lib/api/client';
 
 const Login = () => {
   const history = useHistory();
+
   const auth = useCallback(
     (name: string) => () => {
       window.location.href = `http://localhost:3095/auth/${name}`;

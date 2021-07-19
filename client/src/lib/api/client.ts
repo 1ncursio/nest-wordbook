@@ -12,6 +12,7 @@ client.defaults.baseURL =
 
 client.interceptors.request.use((config) => {
   const accessToken = config.headers['Authorization'];
+  console.log({ accessToken });
 
   if (!accessToken) return config;
 
