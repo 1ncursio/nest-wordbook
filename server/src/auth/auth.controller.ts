@@ -41,14 +41,14 @@ export class AuthController {
     const accessToken = this.authService.getJwtAccessToken(user.id);
     const refreshToken = this.authService.getJwtRefreshToken(user.id);
 
-    response.cookie('Authentication', accessToken, {
-      httpOnly: true,
-      path: '/',
-      sameSite: 'lax',
-      maxAge:
-        this.configService.get<number>('JWT_ACCESS_TOKEN_EXPIRATION_TIME') *
-        1000,
-    });
+    // response.cookie('Authentication', accessToken, {
+    //   httpOnly: true,
+    //   path: '/',
+    //   sameSite: 'lax',
+    //   maxAge:
+    //     this.configService.get<number>('JWT_ACCESS_TOKEN_EXPIRATION_TIME') *
+    //     1000,
+    // });
     response.setHeader('Authorization', `Bearer ${accessToken}`);
 
     response.cookie('Refresh', refreshToken, {
@@ -75,7 +75,7 @@ export class AuthController {
 
   @UseInterceptors(SetCookieInterceptor)
   @UseGuards(NotLoggedInGuard, GoogleAuthGuard)
-  @Redirect('http://localhost:3090', 301)
+  @Redirect('http://localhost:3090/refresh', 301)
   @Get('google/redirect')
   async googleAuthRedirect(@UserDecorator() user: User) {
     const accessToken = this.authService.getJwtAccessToken(user.id);
@@ -90,7 +90,7 @@ export class AuthController {
 
   @UseInterceptors()
   @UseGuards(NotLoggedInGuard, GithubAuthGuard)
-  @Redirect('http://localhost:3090', 301)
+  @Redirect('http://localhost:3090/refresh', 301)
   @Get('github/redirect')
   async githubAuthRedirect(@UserDecorator() user: User) {
     const accessToken = this.authService.getJwtAccessToken(user.id);
@@ -104,7 +104,7 @@ export class AuthController {
   async kakaoAuth() {}
 
   @UseGuards(NotLoggedInGuard, KakaoAuthGuard)
-  @Redirect('http://localhost:3090', 301)
+  @Redirect('http://localhost:3090/refresh', 301)
   @Get('kakao/redirect')
   async kakaoAuthRedirect(@UserDecorator() user: User) {
     const accessToken = this.authService.getJwtAccessToken(user.id);
@@ -123,26 +123,17 @@ export class AuthController {
 
     response.setHeader('Authorization', `Bearer ${accessToken}`);
 
-    response.cookie('Authentication', accessToken, {
-      httpOnly: true,
-      path: '/',
-      sameSite: 'lax',
-      maxAge:
-        this.configService.get<number>('JWT_ACCESS_TOKEN_EXPIRATION_TIME') *
-        1000,
-    });
-
     return user;
   }
 
   @UseGuards(JwtAuthGuard)
   @Post('logout')
   async logOut(@Res({ passthrough: true }) response: Response) {
-    response.cookie('Authentication', null, {
-      httpOnly: true,
-      path: '/',
-      maxAge: 0,
-    });
+    // response.cookie('Authentication', null, {
+    //   httpOnly: true,
+    //   path: '/',
+    //   maxAge: 0,
+    // });
     response.cookie('Refresh', null, {
       httpOnly: true,
       path: '/',

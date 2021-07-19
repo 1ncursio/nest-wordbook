@@ -33,7 +33,7 @@ export class SetCookieInterceptor implements NestInterceptor {
         //     this.configService.get<number>('JWT_ACCESS_TOKEN_EXPIRATION_TIME') *
         //     1000,
         // });
-        response.setHeader('Authorization', `Bearer ${accessToken}`);
+        // response.setHeader('Authorization', `Bearer ${accessToken}`);
 
         response.cookie('Refresh', refreshToken, {
           httpOnly: true,
