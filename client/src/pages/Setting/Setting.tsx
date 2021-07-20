@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react';
-import useSWR from 'swr';
-import fetcher from '../../lib/api/fetcher';
+import SettingAccount from '../../components/SettingAccount';
+import SettingProfile from '../../components/SettingProfile';
+import useProfileSWR from '../../hooks/swr/useProfileSWR';
 
 const Setting = () => {
-  const { data } = useSWR('/auth/profile', fetcher);
+  const { data: userData } = useProfileSWR();
   useEffect(() => {
-    if (data) console.log({ data });
-  }, [data]);
+    if (userData) console.log({ data: userData });
+  }, [userData]);
 
-  return <div>account</div>;
+  return (
+    <>
+      <SettingProfile />
+      <SettingAccount />
+    </>
+  );
 };
 
 export default Setting;

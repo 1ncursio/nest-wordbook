@@ -15,7 +15,7 @@ client.defaults.baseURL =
     ? 'http://localhost:3095'
     : 'https://api.nestwordbook.com';
 
-client.interceptors.request.use(
+export const refreshInterceptor = client.interceptors.request.use(
   async (config) => {
     const accessToken = config.headers.common.authorization;
     console.log({ accessToken });

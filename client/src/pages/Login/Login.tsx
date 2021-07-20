@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import IconTextButton from '../../components/IconTextButton/IconTextButton';
+import Button from '../../components/Button';
+import IconButton from '../../components/IconTextButton/IconTextButton';
 import client from '../../lib/api/client';
 
 const Login = () => {
@@ -28,23 +29,14 @@ const Login = () => {
 
   return (
     <div className="w-full h-full flex justify-center items-center">
-      <button
-        onClick={onLogOut}
-        className="bg-cyan-500 text-gray-100 rounded-md py-2 px-4 font-medium w-32 h-8 inline-flex items-center justify-center"
-      >
-        로그아웃
-      </button>
-      <IconTextButton icon="google" onClick={auth('google')} />
-      <IconTextButton
+      <Button text="로그아웃" onClick={onLogOut} />
+      <IconButton icon="google" onClick={auth('google')} />
+      <IconButton
         icon="github"
         onClick={auth('github')}
         className="bg-github"
       />
-      <IconTextButton
-        icon="kakao"
-        onClick={auth('kakao')}
-        className="bg-kakao"
-      />
+      <IconButton icon="kakao" onClick={auth('kakao')} className="bg-kakao" />
     </div>
   );
 };

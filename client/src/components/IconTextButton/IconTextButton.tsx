@@ -1,20 +1,19 @@
-import { css } from '@emotion/react';
 import React from 'react';
 import Icon, { IconType } from '../Icon/Icon';
 
-export type IconTextButtonProps = {
+export type IconButtonProps = {
   icon: IconType;
   text?: string;
   onClick(): void;
   className?: string;
 };
 
-const IconTextButton = ({
+const IconButton = ({
   icon,
   text,
   onClick,
-  className,
-}: IconTextButtonProps) => {
+  className = '',
+}: IconButtonProps) => {
   return (
     <button
       onClick={onClick}
@@ -26,8 +25,4 @@ const IconTextButton = ({
   );
 };
 
-// const backgroundColor = css`
-//   background-color: #c26273;
-// `;
-
-export default IconTextButton;
+export default IconButton;

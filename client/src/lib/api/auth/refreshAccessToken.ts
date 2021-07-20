@@ -1,9 +1,8 @@
-import refreshClient from '../refreshClient';
+import client, { refreshInterceptor } from '../client';
 
 const refreshAccessToken = async () => {
-  const response = await refreshClient.get('/auth/refresh');
-  console.log('refresh!');
-  // client.defaults.headers.common.authorization = response.headers.authorization;
+  client.interceptors.request.eject(refreshInterceptor);
+  const response = await client.get('/auth/refresh');
   return response.headers.authorization;
 };
 

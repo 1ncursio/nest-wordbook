@@ -19,7 +19,7 @@ export type ChildrenProps = {
 };
 
 function Main({ children }: ChildrenProps) {
-  return <main className="flex-1">{children}</main>;
+  return <main className="flex-1 md:mx-auto md:w-192 mt-12">{children}</main>;
 }
 
 AppLayout.Head = Head;
