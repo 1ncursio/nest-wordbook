@@ -33,11 +33,13 @@ async function bootstrap() {
     app.enableCors({
       origin: false,
       credentials: true,
+      exposedHeaders: ['Authorization'],
     });
   } else {
     app.enableCors({
       origin: true,
       credentials: true,
+      exposedHeaders: ['Authorization'],
     });
   }
 
