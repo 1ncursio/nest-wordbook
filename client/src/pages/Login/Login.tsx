@@ -20,11 +20,11 @@ const Login = () => {
     });
   }, []);
 
-  useEffect(() => {
-    client.post('/auth/logout').then((res) => {
-      console.log(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   client.post('/auth/logout').then((res) => {
+  //     console.log(res.data);
+  //   });
+  // }, []);
 
   return (
     <div className="w-full h-full flex justify-center items-center">

@@ -9,7 +9,9 @@ const Header = () => {
           <h1 className="text-xl font-bold text-cyan-500">Nest Wordbook</h1>
         </Link>
       </div>
-      <div>Profile</div>
+      <div>
+        <Link to="/setting">Profile</Link>
+      </div>
     </div>
   );
 };
