@@ -88,7 +88,7 @@ export class AuthController {
   @Get('github')
   async githubAuth() {}
 
-  @UseInterceptors()
+  @UseInterceptors(SetCookieInterceptor)
   @UseGuards(NotLoggedInGuard, GithubAuthGuard)
   @Redirect('http://localhost:3090/refresh', 301)
   @Get('github/redirect')
@@ -103,6 +103,7 @@ export class AuthController {
   @Get('kakao')
   async kakaoAuth() {}
 
+  @UseInterceptors(SetCookieInterceptor)
   @UseGuards(NotLoggedInGuard, KakaoAuthGuard)
   @Redirect('http://localhost:3090/refresh', 301)
   @Get('kakao/redirect')
