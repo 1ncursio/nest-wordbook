@@ -4,7 +4,6 @@ import {
   Injectable,
   NestInterceptor,
 } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import { Request, Response } from 'express';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -18,7 +17,6 @@ export class TransformResponseInterceptor implements NestInterceptor {
     const request = context.switchToHttp().getRequest<Request>();
     const response = context.switchToHttp().getResponse<Response>();
     const { statusCode } = response;
-    response.cookie;
 
     if (request.path.match(/\/auth\/\w+\/redirect/)) {
       return next.handle();

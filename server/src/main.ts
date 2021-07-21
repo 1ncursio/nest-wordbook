@@ -5,7 +5,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import cookieParser from 'cookie-parser';
 import { AppModule } from './app.module';
-import { TransformResponseInterceptor } from './common/interceptors/transfromResponse.interceptor';
+import { TransformResponseInterceptor } from './common/interceptors/transformResponse.interceptor';
 import { HttpExceptionFilter } from './http-exception.filter';
 
 declare const module: any;
