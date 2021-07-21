@@ -78,6 +78,20 @@ export class User {
   })
   image?: string;
 
+  @IsString()
+  @MaxLength(255)
+  @ApiProperty({
+    example: '안녕하세요',
+    description: '자기 소개',
+    nullable: true,
+  })
+  @Column('varchar', {
+    name: 'short_bio',
+    length: 255,
+    nullable: true,
+  })
+  shortBio?: string;
+
   @IsBoolean()
   @IsNotEmpty()
   @ApiProperty({ example: true, description: '계정 사용가능 여부' })
