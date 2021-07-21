@@ -11,7 +11,9 @@ export type HeadProps = {
 };
 
 function Head({ children }: HeadProps) {
-  return <header className="h-16 flex items-center mx-16">{children}</header>;
+  return (
+    <header className="h-16 flex items-center mx-16 md:mx-4">{children}</header>
+  );
 }
 
 export type ChildrenProps = {
@@ -19,7 +21,11 @@ export type ChildrenProps = {
 };
 
 function Main({ children }: ChildrenProps) {
-  return <main className="flex-1 md:mx-auto md:w-192 mt-12">{children}</main>;
+  return (
+    <main className="flex-1 mx-auto md:w-full w-192 md:px-4 mt-12 md:mt-6">
+      {children}
+    </main>
+  );
 }
 
 AppLayout.Head = Head;

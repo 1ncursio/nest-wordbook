@@ -8,6 +8,18 @@ module.exports = {
       width: {
         192: '48rem',
       },
+      flex: {
+        2: '2 2 0%',
+      },
+    },
+    borderWidth: {
+      DEFAULT: '1px',
+      0: '0',
+      2: '2px',
+      3: '3px',
+      4: '4px',
+      6: '6px',
+      8: '8px',
     },
     colors: {
       transparent: 'transparent',
@@ -18,8 +30,12 @@ module.exports = {
       yellow: colors.yellow,
       sky: colors.sky,
       cyan: colors.cyan,
+      white: colors.white,
       kakao: '#FEE500',
       github: '#3C4043',
+    },
+    screens: {
+      md: { max: '767px' },
     },
   },
   variants: {

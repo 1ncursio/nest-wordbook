@@ -4,6 +4,7 @@ export type User = {
   username: string;
   role: string;
   image: string | null;
+  shortBio: string | null;
   enabled: boolean;
   provider: 'local' | 'google' | 'kakao' | 'github';
   socialId: string;

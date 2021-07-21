@@ -1,5 +1,5 @@
 import useSWR, { SWRConfiguration } from 'swr';
-import { User } from '../../lib/api/auth/types';
+import { User } from '../../lib/api/typings/user';
 import fetcher from '../../lib/api/fetcher';
 
 export default function useProfileSWR(options: SWRConfiguration = {}) {

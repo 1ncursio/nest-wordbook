@@ -10,7 +10,7 @@ const Header = () => {
         </Link>
       </div>
       <div>
-        <Link to="/setting">Profile</Link>
+        <Link to="/account/profile">Profile</Link>
       </div>
     </div>
   );

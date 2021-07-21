@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import SettingAccount from '../../components/SettingAccount';
-import SettingProfile from '../../components/SettingProfile';
-import useProfileSWR from '../../hooks/swr/useProfileSWR';
+import AccountSetting from '../../../components/AccountSetting';
+import useProfileSWR from '../../../hooks/swr/useProfileSWR';
 
 const Setting = () => {
   const { data: userData } = useProfileSWR();
@@ -11,8 +10,8 @@ const Setting = () => {
 
   return (
     <>
-      <SettingProfile />
-      <SettingAccount />
+      <h2 className="text-gray-800 font-bold text-3xl mb-6">내 프로필 설정</h2>
+      <AccountSetting />
     </>
   );
 };
