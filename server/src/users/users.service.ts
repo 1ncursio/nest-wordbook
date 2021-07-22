@@ -5,6 +5,7 @@ import { User } from 'src/entities/user.entity';
 import { Repository } from 'typeorm';
 import { JoinOAuthUserDto } from './dto/join-google-user.dto';
 import { JoinUserDto } from './dto/join-user.dto';
+import { UpdateUserProfileDto } from './dto/update-user-profile.dto';
 
 @Injectable()
 export class UsersService {
@@ -59,5 +60,19 @@ export class UsersService {
     });
 
     return true;
+  }
+
+  async updateUserProfile(
+    updateUserProfileDto: UpdateUserProfileDto,
+    userId: string,
+  ) {
+    await this.userRepository.update(userId, {
+      username: updateUserProfileDto.username,
+      shortBio: updateUserProfileDto.shortBio,
+    });
+
+    return this.userRepository.findOne(userId, {
+      select: ['id', 'username', 'shortBio'],
+    });
   }
 }
