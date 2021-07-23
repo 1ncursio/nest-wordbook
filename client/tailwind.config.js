@@ -39,7 +39,10 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      cursor: ['disabled'],
+      backgroundColor: ['disabled'],
+    },
   },
   plugins: [],
 };

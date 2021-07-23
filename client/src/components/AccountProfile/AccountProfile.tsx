@@ -1,31 +1,57 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { userThumbnail } from '../../assets/images';
 import useProfileSWR from '../../hooks/swr/useProfileSWR';
+import client from '../../lib/api/client';
 import { UserProfileRequestPayload } from '../../lib/api/typings/user/UserProfileRequestPayload';
+import updateUserImage from '../../lib/api/user/updateUserImage';
+import updateUserProfile from '../../lib/api/user/updateUserProfile';
 import optimizeImage from '../../lib/optimizeImage';
 import Button from '../Button';
 
 const AccountProfile = () => {
-  const { data: userData } = useProfileSWR();
+  const { data: userData, mutate: mutateUser } = useProfileSWR();
   const {
     register,
     handleSubmit,
+    reset,
+    watch,
     formState: { errors },
   } = useForm<UserProfileRequestPayload>();
   const uploadRef = useRef<HTMLInputElement>(null);
+
+  const disabled =
+    watch('username') === userData?.username &&
+    watch('shortBio') === userData?.shortBio;
+
+  useEffect(() => {
+    reset({
+      username: userData?.username ?? '',
+      shortBio: userData?.shortBio ?? null,
+    });
+  }, [userData]);
 
   const onClickUpload = useCallback(() => {
     uploadRef?.current?.click();
   }, [uploadRef]);
 
-  const onUpload = useCallback(async (e) => {
-    console.log(e.target.files[0]);
-    const formData = new FormData();
-    formData.append('image', e.target.files[0]);
-    // await
-  }, []);
+  const onUpload = useCallback(
+    async (e) => {
+      console.log(e.target.files[0]);
+      const formData = new FormData();
+      formData.append('image', e.target.files[0]);
+      const data = await updateUserImage(formData);
+      mutateUser(
+        {
+          ...userData!,
+          image: data.image,
+        },
+        false,
+      );
+    },
+    [userData],
+  );
 
   const onClearThumbnail = useCallback(() => {
     // upload handler
@@ -33,10 +59,24 @@ const AccountProfile = () => {
 
   const onSubmitProfile = useCallback(
     async ({ username, shortBio }: UserProfileRequestPayload) => {
-      console.log({ username, shortBio });
+      const data = await updateUserProfile({ username, shortBio });
+      mutateUser(
+        {
+          ...userData!,
+          username: data.username,
+          shortBio: data.shortBio,
+        },
+        false,
+      );
     },
-    [],
+    [userData],
   );
+  // const onSubmitProfile = useCallback(
+  //   async ({ username, shortBio }: UserProfileRequestPayload) => {
+  //     console.log({ username, shortBio });
+  //   },
+  //   [],
+  // );
 
   return (
     <>
@@ -83,6 +123,7 @@ const AccountProfile = () => {
               id="username"
               placeholder="닉네임"
               autoComplete="off"
+              spellCheck={false}
               className="input-primary"
             />
             {errors.username?.type === 'required' && (
@@ -105,6 +146,7 @@ const AccountProfile = () => {
               id="short-bio"
               placeholder="한 줄 소개"
               autoComplete="off"
+              spellCheck={false}
               className="input-primary"
             />
             {errors.shortBio?.type === 'maxLength' && (
@@ -112,7 +154,12 @@ const AccountProfile = () => {
             )}
           </div>
           <div className="flex justify-end">
-            <Button type="submit" text="저장" className="btn-cyan w-24" />
+            <Button
+              type="submit"
+              text="저장"
+              disabled={disabled}
+              className="btn-cyan w-32 disabled:bg-gray-300 disabled: disabled:cursor-not-allowed"
+            />
           </div>
         </form>
       </div>

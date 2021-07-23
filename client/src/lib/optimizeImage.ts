@@ -1,5 +1,5 @@
 export default function optimizeImage(url: string, width?: number) {
-  return url;
+  return `http://localhost:3095/${url}`;
 
   // TODO: optimize image on upload
 }
