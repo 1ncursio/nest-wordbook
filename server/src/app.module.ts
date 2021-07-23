@@ -13,9 +13,15 @@ import { WordbookSpacesModule } from './wordbook-spaces/wordbook-spaces.module';
 import { WordbooksModule } from './wordbooks/wordbooks.module';
 import { WordsModule } from './words/words.module';
 import { LoggerModule } from 'nestjs-pino';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+      serveRoot: '/uploads',
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       cache: false,
