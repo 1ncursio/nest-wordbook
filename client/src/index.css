@@ -4,11 +4,11 @@
 
 @layer components {
   .btn-cyan {
-    @apply bg-cyan-500 text-gray-50 rounded-md px-8 font-medium h-8 inline-flex items-center justify-center hover:bg-cyan-400 transition-colors;
+    @apply bg-cyan-700 text-gray-50 rounded-md px-8 font-medium h-8 inline-flex items-center justify-center hover:bg-cyan-500 transition-colors;
   }
 
   .btn-white {
-    @apply bg-white text-cyan-500 rounded-md px-8 font-medium h-8 inline-flex items-center justify-center hover:bg-cyan-100 transition-colors;
+    @apply bg-white text-cyan-700 rounded-md px-8 font-medium h-8 inline-flex items-center justify-center hover:bg-cyan-100 transition-colors;
   }
 
   .input-primary {

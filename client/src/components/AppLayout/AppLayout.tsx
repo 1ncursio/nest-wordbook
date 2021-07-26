@@ -12,7 +12,9 @@ export type HeadProps = {
 
 function Head({ children }: HeadProps) {
   return (
-    <header className="h-16 flex items-center mx-16 md:mx-4">{children}</header>
+    <header className="bg-cyan-700 h-16 flex items-center px-16 md:px-4">
+      {children}
+    </header>
   );
 }
 

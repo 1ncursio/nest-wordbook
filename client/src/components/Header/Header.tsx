@@ -18,13 +18,13 @@ const Header = () => {
   );
 
   return (
-    <div className="w-full flex justify-between">
+    <div className="w-full flex justify-between items-center">
       <div>
         <Link to="/">
-          <h1 className="text-xl font-bold text-cyan-500">Nest Wordbook</h1>
+          <h1 className="text-xl font-bold text-white">Nest Wordbook</h1>
         </Link>
       </div>
-      <div className="flex">
+      <div>
         <div ref={headerUserIconRef}>
           <HeaderUserIcon onClick={toggleUserMenu} />
         </div>

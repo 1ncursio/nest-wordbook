@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Link } from 'react-router-dom';
+import HeaderUserMenuItem from '../HeaderUserMenuItem';
 
 type HeaderUserMenuProps = {
   onClose: (e: React.MouseEvent) => void;
@@ -10,15 +11,22 @@ type HeaderUserMenuProps = {
 const HeaderUserMenu = ({ onClose, visible }: HeaderUserMenuProps) => {
   if (!visible) return null;
 
+  const onLogout = useCallback(() => {}, []);
+
   return (
     <OutsideClickHandler onOutsideClick={onClose}>
-      <div onClick={onClose}>
-        <div>
-          <Link to="/account/profile">Profile</Link>
+      <div className="relative">
+        <div
+          onClick={onClose}
+          className="absolute w-36 shadow-lg right-0 top-3 rounded-md bg-gray-500 text-gray-600"
+        >
+          <HeaderUserMenuItem to="/account/profile">
+            내 프로필
+          </HeaderUserMenuItem>
+          <HeaderUserMenuItem>메뉴 1</HeaderUserMenuItem>
+          <HeaderUserMenuItem>메뉴 2</HeaderUserMenuItem>
+          <HeaderUserMenuItem onClick={onLogout}>로그아웃</HeaderUserMenuItem>
         </div>
-        <div>메뉴 2</div>
-        <div>메뉴 3</div>
-        <div>메뉴 4</div>
       </div>
     </OutsideClickHandler>
   );
