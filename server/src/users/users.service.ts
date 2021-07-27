@@ -83,4 +83,10 @@ export class UsersService {
       select: ['id', 'image'],
     });
   }
+
+  async deleteUserImage(userId: string) {
+    await this.userRepository.update(userId, { image: null });
+
+    return true;
+  }
 }

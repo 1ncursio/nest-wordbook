@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   ForbiddenException,
   Patch,
   Post,
@@ -73,6 +74,12 @@ export class UsersController {
     @UserDecorator() user: User,
   ) {
     return this.usersService.updateUserImage(file, user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('/image')
+  async deleteUserImage(@UserDecorator() user: User) {
+    return this.usersService.deleteUserImage(user.id);
   }
 
   @UseGuards(JwtAuthGuard)
