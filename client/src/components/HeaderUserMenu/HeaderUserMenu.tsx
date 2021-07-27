@@ -1,6 +1,9 @@
 import React, { useCallback } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Link } from 'react-router-dom';
+import useProfileSWR from '../../hooks/swr/useProfileSWR';
+import useLogout from '../../hooks/useLogout';
+import logout from '../../lib/api/auth/logout';
 import HeaderUserMenuItem from '../HeaderUserMenuItem';
 
 type HeaderUserMenuProps = {
@@ -9,9 +12,9 @@ type HeaderUserMenuProps = {
 };
 
 const HeaderUserMenu = ({ onClose, visible }: HeaderUserMenuProps) => {
-  if (!visible) return null;
+  const logout = useLogout();
 
-  const onLogout = useCallback(() => {}, []);
+  if (!visible) return null;
 
   return (
     <OutsideClickHandler onOutsideClick={onClose}>
@@ -25,7 +28,7 @@ const HeaderUserMenu = ({ onClose, visible }: HeaderUserMenuProps) => {
           </HeaderUserMenuItem>
           <HeaderUserMenuItem>메뉴 1</HeaderUserMenuItem>
           <HeaderUserMenuItem>메뉴 2</HeaderUserMenuItem>
-          <HeaderUserMenuItem onClick={onLogout}>로그아웃</HeaderUserMenuItem>
+          <HeaderUserMenuItem onClick={logout}>로그아웃</HeaderUserMenuItem>
         </div>
       </div>
     </OutsideClickHandler>
