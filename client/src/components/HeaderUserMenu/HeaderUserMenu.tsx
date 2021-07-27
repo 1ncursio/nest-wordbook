@@ -21,7 +21,7 @@ const HeaderUserMenu = ({ onClose, visible }: HeaderUserMenuProps) => {
       <div className="relative">
         <div
           onClick={onClose}
-          className="absolute w-36 shadow-lg right-0 top-3 rounded-md bg-gray-500 text-gray-600"
+          className="absolute w-36 shadow right-0 top-3 rounded-md bg-gray-500 text-gray-600"
         >
           <HeaderUserMenuItem to="/account/profile">
             내 프로필

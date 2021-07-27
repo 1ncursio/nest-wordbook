@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { userThumbnail } from '../../assets/images';
 import useProfileSWR from '../../hooks/swr/useProfileSWR';
-import client from '../../lib/api/client';
+import useClearThumbnail from '../../hooks/useClearThumbnail';
 import { UserProfileRequestPayload } from '../../lib/api/typings/user/UserProfileRequestPayload';
 import updateUserImage from '../../lib/api/user/updateUserImage';
 import updateUserProfile from '../../lib/api/user/updateUserProfile';
@@ -53,9 +53,7 @@ const AccountProfile = () => {
     [userData],
   );
 
-  const onClearThumbnail = useCallback(() => {
-    // upload handler
-  }, []);
+  const onClearThumbnail = useClearThumbnail();
 
   const onSubmitProfile = useCallback(
     async ({ username, shortBio }: UserProfileRequestPayload) => {
