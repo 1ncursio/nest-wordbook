@@ -18,7 +18,6 @@ client.defaults.baseURL =
 export const refreshInterceptor = client.interceptors.request.use(
   async (config) => {
     const accessToken = config.headers.common.authorization;
-    console.log({ accessToken });
 
     if (!accessToken) {
       const authorization = await refreshAccessToken();
