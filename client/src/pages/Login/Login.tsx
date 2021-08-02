@@ -1,9 +1,7 @@
-import axios from 'axios';
 import React, { useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Button from '../../components/Button';
 import IconButton from '../../components/IconTextButton/IconTextButton';
-import client from '../../lib/api/client';
+import useProfileSWR from '../../hooks/swr/useProfileSWR';
 
 const Login = () => {
   const history = useHistory();
@@ -15,21 +13,8 @@ const Login = () => {
     [],
   );
 
-  const onLogOut = useCallback(async () => {
-    await axios.post('http://localhost:3095/auth/logout', null, {
-      withCredentials: true,
-    });
-  }, []);
-
-  // useEffect(() => {
-  //   client.post('/auth/logout').then((res) => {
-  //     console.log(res.data);
-  //   });
-  // }, []);
-
   return (
     <div className="w-full h-full flex justify-center items-center">
-      <Button text="로그아웃" onClick={onLogOut} />
       <IconButton icon="google" onClick={auth('google')} />
       <IconButton
         icon="github"
