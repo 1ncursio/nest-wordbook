@@ -18,7 +18,7 @@ import { WordbookSpaceMember } from './wordbook-space-member.entity';
 import { WordbookSpaceRole } from './wordbook-space-role.entity';
 import { Wordbook } from './wordbook.entity';
 
-@Entity('wordbook_space')
+@Entity('wordbook_spaces')
 export class WordbookSpace {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
