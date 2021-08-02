@@ -10,7 +10,7 @@ const useRefresh = () => {
     try {
       const authorization = await refreshAccessToken();
       client.defaults.headers.common.authorization = authorization;
-      history.replace('/wordbookspace');
+      history.replace('/wordbookspaces');
     } catch (e) {
       console.error(e);
     }

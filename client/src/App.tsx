@@ -7,6 +7,7 @@ import Profile from './pages/Account/Profile';
 import Setting from './pages/Account/Settings';
 import Login from './pages/Login';
 import Refresh from './pages/Refresh';
+import WordbookSpace from './pages/WordbookSpace';
 
 function App() {
   return (
@@ -18,8 +19,10 @@ function App() {
         <AppLayout.Main>
           <Switch>
             <Route exact path="/">
-              <Redirect to="/login" />
+              {/* <Redirect to="/login" /> */}
+              <Redirect to="/wordbookspaces" />
             </Route>
+            <Route exact path="/wordbookspaces" component={WordbookSpace} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/refresh" component={Refresh} />
             <Route exact path="/account">
