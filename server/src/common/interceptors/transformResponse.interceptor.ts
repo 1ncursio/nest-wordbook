@@ -23,10 +23,10 @@ export class TransformResponseInterceptor implements NestInterceptor {
     }
 
     return next.handle().pipe(
-      map((data) => ({
+      map((payload) => ({
         success: true,
         statusCode,
-        data,
+        payload,
       })),
     );
   }
