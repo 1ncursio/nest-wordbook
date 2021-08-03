@@ -1,4 +1,4 @@
-export type User = {
+export interface User {
   id: string;
   email: string | null;
   username: string;
@@ -11,4 +11,4 @@ export type User = {
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date | null;
-};
+}
