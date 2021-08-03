@@ -5,5 +5,5 @@ export default async function updateUserProfile(
   profile: UserProfileRequestPayload,
 ) {
   const response = await client.patch('/users/profile', profile);
-  return response.data.data;
+  return response.data.payload;
 }

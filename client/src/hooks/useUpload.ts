@@ -6,7 +6,7 @@ export default function useUpload() {
     const formData = new FormData();
     formData.append('image', e.target.files![0]);
     const data = await updateUserImage(formData);
-    const imageURL = data.data.image;
+    const imageURL = data.payload.image;
   }, []);
 
   return upload;
