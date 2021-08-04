@@ -14,6 +14,8 @@ export class InsertWordbookSpaces implements Seeder {
       .where('user.username = :username', { username: 'Yechan Kim' })
       .getOne();
 
+    if (!user) return;
+
     const spaceId1 = uuidv4();
     const spaceId2 = uuidv4();
     const spaceId3 = uuidv4();
