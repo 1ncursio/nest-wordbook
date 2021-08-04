@@ -1,3 +1,5 @@
+import { User } from '../user';
+
 export interface WordbookSpace {
   id: string;
   OwnerId: string;
@@ -8,4 +10,5 @@ export interface WordbookSpace {
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date | null;
+  Owner: Pick<User, 'id' | 'username' | 'image'>;
 }
