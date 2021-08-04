@@ -6,7 +6,11 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        192: '48rem',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
       },
       flex: {
         2: '2 2 0%',
@@ -48,5 +52,5 @@ module.exports = {
       backgroundColor: ['disabled'],
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 };

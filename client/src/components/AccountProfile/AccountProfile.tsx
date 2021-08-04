@@ -77,7 +77,7 @@ const AccountProfile = () => {
   // );
 
   return (
-    <>
+    <div className="w-md md:w-full">
       <Helmet>
         <title>프로필 설정 - Nest Wordbook</title>
       </Helmet>
@@ -161,7 +161,7 @@ const AccountProfile = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

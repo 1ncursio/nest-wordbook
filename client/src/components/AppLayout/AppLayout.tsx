@@ -24,7 +24,7 @@ export type ChildrenProps = {
 
 function Main({ children }: ChildrenProps) {
   return (
-    <main className="flex-1 mx-auto md:w-full w-192 md:px-4 mt-12 md:mt-6">
+    <main className="flex-1 mx-auto md:w-full md:px-4 mt-12 md:mt-6">
       {children}
     </main>
   );

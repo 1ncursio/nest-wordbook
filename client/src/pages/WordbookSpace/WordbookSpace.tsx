@@ -8,7 +8,7 @@ const WordbookSpace = () => {
   const { data: spacesData } = useSpaceSWR();
 
   return (
-    <div className="w-full">
+    <div className="w-2xl md:w-full">
       <h2 className="text-3xl font-bold w-80">단어장 공간</h2>
       <div className="flex flex-wrap">
         {React.Children.toArray(
