@@ -9,7 +9,7 @@ export type SpaceCardProps = {
 
 const SpaceCard = ({ space }: SpaceCardProps) => {
   return (
-    <article className="flex flex-col w-1/4 rounded-lg shadow border">
+    <article className="flex flex-col rounded-lg shadow border">
       <header className="px-4 py-2">
         <h3 className="font-bold text-gray-800 text-xl">{space.name}</h3>
       </header>

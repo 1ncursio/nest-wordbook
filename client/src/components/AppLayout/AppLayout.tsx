@@ -1,8 +1,10 @@
+import React, { ReactElement } from 'react';
+
 export type AppLayoutProps = {
   children: React.ReactNode;
 };
 
-export default function AppLayout({ children }: AppLayoutProps) {
+export default function AppLayout({ children }: AppLayoutProps): ReactElement {
   return <div className="w-full h-full flex flex-col">{children}</div>;
 }
 
@@ -24,7 +26,7 @@ export type ChildrenProps = {
 
 function Main({ children }: ChildrenProps) {
   return (
-    <main className="flex-1 mx-auto md:w-full md:px-4 mt-12 md:mt-6">
+    <main className="flex-1 mx-auto xl:w-full md:px-4 mt-12 md:mt-6">
       {children}
     </main>
   );
