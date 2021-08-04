@@ -127,6 +127,8 @@ export class WordbookSpacesService {
           userId,
         },
       )
+      .innerJoinAndSelect('wordbookSpace.Owner', 'owner')
+      .select(['wordbookSpace', 'owner.id', 'owner.username', 'owner.image'])
       .getMany();
   }
 
