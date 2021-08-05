@@ -5,7 +5,7 @@ export type AppLayoutProps = {
 };
 
 export default function AppLayout({ children }: AppLayoutProps): ReactElement {
-  return <div className="w-full h-full flex flex-col">{children}</div>;
+  return <div className="w-full min-h-full flex flex-col">{children}</div>;
 }
 
 export type HeadProps = {
@@ -14,7 +14,7 @@ export type HeadProps = {
 
 function Head({ children }: HeadProps) {
   return (
-    <header className="bg-cyan-700 h-16 flex items-center px-16 md:px-4">
+    <header className="bg-cyan-700 h-16 flex items-center px-16 xl:px-4">
       {children}
     </header>
   );
@@ -26,9 +26,7 @@ export type ChildrenProps = {
 
 function Main({ children }: ChildrenProps) {
   return (
-    <main className="flex-1 mx-auto xl:w-full md:px-4 mt-12 md:mt-6">
-      {children}
-    </main>
+    <main className="flex-1 mx-auto xl:w-full mt-12 xl:mt-6">{children}</main>
   );
 }
 

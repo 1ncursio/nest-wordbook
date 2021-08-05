@@ -38,7 +38,6 @@ const AccountProfile = () => {
 
   const onUpload = useCallback(
     async (e) => {
-      console.log(e.target.files[0]);
       const formData = new FormData();
       formData.append('image', e.target.files[0]);
       const data = await updateUserImage(formData);
@@ -69,15 +68,9 @@ const AccountProfile = () => {
     },
     [userData],
   );
-  // const onSubmitProfile = useCallback(
-  //   async ({ username, shortBio }: UserProfileRequestPayload) => {
-  //     console.log({ username, shortBio });
-  //   },
-  //   [],
-  // );
 
   return (
-    <div className="w-md md:w-full">
+    <div className="w-md md:w-full md:px-4">
       <Helmet>
         <title>프로필 설정 - Nest Wordbook</title>
       </Helmet>
