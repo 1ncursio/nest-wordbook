@@ -36,7 +36,7 @@ const SpaceCard = ({ space }: SpaceCardProps) => {
       </Link>
       <footer className="flex items-center p-4">
         <img
-          src={optimizeImage(space.Owner?.image ?? userThumbnail)}
+          src={optimizeImage(space.Owner.image ?? userThumbnail)}
           alt="profile"
           className="rounded-full w-6 h-6 object-cover mr-2"
         />
