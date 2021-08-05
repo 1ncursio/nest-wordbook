@@ -77,7 +77,7 @@ export class UsersService {
   }
 
   async updateUserImage(file: Express.Multer.File, userId: string) {
-    await this.userRepository.update(userId, { image: file.path });
+    await this.userRepository.update(userId, { image: file.filename });
 
     return this.userRepository.findOne(userId, {
       select: ['id', 'image'],

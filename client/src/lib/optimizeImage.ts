@@ -3,7 +3,7 @@ export default function optimizeImage(url: string, width?: number) {
 
   if (!url.match(/\.(jpe?g|png)$/i)) return url;
 
-  return `http://localhost:3095/${url}`;
+  return `http://localhost:3095/uploads/${url}`;
 
   // TODO: optimize image on upload
 }
