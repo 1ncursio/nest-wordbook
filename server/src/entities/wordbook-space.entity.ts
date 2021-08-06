@@ -28,10 +28,11 @@ export class WordbookSpace {
 
   @IsNotEmpty()
   @IsString()
+  @ApiProperty({ description: '단어장 공간 이름', example: 'N1 단어장' })
   @Column('varchar', { name: 'name', length: 100 })
   name!: string;
 
-  @ApiProperty({ example: 'public', description: '공개 여부' })
+  @ApiProperty({ description: '공개 여부', example: 'public' })
   @IsNotEmpty()
   @IsString()
   @Column('enum', {
@@ -40,10 +41,12 @@ export class WordbookSpace {
   })
   visibility!: 'public' | 'limited' | 'private';
 
+  @ApiProperty({ description: '단어장 썸네일', example: 'image.jpg' })
   @Column('varchar', { name: 'image', length: 255, nullable: true })
   image?: string;
 
   @IsString()
+  @ApiProperty({ description: '단어장 소개', example: '일본어 단어장입니다' })
   @Column('varchar', { name: 'short_bio', length: 100, nullable: true })
   shortBio?: string;
 
