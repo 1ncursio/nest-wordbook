@@ -1,13 +1,13 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, FC } from 'react';
 
 export type ButtonProps = {
   text: string;
 };
 
-const Button = ({
+const Button: FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = ({
   text,
   ...props
-}: ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>) => {
+}) => {
   return <button {...props}>{text}</button>;
 };
 

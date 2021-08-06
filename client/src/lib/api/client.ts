@@ -2,7 +2,7 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import refreshAccessToken from './auth/refreshAccessToken';
 
-type TokenPayload = {
+export type TokenPayload = {
   userId: string;
   iat: number;
   exp: number;

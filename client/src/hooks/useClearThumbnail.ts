@@ -7,8 +7,9 @@ const useClearThumbnail = () => {
 
   const handler = useCallback(async () => {
     await deleteUserImage();
-    mutateUser({ ...userData!, image: null }, false);
-  }, []);
+    if (!userData) return;
+    mutateUser({ ...userData, image: null }, false);
+  }, [userData]);
 
   return handler;
 };
