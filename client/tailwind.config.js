@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable global-require */
 const colors = require('tailwindcss/colors');
 
 module.exports = {
+  mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -18,6 +21,9 @@ module.exports = {
       boxShadow: {
         DEFAULT:
           '0 0 20px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+      },
+      transitionTimingFunction: {
+        'out-back': 'cubic-bezier(0.12, 0.65, 0.32, 1.15)',
       },
     },
     borderWidth: {
@@ -39,6 +45,7 @@ module.exports = {
       sky: colors.sky,
       cyan: colors.cyan,
       white: colors.white,
+      black: colors.black,
       kakao: '#FEE500',
       github: '#3C4043',
     },
@@ -50,12 +57,12 @@ module.exports = {
       sm: { max: '639px' },
     },
   },
-  variants: {
-    extend: {
-      cursor: ['disabled'],
-      backgroundColor: ['disabled'],
-    },
-  },
+  // variants: {
+  //   extend: {
+  //     cursor: ['disabled'],
+  //     backgroundColor: ['disabled'],
+  //   },
+  // },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/line-clamp'),
