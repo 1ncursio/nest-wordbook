@@ -17,10 +17,7 @@ const WordbookSpace: VFC = () => {
       </Helmet>
       <h2 className="text-gray-800 font-bold text-3xl mb-6">단어장 공간</h2>
       <div className="grid grid-cols-5 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-8">
-        <CreateSpaceCardButton />
-        {React.Children.toArray(
-          spacesData?.map((space) => <SpaceCard space={space} />),
-        )}
+        {spacesData && <SpaceCard spaces={spacesData} />}
       </div>
       <Global styles={globalStyle} />
     </div>
