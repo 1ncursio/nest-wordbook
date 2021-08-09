@@ -70,7 +70,7 @@ const AccountProfile = () => {
   );
 
   return (
-    <div className="w-md md:w-full md:px-4">
+    <div className="lg:w-[calc(768px-2rem)] w-md mx-auto md:w-full md:px-4">
       <Helmet>
         <title>프로필 설정 - Nest Wordbook</title>
       </Helmet>
