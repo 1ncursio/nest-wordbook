@@ -1,12 +1,12 @@
 import axios from 'axios';
-import jwtDecode from 'jwt-decode';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 import refreshAccessToken from './auth/refreshAccessToken';
 
-export type TokenPayload = {
+export interface TokenPayload extends JwtPayload {
   userId: string;
-  iat: number;
   exp: number;
-};
+  iat: number;
+}
 
 const client = axios.create({ withCredentials: true });
 
