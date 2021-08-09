@@ -9,15 +9,33 @@ export type StyledModalProps = {
   children: React.ReactNode;
   title?: string;
   isOpen: boolean;
+  showOkButton?: boolean;
+  showCloseButton?: boolean;
+  okText?: string;
+  closeText?: string;
+  width?: string;
+  height?: string;
   onRequestClose: () => void;
+  onRequestOk: () => void;
 };
 
 const StyledModal: FC<StyledModalProps> = ({
   children,
   title,
   isOpen,
+  showOkButton = false,
+  showCloseButton = false,
+  okText = '확인',
+  closeText = '취소',
+  width,
+  height,
   onRequestClose,
+  onRequestOk,
 }) => {
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <>
       <Modal
@@ -35,16 +53,45 @@ const StyledModal: FC<StyledModalProps> = ({
         }}
         contentLabel="Modal"
       >
-        {/* p, m, text-2xl 등 몇몇 클래스가 적용이 안됨. */}
-        {title && <h3 className="text-xl font-bold">{title}</h3>}
-        <p className="p-12">{children}</p>
+        <div>
+          {title && <h3 className="text-2xl font-bold">{title}</h3>}
+          <div className="py-4">{children}</div>
+        </div>
+        {(showOkButton || showCloseButton) && (
+          <div className="flex justify-end gap-2">
+            {showCloseButton && (
+              <button
+                type="button"
+                onClick={onRequestClose}
+                className="btn-white bg-gray-200 hover:bg-gray-100 text-gray-600"
+              >
+                {closeText}
+              </button>
+            )}
+            {showOkButton && (
+              <button
+                type="button"
+                onClick={onRequestOk}
+                className="btn-cyan bg-emerald-500 hover:bg-emerald-400"
+              >
+                {okText}
+              </button>
+            )}
+          </div>
+        )}
       </Modal>
-      <Global styles={modalStyle} />
+      <Global styles={modalStyle({ width, height })} />
     </>
   );
 };
 
-const modalStyle = css`
+const modalStyle = ({
+  width,
+  height,
+}: {
+  width?: string;
+  height?: string;
+}) => css`
   .overlay-base {
     ${tw`fixed inset-0 transition duration-300 flex justify-center items-center backdrop-filter backdrop-blur-sm`}
   }
@@ -57,11 +104,15 @@ const modalStyle = css`
   }
 
   .content-base {
-    ${tw`rounded-lg shadow transition ease-out-back duration-300 transform translate-y-full scale-50`}
+    ${tw`flex flex-col justify-between md:w-[calc(100% - 2rem)] rounded-lg p-6 shadow transition ease-out-back duration-300 transform translate-y-full scale-50`}
+    ${width &&
+    css`
+      width: ${width};
+    `}
   }
 
   .content-after {
-    ${tw`bg-white  min-w-[24rem] min-h-[12rem] p-8 transform translate-y-0 scale-100`}
+    ${tw`bg-white  min-w-[24rem] min-h-[12rem] transform translate-y-0 scale-100`}
   }
 
   .content-before {
