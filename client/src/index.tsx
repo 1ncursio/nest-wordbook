@@ -1,12 +1,12 @@
+import { SWRDevtools } from '@jjordy/swr-devtools';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { SWRDevtools } from '@jjordy/swr-devtools';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { cache, mutate } from 'swr';
+import App from './App';
+import './index.css';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>

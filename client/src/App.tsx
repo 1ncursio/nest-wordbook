@@ -8,6 +8,7 @@ import Setting from './pages/Account/Settings';
 import Login from './pages/Login';
 import Refresh from './pages/Refresh';
 import WordbookSpace from './pages/WordbookSpace';
+import WordbookSpaceDetail from './pages/WordbookSpaceDetail';
 
 function App() {
   return (
@@ -23,6 +24,11 @@ function App() {
               <Redirect to="/wordbookspaces" />
             </Route>
             <Route exact path="/wordbookspaces" component={WordbookSpace} />
+            <Route
+              exact
+              path="/wordbookspaces/:wordbookSpaceId"
+              component={WordbookSpaceDetail}
+            />
             <Route exact path="/login" component={Login} />
             <Route exact path="/refresh" component={Refresh} />
             <Route exact path="/account">
