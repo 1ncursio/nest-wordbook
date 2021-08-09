@@ -76,7 +76,20 @@ export class WordbookSpacesService {
       });
 
       await queryRunner.commitTransaction();
-      return wordbookSpace;
+      return this.wordbookSpaceRepository
+        .createQueryBuilder('wordbookSpace')
+        .where('wordbookSpace.id = :wordbookSpaceId', {
+          wordbookSpaceId: wordbookSpace.id,
+        })
+        .innerJoin(
+          'wordbookSpace.Members',
+          'members',
+          'members.MemberId = :userId',
+          { userId },
+        )
+        .innerJoinAndSelect('wordbookSpace.Owner', 'owner')
+        .select(['wordbookSpace', 'owner.id', 'owner.username', 'owner.image'])
+        .getOne();
     } catch (error) {
       console.error(error);
       await queryRunner.rollbackTransaction();
@@ -129,6 +142,7 @@ export class WordbookSpacesService {
       )
       .innerJoinAndSelect('wordbookSpace.Owner', 'owner')
       .select(['wordbookSpace', 'owner.id', 'owner.username', 'owner.image'])
+      .orderBy('wordbookSpace.createdAt', 'DESC')
       .getMany();
   }
 
@@ -139,9 +153,27 @@ export class WordbookSpacesService {
       .innerJoin(
         'wordbookSpace.Members',
         'members',
-        'members.MemberId = :userId',
-        { userId },
+        // 'members.MemberId = :userId',
+        // { userId },
       )
+      .andWhere('members.MemberId = :userId', { userId })
+      .innerJoinAndSelect('members.Member', 'member')
+      .innerJoinAndSelect('wordbookSpace.Roles', 'roles')
+      .innerJoinAndSelect('wordbookSpace.Owner', 'owner')
+      .innerJoinAndSelect('wordbookSpace.Wordbooks', 'wordbooks')
+      .leftJoinAndSelect('wordbookSpace.EntryCode', 'entryCode')
+      .select([
+        'wordbookSpace',
+        'roles',
+        'members',
+        'member',
+        'owner.id',
+        'owner.username',
+        'owner.image',
+        'wordbooks',
+        'entryCode',
+      ])
+      .orderBy('wordbookSpace.createdAt', 'DESC')
       .getOne();
 
     if (!wordbookSpace) {
