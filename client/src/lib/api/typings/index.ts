@@ -1,4 +1,4 @@
-export type ResponseBody = {
+export interface ResponseBody {
   success: boolean;
   statusCode: number;
-};
+}
