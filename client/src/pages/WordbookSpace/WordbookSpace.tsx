@@ -1,13 +1,10 @@
 import { css, Global } from '@emotion/react';
 import React, { VFC } from 'react';
 import { Helmet } from 'react-helmet-async';
-import CreateSpaceCardButton from '../../components/CreateSpaceCardButton';
 import SpaceCard from '../../components/SpaceCard';
-import useProfileSWR from '../../hooks/swr/useProfileSWR';
-import useSpaceSWR from '../../hooks/swr/useSpaceSWR';
+import useSpaceSWR from '../../hooks/swr/useSpacesSWR';
 
 const WordbookSpace: VFC = () => {
-  const { data: userData } = useProfileSWR();
   const { data: spacesData } = useSpaceSWR();
 
   return (
