@@ -121,6 +121,7 @@ export class CreateInitialData implements Seeder {
           id: wordbookId,
           name: '첫 단어장',
           WordbookSpaceId: wordbookSpaceId,
+          AuthorId: userId1,
         },
       ])
       .execute();
