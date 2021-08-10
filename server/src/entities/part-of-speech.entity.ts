@@ -31,7 +31,7 @@ export class PartOfSpeech {
 
   @OneToMany(
     () => WordPartOfSpeech,
-    (wordPartsOfSpeech) => wordPartsOfSpeech.PartOfSpeech,
+    (wordPartOfSpeech) => wordPartOfSpeech.PartOfSpeech,
   )
   Words!: WordPartOfSpeech[];
 }

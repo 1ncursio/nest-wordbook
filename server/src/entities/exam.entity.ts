@@ -40,10 +40,10 @@ export class Exam {
   @Column('uuid', { name: 'user_id' })
   UserId!: string;
 
-  @ManyToOne(() => User, (users) => users.Exams)
+  @ManyToOne(() => User, (user) => user.Exams)
   @JoinColumn([{ name: 'user_id', referencedColumnName: 'id' }])
   Examinee!: User;
 
-  @OneToMany(() => ExamWord, (examWords) => examWords.Exam)
+  @OneToMany(() => ExamWord, (examWord) => examWord.Exam)
   Words!: ExamWord[];
 }

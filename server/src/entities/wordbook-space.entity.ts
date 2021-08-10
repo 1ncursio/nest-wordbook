@@ -41,12 +41,15 @@ export class WordbookSpace {
   })
   visibility!: 'public' | 'limited' | 'private';
 
-  @ApiProperty({ description: '단어장 썸네일', example: 'image.jpg' })
+  @ApiProperty({ description: '단어장 공간 썸네일', example: 'image.jpg' })
   @Column('varchar', { name: 'image', length: 255, nullable: true })
   image?: string;
 
   @IsString()
-  @ApiProperty({ description: '단어장 소개', example: '일본어 단어장입니다' })
+  @ApiProperty({
+    description: '단어장 공간 소개',
+    example: '일본어 단어장 공간입니다',
+  })
   @Column('varchar', { name: 'short_bio', length: 100, nullable: true })
   shortBio?: string;
 
@@ -59,7 +62,7 @@ export class WordbookSpace {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt?: Date;
 
-  @ManyToOne(() => User, (users) => users.WordbookSpaces)
+  @ManyToOne(() => User, (user) => user.WordbookSpaces)
   @JoinColumn([{ name: 'owner_id', referencedColumnName: 'id' }])
   Owner!: User;
 

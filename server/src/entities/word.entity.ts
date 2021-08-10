@@ -49,22 +49,22 @@ export class Word {
   @Column('uuid', { name: 'wordbook_id' })
   WordbookId!: string;
 
-  @ManyToOne(() => Wordbook, (wordbooks) => wordbooks.Words, {
+  @ManyToOne(() => Wordbook, (wordbook) => wordbook.Words, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   @JoinColumn([{ name: 'wordbook_id', referencedColumnName: 'id' }])
   Wordbook!: Wordbook;
 
-  @OneToMany(() => WordSense, (wordSenses) => wordSenses.Word)
+  @OneToMany(() => WordSense, (wordSense) => wordSense.Word)
   Senses!: WordSense[];
 
   @OneToMany(
     () => WordPartOfSpeech,
-    (wordPartsOfSpeech) => wordPartsOfSpeech.Word,
+    (wordPartOfSpeech) => wordPartOfSpeech.Word,
   )
   PartsOfSpeech!: WordPartOfSpeech[];
 
-  @OneToMany(() => ExamWord, (examWords) => examWords.Word)
+  @OneToMany(() => ExamWord, (examWord) => examWord.Word)
   Exams!: Exam[];
 }

@@ -21,6 +21,7 @@ import {
 import { Exam } from './exam.entity';
 import { WordbookSpaceMember } from './wordbook-space-member.entity';
 import { WordbookSpace } from './wordbook-space.entity';
+import { Wordbook } from './wordbook.entity';
 
 @Index('users_uq_email_provider', ['email', 'provider'], { unique: true })
 @Entity('users')
@@ -124,10 +125,13 @@ export class User {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt?: Date;
 
-  @OneToMany(() => WordbookSpace, (wordbooks) => wordbooks.Owner)
+  @OneToMany(() => WordbookSpace, (wordbookSpace) => wordbookSpace.Owner)
   WordbookSpaces!: WordbookSpace[];
 
-  @OneToMany(() => Exam, (exams) => exams.Examinee)
+  @OneToMany(() => Wordbook, (wordbook) => wordbook.Author)
+  Wordbooks!: Wordbook[];
+
+  @OneToMany(() => Exam, (exam) => exam.Examinee)
   Exams!: Exam[];
 
   @OneToMany(

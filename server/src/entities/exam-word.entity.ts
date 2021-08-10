@@ -32,11 +32,11 @@ export class ExamWord {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt?: Date;
 
-  @ManyToOne(() => Exam, (exams) => exams.Words)
+  @ManyToOne(() => Exam, (exam) => exam.Words)
   @JoinColumn([{ name: 'exam_id', referencedColumnName: 'id' }])
   Exam!: Exam;
 
-  @ManyToOne(() => Word, (words) => words.Exams)
+  @ManyToOne(() => Word, (word) => word.Exams)
   @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])
   Word!: Word;
 }

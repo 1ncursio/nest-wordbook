@@ -27,14 +27,14 @@ export class WordPartOfSpeech {
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt?: Date;
 
-  @ManyToOne(() => Word, (words) => words.PartsOfSpeech, {
+  @ManyToOne(() => Word, (word) => word.PartsOfSpeech, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   @JoinColumn([{ name: 'word_id', referencedColumnName: 'id' }])
   Word!: Word;
 
-  @ManyToOne(() => PartOfSpeech, (partsOfSpeech) => partsOfSpeech.Words)
+  @ManyToOne(() => PartOfSpeech, (partOfSpeech) => partOfSpeech.Words)
   @JoinColumn([{ name: 'part_of_speech_id', referencedColumnName: 'id' }])
   PartOfSpeech!: PartOfSpeech;
 }

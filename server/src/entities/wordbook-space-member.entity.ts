@@ -19,8 +19,8 @@ export class WordbookSpaceMember {
   @Column('uuid', { primary: true, name: 'member_id' })
   MemberId!: string;
 
-  @Column('uuid', { name: 'role_id', nullable: true })
-  RoleId?: string;
+  @Column('uuid', { name: 'role_id' })
+  RoleId!: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: Date;
