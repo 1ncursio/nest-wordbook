@@ -3,7 +3,6 @@ import {
   Injectable,
   InternalServerErrorException,
   NotFoundException,
-  UnauthorizedException,
 } from '@nestjs/common';
 import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
 import { WordbookSpaceEntryCode } from 'src/entities/wordbook-space-entry-code.entity';
@@ -150,17 +149,11 @@ export class WordbookSpacesService {
     const wordbookSpace = await this.wordbookSpaceRepository
       .createQueryBuilder('wordbookSpace')
       .where('wordbookSpace.id = :wordbookSpaceId', { wordbookSpaceId })
-      .innerJoin(
-        'wordbookSpace.Members',
-        'members',
-        // 'members.MemberId = :userId',
-        // { userId },
-      )
-      .andWhere('members.MemberId = :userId', { userId })
+      .innerJoin('wordbookSpace.Members', 'members')
       .innerJoinAndSelect('members.Member', 'member')
       .innerJoinAndSelect('wordbookSpace.Roles', 'roles')
       .innerJoinAndSelect('wordbookSpace.Owner', 'owner')
-      .innerJoinAndSelect('wordbookSpace.Wordbooks', 'wordbooks')
+      .leftJoinAndSelect('wordbookSpace.Wordbooks', 'wordbooks')
       .leftJoinAndSelect('wordbookSpace.EntryCode', 'entryCode')
       .select([
         'wordbookSpace',
@@ -178,6 +171,10 @@ export class WordbookSpacesService {
 
     if (!wordbookSpace) {
       throw new NotFoundException('존재하지 않는 단어장 공간입니다.');
+    }
+
+    if (!wordbookSpace.Members.some((m) => m.MemberId === userId)) {
+      throw new ForbiddenException('해당 단어장 공간의 멤버가 아닙니다.');
     }
 
     return wordbookSpace;
