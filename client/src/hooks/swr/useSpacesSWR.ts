@@ -4,6 +4,13 @@ import { WordbookSpace } from '../../lib/api/typings/wordbookspace';
 
 export default function useSpacesSWR(
   options: SWRConfiguration = {},
-): SWRResponse<WordbookSpace[], unknown> {
-  return useSWR<WordbookSpace[]>('/wordbookspaces', fetcher, { ...options });
+): SWRResponse<WordbookSpace[], unknown> & { isLoading: boolean } {
+  const response = useSWR<WordbookSpace[]>('/wordbookspaces', fetcher, {
+    ...options,
+  });
+
+  return {
+    ...response,
+    isLoading: !response.error && !response.data,
+  };
 }
