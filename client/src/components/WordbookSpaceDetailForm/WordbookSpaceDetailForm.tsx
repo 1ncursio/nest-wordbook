@@ -1,34 +1,18 @@
-import React, { forwardRef, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
-import useSpaceSWR from '../../hooks/swr/useSpacesSWR';
-import createSpace from '../../lib/api/wordbookspaces/createSpace';
 
-export type WordbookSpaceFormProps = {
-  onSubmit: () => void;
-};
-
-const WordbookSpaceForm = forwardRef<HTMLFormElement>((props, ref) => {
+const WordbookSpaceDetailForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { data: spacesData, mutate: mutateSpace } = useSpaceSWR();
 
-  const onSubmit = useCallback(
-    async (data) => {
-      if (!spacesData) return;
-
-      const space = await createSpace(data);
-      mutateSpace([space, ...spacesData], false);
-    },
-    [spacesData],
-  );
+  const onSubmit = useCallback(() => {}, []);
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      ref={ref}
       className="flex-1 flex flex-col gap-y-5"
     >
       <div className="flex flex-col gap-2">
@@ -76,7 +60,7 @@ const WordbookSpaceForm = forwardRef<HTMLFormElement>((props, ref) => {
         </label>
         <input
           type="text"
-          {...register('shortBio', { maxLength: 100 })}
+          {...register('shortBio', { maxLength: 255 })}
           id="short-bio"
           placeholder="소개"
           autoComplete="off"
@@ -84,11 +68,11 @@ const WordbookSpaceForm = forwardRef<HTMLFormElement>((props, ref) => {
           className="input-primary"
         />
         {errors.shortBio?.type === 'maxLength' && (
-          <p className="text-red-500">소개는 최대 100자입니다.</p>
+          <p className="text-red-500">소개는 최대 255자입니다.</p>
         )}
       </div>
     </form>
   );
-});
+};
 
-export default WordbookSpaceForm;
+export default WordbookSpaceDetailForm;
