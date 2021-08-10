@@ -1,4 +1,6 @@
+import { Role } from '../role';
 import { User } from '../user';
+import { Wordbook } from '../wordbook';
 
 export interface WordbookSpace {
   id: string;
@@ -11,4 +13,12 @@ export interface WordbookSpace {
   updatedAt: Date;
   deletedAt: Date | null;
   Owner: Pick<User, 'id' | 'username' | 'image'>;
+}
+
+export interface WordbookSpaceDetail extends WordbookSpace {
+  Members: {
+    Member: Pick<User, 'id' | 'username' | 'image'>;
+  };
+  Roles: Role[];
+  Wordbooks: Wordbook[];
 }
