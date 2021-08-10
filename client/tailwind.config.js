@@ -20,7 +20,8 @@ module.exports = {
       },
       boxShadow: {
         DEFAULT:
-          '0 0 20px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+          '0 0 20px -3px rgba(0, 0, 0, 0.1), 0 0px 6px -2px rgba(0, 0, 0, 0.05)',
+        10: '0 0 10px -3px rgba(0, 0, 0, 0.1), 0 0px 6px -2px rgba(0, 0, 0, 0.05)',
       },
       transitionTimingFunction: {
         'out-back': 'cubic-bezier(0.12, 0.65, 0.32, 1.15)',
