@@ -72,6 +72,7 @@ export class WordbookSpacesService {
       await queryRunner.manager.getRepository(Wordbook).save({
         name: '첫 단어장',
         WordbookSpaceId: wordbookSpace.id,
+        AuthorId: userId,
       });
 
       await queryRunner.commitTransaction();
