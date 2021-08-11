@@ -27,15 +27,16 @@ const Header = () => {
           <h1 className="text-xl font-bold text-white">Nest Wordbook</h1>
         </Link>
       </div>
-      {userData && (
+      {userData && !isLoadingUserData ? (
         <div>
           <div ref={headerUserIconRef}>
             <HeaderUserIcon onClick={toggleUserMenu} />
           </div>
           <HeaderUserMenu visible={userMenu} onClose={onOutsideClick} />
         </div>
+      ) : (
+        <button>로그인</button>
       )}
-      {!(userData && isLoadingUserData) && <div>로그인</div>}
       {/* 로그인 모달 */}
     </div>
   );
