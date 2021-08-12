@@ -56,7 +56,10 @@ const AccountProfile = () => {
 
   const onSubmitProfile = useCallback(
     async ({ username, shortBio }: UserProfileRequestPayload) => {
-      const data = await updateUserProfile({ username, shortBio });
+      const data = await updateUserProfile({
+        username,
+        shortBio: shortBio ?? '',
+      });
       mutateUser(
         {
           ...userData!,
