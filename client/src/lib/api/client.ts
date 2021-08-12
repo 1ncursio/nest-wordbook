@@ -8,7 +8,13 @@ export interface TokenPayload extends JwtPayload {
   iat: number;
 }
 
-const client = axios.create({ withCredentials: true });
+const { CancelToken } = axios;
+export const source = CancelToken.source();
+
+const client = axios.create({
+  withCredentials: true,
+  cancelToken: source.token,
+});
 
 client.defaults.baseURL =
   process.env.NODE_ENV === 'development'
