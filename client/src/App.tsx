@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { SWRConfig } from 'swr';
 import './App.css';
 import AppLayout from './components/AppLayout/AppLayout';
 import Header from './components/Header';
@@ -12,7 +13,7 @@ import WordbookSpaceDetail from './pages/WordbookSpaceDetail';
 
 function App() {
   return (
-    <>
+    <SWRConfig value={{ errorRetryCount: 3 }}>
       <AppLayout>
         <AppLayout.Head>
           <Header />
@@ -39,7 +40,7 @@ function App() {
           </Switch>
         </AppLayout.Main>
       </AppLayout>
-    </>
+    </SWRConfig>
   );
 }
 

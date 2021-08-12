@@ -1,20 +1,13 @@
-import React, { useCallback, useRef, useState, VFC } from 'react';
+import React, { useCallback, useRef, VFC } from 'react';
+import useBoolean from '../../hooks/useBoolean';
 import Icon from '../Icon';
 import StyledModal from '../StyledModal';
 import WordbookSpaceForm from '../WordbookSpaceForm';
 
 const CreateSpaceCardButton: VFC = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, openModal, closeModal] = useBoolean(false);
 
   const formRef = useRef<HTMLFormElement>(null);
-
-  const openModal = useCallback(() => {
-    setIsOpen(true);
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setIsOpen(false);
-  }, []);
 
   const onFormRefSubmit = useCallback(() => {
     formRef.current?.dispatchEvent(

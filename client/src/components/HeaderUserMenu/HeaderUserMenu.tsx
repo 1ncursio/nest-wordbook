@@ -1,9 +1,6 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
-import { Link } from 'react-router-dom';
-import useProfileSWR from '../../hooks/swr/useProfileSWR';
 import useLogout from '../../hooks/useLogout';
-import logout from '../../lib/api/auth/logout';
 import HeaderUserMenuItem from '../HeaderUserMenuItem';
 
 type HeaderUserMenuProps = {

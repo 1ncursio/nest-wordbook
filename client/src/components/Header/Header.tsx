@@ -4,6 +4,7 @@ import useProfileSWR from '../../hooks/swr/useProfileSWR';
 import useToggle from '../../hooks/useToggle';
 import HeaderUserIcon from '../HeaderUserIcon';
 import HeaderUserMenu from '../HeaderUserMenu';
+import LogInButton from '../LogInButton';
 
 const Header = () => {
   const [userMenu, toggleUserMenu] = useToggle(false);
@@ -29,15 +30,14 @@ const Header = () => {
       </div>
       {userData && !isLoadingUserData ? (
         <div>
-          <div ref={headerUserIconRef}>
+          <div ref={headerUserIconRef} className="flex items-center">
             <HeaderUserIcon onClick={toggleUserMenu} />
           </div>
           <HeaderUserMenu visible={userMenu} onClose={onOutsideClick} />
         </div>
       ) : (
-        <button>로그인</button>
+        <LogInButton />
       )}
-      {/* 로그인 모달 */}
     </div>
   );
 };
