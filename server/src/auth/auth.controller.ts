@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import {
   Controller,
   Get,
@@ -41,14 +42,6 @@ export class AuthController {
     const accessToken = this.authService.getJwtAccessToken(user.id);
     const refreshToken = this.authService.getJwtRefreshToken(user.id);
 
-    // response.cookie('Authentication', accessToken, {
-    //   httpOnly: true,
-    //   path: '/',
-    //   sameSite: 'lax',
-    //   maxAge:
-    //     this.configService.get<number>('JWT_ACCESS_TOKEN_EXPIRATION_TIME') *
-    //     1000,
-    // });
     response.setHeader('Authorization', `Bearer ${accessToken}`);
 
     response.cookie('Refresh', refreshToken, {
@@ -130,16 +123,7 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Post('logout')
   async logOut(@Res({ passthrough: true }) response: Response) {
-    // response.cookie('Authentication', null, {
-    //   httpOnly: true,
-    //   path: '/',
-    //   maxAge: 0,
-    // });
-    response.cookie('Refresh', null, {
-      httpOnly: true,
-      path: '/',
-      maxAge: 0,
-    });
+    response.clearCookie('Refresh');
 
     return true;
   }
