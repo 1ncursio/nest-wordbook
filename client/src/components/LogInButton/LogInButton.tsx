@@ -16,28 +16,41 @@ const LogInButton = () => {
 
   return (
     <>
-      <button onClick={openModal}>로그인</button>
+      <button onClick={openModal} className="font-medium text-lg text-white">
+        로그인
+      </button>
       <StyledModal
         isOpen={isOpen}
         onRequestClose={closeModal}
         onRequestOk={closeModal}
-        width="639px"
-        title="간편 로그인"
+        width="480px"
+        height="360px"
       >
-        <div className="flex justify-around items-center">
-          <IconButton icon="google" onClick={auth('google')} />
-          <IconButton
-            icon="github"
-            onClick={auth('github')}
-            className="bg-github"
-          />
-          <IconButton
-            icon="kakao"
-            onClick={auth('kakao')}
-            className="bg-kakao"
-          />
+        <div className="relative">
+          <div className="absolute top-16 left-0 w-full z-0 md:hidden opacity-80">
+            <img src={undrawWelcome} alt="login" />
+          </div>
+          <div className="flex-[3] flex flex-col gap-4 items-center relative z-10">
+            <h2 className="text-xl text-gray-600 font-medium">간편 로그인</h2>
+            <div className="w-1/2 flex justify-around items-center">
+              <IconButton
+                icon="google"
+                onClick={auth('google')}
+                className="bg-white"
+              />
+              <IconButton
+                icon="github"
+                onClick={auth('github')}
+                className="bg-github"
+              />
+              <IconButton
+                icon="kakao"
+                onClick={auth('kakao')}
+                className="bg-kakao"
+              />
+            </div>
+          </div>
         </div>
-        <img src={undrawWelcome} alt="login" className="w-2/3 mx-auto" />
       </StyledModal>
     </>
   );

@@ -1,11 +1,18 @@
 import { css, Global } from '@emotion/react';
 import React, { VFC } from 'react';
 import { Helmet } from 'react-helmet-async';
+import RequireLogIn from '../../components/RequireLogIn';
 import SpaceCard from '../../components/SpaceCard';
+import useProfileSWR from '../../hooks/swr/useProfileSWR';
 import useSpaceSWR from '../../hooks/swr/useSpacesSWR';
 
 const WordbookSpace: VFC = () => {
   const { data: spacesData } = useSpaceSWR();
+  const { data: userData, isLoading: isLoadingUserData } = useProfileSWR();
+
+  if (!userData && !isLoadingUserData) {
+    return <RequireLogIn />;
+  }
 
   return (
     <div className="w-2xl lg:w-full xl:w-lg 2xl:w-xl mx-auto 2xl:px-4">
