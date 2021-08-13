@@ -109,10 +109,14 @@ const modalStyle = ({
     css`
       width: ${width};
     `}
+    ${height &&
+    css`
+      height: ${height};
+    `}
   }
 
   .content-after {
-    ${tw`bg-white  min-w-[24rem] min-h-[12rem] transform translate-y-0 scale-100`}
+    ${tw`bg-white  min-width[24rem] min-height[12rem] transform translate-y-0 scale-100`}
   }
 
   .content-before {
