@@ -13,7 +13,13 @@ import WordbookSpaceDetail from './pages/WordbookSpaceDetail';
 
 function App() {
   return (
-    <SWRConfig value={{ errorRetryCount: 3 }}>
+    <SWRConfig
+      value={{
+        errorRetryCount: 3,
+        dedupingInterval: 5000,
+        errorRetryInterval: 5000,
+      }}
+    >
       <AppLayout>
         <AppLayout.Head>
           <Header />
@@ -24,19 +30,28 @@ function App() {
               {/* <Redirect to="/login" /> */}
               <Redirect to="/wordbookspaces" />
             </Route>
-            <Route exact path="/wordbookspaces" component={WordbookSpace} />
-            <Route
-              exact
-              path="/wordbookspaces/:wordbookSpaceId"
-              component={WordbookSpaceDetail}
-            />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/refresh" component={Refresh} />
+            <Route exact path="/wordbookspaces">
+              <WordbookSpace />
+            </Route>
+            <Route exact path="/wordbookspaces/:wordbookSpaceId">
+              <WordbookSpaceDetail />
+            </Route>
+            <Route exact path=""></Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/refresh">
+              <Refresh />
+            </Route>
             <Route exact path="/account">
               <Redirect to="/account/settings" />
             </Route>
-            <Route exact path="/account/settings" component={Setting} />
-            <Route exact path="/account/profile" component={Profile} />
+            <Route exact path="/account/settings">
+              <Setting />
+            </Route>
+            <Route exact path="/account/profile">
+              <Profile />
+            </Route>
           </Switch>
         </AppLayout.Main>
       </AppLayout>
