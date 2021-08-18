@@ -36,7 +36,6 @@ function App() {
             <Route exact path="/wordbookspaces/:wordbookSpaceId">
               <WordbookSpaceDetail />
             </Route>
-            <Route exact path=""></Route>
             <Route exact path="/login">
               <Login />
             </Route>
