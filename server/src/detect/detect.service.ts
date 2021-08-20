@@ -1,5 +1,5 @@
 import vision from '@google-cloud/vision';
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import AWS from 'aws-sdk';
 import path from 'path';
 import dayjs from 'dayjs';
@@ -16,10 +16,9 @@ const client = new vision.ImageAnnotatorClient({
 @Injectable()
 export class DetectService {
   async detectTextFromImage(file: Express.Multer.File) {
-    // file.
-    console.log({ file });
     // const [result] = await client.textDetection(file.buffer);
-    await this.uploadImage2S3(file);
+    const result = await this.uploadImage2S3(file);
+    console.log(result);
     // const detections = result.textAnnotations;
     // console.log('Text:');
     // console.log(detections);
@@ -33,7 +32,7 @@ export class DetectService {
     });
 
     try {
-      await s3
+      return await s3
         .putObject({
           Bucket: process.env.S3_BUCKET,
           Key: `images/${dayjs(Date.now()).format(
@@ -45,6 +44,9 @@ export class DetectService {
         .promise();
     } catch (error) {
       console.error(error);
+      throw new InternalServerErrorException(
+        '이미지 업로드 중에 에러가 발생했습니다.',
+      );
     }
   }
 }
