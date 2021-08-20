@@ -32,6 +32,7 @@
     "db:generate-migration": "npm run typeorm migration:generate -- -n"
   },
   "dependencies": {
+    "@google-cloud/vision": "^2.3.8",
     "@nestjs/common": "^7.6.15",
     "@nestjs/config": "^0.6.3",
     "@nestjs/core": "^7.6.15",
@@ -41,10 +42,12 @@
     "@nestjs/serve-static": "^2.2.2",
     "@nestjs/swagger": "^4.8.1",
     "@nestjs/typeorm": "^7.1.5",
+    "aws-sdk": "^2.972.0",
     "bcrypt": "^5.0.1",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "cookie-parser": "^1.4.5",
+    "dayjs": "^1.10.6",
     "mysql2": "^2.2.5",
     "nestjs-pino": "^1.4.0",
     "passport": "^0.4.1",

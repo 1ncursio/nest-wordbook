@@ -23,13 +23,6 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 
-try {
-  fs.readdirSync('uploads');
-} catch (error) {
-  console.error('uploads 폴더가 없어 생성합니다.');
-  fs.mkdirSync('uploads');
-}
-
 @UseInterceptors(UndefinedToNullInterceptor)
 @Controller('users')
 export class UsersController {
@@ -62,7 +55,14 @@ export class UsersController {
         },
         filename(req, file, cb) {
           const ext = path.extname(file.originalname);
-          cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+          console.log(file.originalname);
+          cb(
+            null,
+            `${Date.now()}_${path.basename(
+              file.originalname,
+              ext,
+            )}${ext.toLowerCase()}`,
+          );
         },
       }),
       limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
