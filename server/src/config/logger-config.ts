@@ -13,7 +13,7 @@ const config: Params = {
       ignore: 'hostname',
     },
   },
-  forRoutes: ['*'],
+  forRoutes: ['/api/*'],
 };
 
 export default config;
