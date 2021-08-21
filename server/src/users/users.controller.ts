@@ -47,30 +47,10 @@ export class UsersController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @UseInterceptors(
-    FileInterceptor('image', {
-      storage: multer.diskStorage({
-        destination(req, file, cb) {
-          cb(null, 'uploads/');
-        },
-        filename(req, file, cb) {
-          const ext = path.extname(file.originalname);
-          console.log(file.originalname);
-          cb(
-            null,
-            `${Date.now()}_${path.basename(
-              file.originalname,
-              ext,
-            )}${ext.toLowerCase()}`,
-          );
-        },
-      }),
-      limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
-    }),
-  )
+  @UseInterceptors(FileInterceptor('image'))
   @Patch('/image')
   async updateUserImage(
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: Express.MulterS3.File,
     @UserDecorator() user: User,
   ) {
     return this.usersService.updateUserImage(file, user.id);
