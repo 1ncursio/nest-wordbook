@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
 import { Wordbook } from 'src/entities/wordbook.entity';
@@ -13,12 +13,27 @@ export class WordbooksService {
     private wordbooksRepository: Repository<Wordbook>,
   ) {}
 
-  async findWordbooks() {
-    return this.wordbooksRepository.find({ order: { createdAt: 'DESC' } });
-  }
+  // async findWordbooks() {
+  //   return this.wordbooksRepository.find({ order: { createdAt: 'DESC' } });
+  // }
 
-  async findOneWordbook(wordbookId: number) {
-    return this.wordbooksRepository.findOne({ where: { id: wordbookId } });
+  async findOneWordbook(wordbookId: string) {
+    try {
+      const wordbook = await this.wordbooksRepository
+        .createQueryBuilder('wordbook')
+        .where('wordbook.id = :wordbookId', { wordbookId })
+        .leftJoinAndSelect('wordbook.Author', 'author')
+        .leftJoinAndSelect('wordbook.Words', 'words')
+        .getOne();
+
+      if (!wordbook) {
+        throw new NotFoundException('존재하지 않는 단어장입니다.');
+      }
+
+      return wordbook;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async createWordbook(createWordbookDto: CreateWordbookDto, userId: string) {

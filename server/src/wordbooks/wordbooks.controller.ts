@@ -13,27 +13,30 @@ import { ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { UserDecorator } from 'src/decorators/user.decorator';
 import { User } from 'src/entities/user.entity';
+import { MemberGuard } from 'src/wordbook-spaces-members/guards/member.guard';
 import { CreateWordbookDto } from './dto/create-word-book.dto';
 import { UpdateWordbookDto } from './dto/update-word-book.dto';
 import { WordbooksService } from './wordbooks.service';
 
 @ApiTags('Wordbooks')
 @UseGuards(JwtAuthGuard)
-@Controller('wordbooks')
+@Controller('wordbookspaces')
 export class WordbooksController {
   constructor(private wordbooksService: WordbooksService) {}
 
-  @Get()
-  async findWordbooks() {
-    return this.wordbooksService.findWordbooks();
-  }
+  // @Get(':wordbookspaceId/wordbooks')
+  // async findWordbooks() {
+  //   return this.wordbooksService.findWordbooks();
+  // }
 
-  @Get(':wordbookId')
-  async findOneWordbook(@Param('wordbookId', ParseIntPipe) wordbookId: number) {
+  @UseGuards(MemberGuard)
+  @Get(':wordbookspaceId/wordbooks/:wordbookId')
+  async findOneWordbook(@Param('wordbookId') wordbookId: string) {
     return this.wordbooksService.findOneWordbook(wordbookId);
   }
 
-  @Post()
+  @UseGuards(MemberGuard)
+  @Post(':wordbookspaceId/wordbooks')
   async createWordbook(
     @UserDecorator() user: User,
     @Body() createWordbookDto: CreateWordbookDto,
@@ -41,7 +44,8 @@ export class WordbooksController {
     return this.wordbooksService.createWordbook(createWordbookDto, user.id);
   }
 
-  @Patch(':wordbookId')
+  @UseGuards(MemberGuard)
+  @Patch(':wordbookspaceId/wordbooks/:wordbookId')
   async updateWordbook(
     @UserDecorator() user: User,
     @Body() data: UpdateWordbookDto,
@@ -49,7 +53,8 @@ export class WordbooksController {
     return this.wordbooksService.updateWordbook();
   }
 
-  @Delete(':wordbookId')
+  @UseGuards(MemberGuard)
+  @Delete(':wordbookspaceId/wordbooks/:wordbookId')
   async deleteWordbook() {
     return this.wordbooksService.deleteWordbook();
   }
