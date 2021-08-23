@@ -1,3 +1,5 @@
+import { User } from '../user';
+
 export interface Wordbook {
   id: string;
   WordbookSpaceId: string;
@@ -7,4 +9,5 @@ export interface Wordbook {
   createdAt: Date;
   updatedAt: Date;
   deletedAt: Date | null;
+  Author: Pick<User, 'id' | 'username' | 'image'>;
 }

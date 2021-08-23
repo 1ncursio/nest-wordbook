@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { userThumbnail } from '../../assets/images';
 import { Wordbook } from '../../lib/api/typings/wordbook';
+import optimizeImage from '../../lib/optimizeImage';
 
 export type WordbookCardProps = {
   wordbooks: Wordbook[];
@@ -30,9 +32,13 @@ const WordbookCard: FC<WordbookCardProps> = ({ wordbooks }) => {
                     <p className="text-sm text-gray-500">{wordbook.shortBio}</p>
                   )}
                 </div>
-                <div>
-                  <div>ㅎㅇ</div>
-                  <div>ㅂㅇ</div>
+                <div className="flex items-center">
+                  <img
+                    src={optimizeImage(wordbook.Author.image ?? userThumbnail)}
+                    alt="profile"
+                    className="rounded-full w-6 h-6 object-cover mr-2"
+                  />
+                  <b className="text-sm">{wordbook.Author.username}</b>
                 </div>
               </div>
             </Link>

@@ -155,6 +155,7 @@ export class WordbookSpacesService {
       .innerJoinAndSelect('wordbookSpace.Roles', 'roles')
       .innerJoinAndSelect('wordbookSpace.Owner', 'owner')
       .leftJoinAndSelect('wordbookSpace.Wordbooks', 'wordbooks')
+      .leftJoinAndSelect('wordbooks.Author', 'author')
       .leftJoinAndSelect('wordbookSpace.EntryCode', 'entryCode')
       .select([
         'wordbookSpace',
@@ -165,6 +166,9 @@ export class WordbookSpacesService {
         'owner.username',
         'owner.image',
         'wordbooks',
+        'author.id',
+        'author.username',
+        'author.image',
         'entryCode',
       ])
       .orderBy('wordbookSpace.createdAt', 'DESC')
