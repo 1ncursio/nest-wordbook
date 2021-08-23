@@ -24,19 +24,19 @@ import { WordbooksService } from './wordbooks.service';
 export class WordbooksController {
   constructor(private wordbooksService: WordbooksService) {}
 
-  // @Get(':wordbookspaceId/wordbooks')
+  // @Get(':wordbookSpaceId/wordbooks')
   // async findWordbooks() {
   //   return this.wordbooksService.findWordbooks();
   // }
 
   @UseGuards(MemberGuard)
-  @Get(':wordbookspaceId/wordbooks/:wordbookId')
+  @Get(':wordbookSpaceId/wordbooks/:wordbookId')
   async findOneWordbook(@Param('wordbookId') wordbookId: string) {
     return this.wordbooksService.findOneWordbook(wordbookId);
   }
 
   @UseGuards(MemberGuard)
-  @Post(':wordbookspaceId/wordbooks')
+  @Post(':wordbookSpaceId/wordbooks')
   async createWordbook(
     @UserDecorator() user: User,
     @Body() createWordbookDto: CreateWordbookDto,
@@ -45,7 +45,7 @@ export class WordbooksController {
   }
 
   @UseGuards(MemberGuard)
-  @Patch(':wordbookspaceId/wordbooks/:wordbookId')
+  @Patch(':wordbookSpaceId/wordbooks/:wordbookId')
   async updateWordbook(
     @UserDecorator() user: User,
     @Body() data: UpdateWordbookDto,
@@ -54,7 +54,7 @@ export class WordbooksController {
   }
 
   @UseGuards(MemberGuard)
-  @Delete(':wordbookspaceId/wordbooks/:wordbookId')
+  @Delete(':wordbookSpaceId/wordbooks/:wordbookId')
   async deleteWordbook() {
     return this.wordbooksService.deleteWordbook();
   }
