@@ -8,6 +8,7 @@ import Profile from './pages/Account/Profile';
 import Setting from './pages/Account/Settings';
 import Login from './pages/Login';
 import Refresh from './pages/Refresh';
+import WordbookDetail from './pages/WordbookDetail';
 import WordbookSpace from './pages/WordbookSpace';
 import WordbookSpaceDetail from './pages/WordbookSpaceDetail';
 
@@ -35,6 +36,12 @@ function App() {
             </Route>
             <Route exact path="/wordbookspaces/:wordbookSpaceId">
               <WordbookSpaceDetail />
+            </Route>
+            <Route
+              exact
+              path="/wordbookspaces/:wordbookSpaceId/wordbooks/:wordbookId"
+            >
+              <WordbookDetail />
             </Route>
             <Route exact path="/login">
               <Login />

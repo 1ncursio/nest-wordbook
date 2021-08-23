@@ -23,6 +23,9 @@ const WordbookSpaceDetail: VFC = () => {
       <p className="text-gray-600">{`${spaceData.Wordbooks.length}개의 단어장`}</p>
       {/* <WordbookSpaceDetailForm /> */}
       <WordbookCard wordbooks={spaceData.Wordbooks} />
+      <button type="button" className="btn-cyan">
+        단어장 추가
+      </button>
       <Global styles={globalStyle} />
     </div>
   );
