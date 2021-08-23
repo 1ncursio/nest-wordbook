@@ -77,7 +77,6 @@ export class UsersService {
   }
 
   async updateUserImage(file: Express.MulterS3.File, userId: string) {
-    console.log({ file });
     await this.userRepository.update(userId, { image: file.location });
 
     return this.userRepository.findOne(userId, {
