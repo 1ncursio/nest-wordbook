@@ -63,17 +63,23 @@ export class WordbookSpacesService {
           },
         ]);
 
-      await queryRunner.manager.getRepository(WordbookSpaceMember).save({
-        WordbookSpaceId: wordbookSpace.id,
-        MemberId: userId,
-        RoleId: adminRole.id,
-      });
+      await queryRunner.manager.getRepository(WordbookSpaceMember).save(
+        {
+          WordbookSpaceId: wordbookSpace.id,
+          MemberId: userId,
+          RoleId: adminRole.id,
+        },
+        { reload: false },
+      );
 
-      await queryRunner.manager.getRepository(Wordbook).save({
-        name: '첫 단어장',
-        WordbookSpaceId: wordbookSpace.id,
-        AuthorId: userId,
-      });
+      await queryRunner.manager.getRepository(Wordbook).save(
+        {
+          name: '첫 단어장',
+          WordbookSpaceId: wordbookSpace.id,
+          AuthorId: userId,
+        },
+        { reload: false },
+      );
 
       await queryRunner.commitTransaction();
       return this.wordbookSpaceRepository
