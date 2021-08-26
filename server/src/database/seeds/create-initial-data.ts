@@ -140,7 +140,7 @@ export class CreateInitialData implements Seeder {
           kanji: '貧富',
           hiragana: 'ひんぷ',
           katakana: 'ヒンプ',
-          level: 1,
+          level: 'N1',
         },
         {
           id: wordId2,
@@ -148,7 +148,7 @@ export class CreateInitialData implements Seeder {
           kanji: '残酷極まりない',
           hiragana: 'ざんこくきわまりない',
           katakana: 'ザンコクキワマリナイ',
-          level: 1,
+          level: 'N1',
         },
       ])
       .execute();
