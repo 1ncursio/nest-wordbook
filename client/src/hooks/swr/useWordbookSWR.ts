@@ -1,13 +1,13 @@
 import useSWR, { SWRConfiguration, SWRResponse } from 'swr';
 import fetcher from '../../lib/api/fetcher';
-import { WordbookSpaceDetail } from '../../lib/api/typings/wordbookspace';
+import { WordbookDetail } from '../../lib/api/typings/wordbook';
 
 export default function useWordbookSWR(
   wordbookSpaceId: string,
   wordbookId: string,
   options: SWRConfiguration = {},
-): SWRResponse<WordbookSpaceDetail, unknown> & { isLoading: boolean } {
-  const response = useSWR<WordbookSpaceDetail>(
+): SWRResponse<WordbookDetail, unknown> & { isLoading: boolean } {
+  const response = useSWR<WordbookDetail>(
     wordbookSpaceId && wordbookId
       ? `/wordbookspaces/${wordbookSpaceId}/wordbooks/${wordbookId}`
       : null,
