@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -33,9 +33,14 @@ export class Word {
   @Column('varchar', { name: 'katakana' })
   katakana!: string;
 
+  @IsOptional()
   @IsNumber()
-  @Column('tinyint', { name: 'level' })
-  level!: number;
+  @Column('enum', {
+    name: 'level',
+    enum: ['N1', 'N2', 'N3', 'N4', 'N5'],
+    nullable: true,
+  })
+  level?: 'N1' | 'N2' | 'N3' | 'N4' | 'N5';
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: Date;
