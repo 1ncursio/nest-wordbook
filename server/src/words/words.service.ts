@@ -16,22 +16,11 @@ export class WordsService {
     @InjectRepository(Word) private wordsRepository: Repository<Word>,
   ) {}
 
-  async create(
-    wordbookId: string,
-    createWordDto: CreateWordDto,
-    userId: string,
-  ) {
-    const word = await this.wordsRepository.findOne({
-      where: { WordbookId: wordbookId, OwnerId: userId },
+  async createWord(wordbookId: string, createWordDto: CreateWordDto) {
+    return this.wordsRepository.save({
+      ...createWordDto,
+      WordbookId: wordbookId,
     });
-    if (!word) {
-      throw new NotFoundException('존재하지 않는 단어장입니다.');
-    }
-    word.kanji = createWordDto.kanji;
-    word.hiragana = createWordDto.hiragana;
-    word.katakana = createWordDto.katakana;
-
-    return this.wordsRepository.save(word);
   }
 
   async findAll(wordbookId: string) {

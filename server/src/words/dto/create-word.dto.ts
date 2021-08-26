@@ -5,4 +5,5 @@ export class CreateWordDto extends PickType(Word, [
   'kanji',
   'hiragana',
   'katakana',
+  'level',
 ] as const) {}
