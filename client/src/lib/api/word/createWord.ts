@@ -1,6 +1,7 @@
+import { mutate } from 'swr';
 import client from '../client';
-import { WordbookSpace } from '../typings/wordbookspace';
-import { CreateSpacePayload } from '../typings/wordbookspace/CreateSpacePayload';
+import { Word } from '../typings/word';
+import { WordbookDetail } from '../typings/wordbook';
 
 export interface CreateWordPayload {
   kanji: string;
@@ -8,9 +9,29 @@ export interface CreateWordPayload {
   katakana: string;
 }
 
-export default async function createSpace(
+export default async function createWord(
+  wordbookSpaceId: string,
+  wordbookId: string,
   payload: CreateWordPayload,
-): Promise<WordbookSpace> {
-  const response = await client.post('/wordbookspaces', payload);
+  wordbookData: WordbookDetail,
+): Promise<Word> {
+  const response = await client.post(
+    `/wordbookspaces/${wordbookSpaceId}/wordbooks/${wordbookId}/words`,
+    payload,
+  );
+
+  if (wordbookData) {
+    mutate(
+      `/wordbookspaces/${wordbookSpaceId}/wordbooks/${wordbookId}`,
+      {
+        ...wordbookData,
+        Words: [response.data.payload, ...wordbookData.Words],
+      },
+      false,
+    );
+  } else {
+    mutate(wordbookData, true);
+  }
+
   return response.data.payload;
 }

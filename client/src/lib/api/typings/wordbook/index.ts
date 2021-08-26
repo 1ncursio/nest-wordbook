@@ -1,4 +1,5 @@
 import { User } from '../user';
+import { Word } from '../word';
 
 export interface Wordbook {
   id: string;
@@ -10,4 +11,8 @@ export interface Wordbook {
   updatedAt: Date;
   deletedAt: Date | null;
   Author: Pick<User, 'id' | 'username' | 'image'>;
+}
+
+export interface WordbookDetail extends Wordbook {
+  Words: Word[];
 }
