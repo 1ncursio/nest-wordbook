@@ -1,10 +1,7 @@
 import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
 import IconButton from '../../components/IconTextButton/IconTextButton';
 
 const Login = () => {
-  const history = useHistory();
-
   const auth = useCallback(
     (name: string) => () => {
       window.location.href = `http://localhost:3095/auth/${name}`;

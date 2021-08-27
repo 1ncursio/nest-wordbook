@@ -1,6 +1,9 @@
+import { parseAsync } from 'json2csv';
 import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import Icon from '../../components/Icon';
+import IconButton from '../../components/IconTextButton/IconTextButton';
 import useWordbookSWR from '../../hooks/swr/useWordbookSWR';
 import { Word } from '../../lib/api/typings/word';
 import createWord from '../../lib/api/word/createWord';
@@ -34,11 +37,22 @@ const WordbookDetail = () => {
   );
 
   const onExportCSV = useCallback(
-    (words?: Word[]) => () => {
-      console.log(words);
-      // TODO: Implement json to csv converter and download it
+    (words?: Word[]) => async () => {
+      if (!wordbookData || !words) return;
+
+      const csv = await parseAsync(words, {
+        fields: ['kanji', 'hiragana', 'katakana'],
+      });
+
+      const a = document.createElement('a');
+      const file = new Blob([csv], { type: 'text/csv' });
+      a.href = URL.createObjectURL(file);
+      a.download = `${wordbookData.name.replace(/\s/, '_')}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     },
-    [],
+    [wordbookData],
   );
 
   return (
@@ -47,6 +61,7 @@ const WordbookDetail = () => {
       {wordbookData?.shortBio && <div>{wordbookData.shortBio}</div>}
       <div className="flex gap-4">
         <button type="button" className="btn-cyan">
+          <Icon name="upload" />
           데이터 가져오기
         </button>
         <button
@@ -54,6 +69,7 @@ const WordbookDetail = () => {
           onClick={onExportCSV(wordbookData?.Words)}
           className="btn-white"
         >
+          <Icon name="download" />
           데이터 내보내기
         </button>
       </div>
@@ -61,22 +77,30 @@ const WordbookDetail = () => {
         <div>
           {React.Children.toArray(
             wordbookData?.Words.map((word) => (
-              <article className="w-full p-4 rounded-lg bg-white shadow-10">
-                <div className="flex justify-between items-center break-words">
-                  <div className="font-bold text-gray-800 text-xl">
-                    {word.kanji}
+              <div className="flex gap-4">
+                <article className="w-full p-4 rounded-lg bg-white shadow-10">
+                  <div className="flex justify-between items-center break-words">
+                    <div className="font-bold text-gray-800 text-xl">
+                      {word.kanji}
+                    </div>
+                    <div className="font-bold text-gray-800 text-xl">
+                      {word.hiragana}
+                    </div>
+                    <div className="font-bold text-gray-800 text-xl">
+                      {word.katakana}
+                    </div>
+                    <div className="font-bold text-gray-800 text-xl">
+                      {word.level}
+                    </div>
                   </div>
-                  <div className="font-bold text-gray-800 text-xl">
-                    {word.hiragana}
-                  </div>
-                  <div className="font-bold text-gray-800 text-xl">
-                    {word.katakana}
-                  </div>
-                  <div className="font-bold text-gray-800 text-xl">
-                    {word.level}
-                  </div>
-                </div>
-              </article>
+                </article>
+                {/* <button type="button">삭제</button> */}
+                <IconButton
+                  icon="remove"
+                  onClick={() => {}}
+                  className="w-12 h-12 border-0"
+                />
+              </div>
             )),
           )}
         </div>
