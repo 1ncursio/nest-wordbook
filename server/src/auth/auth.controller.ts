@@ -70,11 +70,8 @@ export class AuthController {
   @UseGuards(NotLoggedInGuard, GoogleAuthGuard)
   @Redirect('http://localhost:3090/refresh', 301)
   @Get('google/redirect')
-  async googleAuthRedirect(@UserDecorator() user: User) {
-    const accessToken = this.authService.getJwtAccessToken(user.id);
-    const refreshToken = this.authService.getJwtRefreshToken(user.id);
-
-    return { accessToken, refreshToken };
+  googleAuthRedirect(@UserDecorator() user: User) {
+    return this.authService.getJwtRefreshToken(user.id);
   }
 
   @UseGuards(NotLoggedInGuard, GithubAuthGuard)
@@ -83,13 +80,10 @@ export class AuthController {
 
   @UseInterceptors(SetCookieInterceptor)
   @UseGuards(NotLoggedInGuard, GithubAuthGuard)
-  @Redirect('http://localhost:3090/refresh', 301)
+  @Redirect('http://localhost:3090', 301)
   @Get('github/redirect')
-  async githubAuthRedirect(@UserDecorator() user: User) {
-    const accessToken = this.authService.getJwtAccessToken(user.id);
-    const refreshToken = this.authService.getJwtRefreshToken(user.id);
-
-    return { accessToken, refreshToken };
+  githubAuthRedirect(@UserDecorator() user: User) {
+    return this.authService.getJwtRefreshToken(user.id);
   }
 
   @UseGuards(NotLoggedInGuard, KakaoAuthGuard)
@@ -100,11 +94,8 @@ export class AuthController {
   @UseGuards(NotLoggedInGuard, KakaoAuthGuard)
   @Redirect('http://localhost:3090/refresh', 301)
   @Get('kakao/redirect')
-  async kakaoAuthRedirect(@UserDecorator() user: User) {
-    const accessToken = this.authService.getJwtAccessToken(user.id);
-    const refreshToken = this.authService.getJwtRefreshToken(user.id);
-
-    return { accessToken, refreshToken };
+  kakaoAuthRedirect(@UserDecorator() user: User) {
+    return this.authService.getJwtRefreshToken(user.id);
   }
 
   @UseGuards(JwtRefreshGuard)
