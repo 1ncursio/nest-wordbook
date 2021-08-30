@@ -23,13 +23,13 @@ export class KakaoStrategy extends PassportStrategy(Strategy, 'kakao') {
     profile: KakaoProfile,
     done,
   ) => {
-    const { id, displayName, emails, photos, provider } = profile;
+    const { id, displayName, emails, provider, _json } = profile;
 
     const joinOAuthUserDto: JoinOAuthUserDto = {
       socialId: id,
       email: emails?.[0].value ?? null,
       username: displayName,
-      image: photos?.[0].value ?? null,
+      image: _json.properties?.thumbnail_image ?? null,
       provider: provider,
     };
 
