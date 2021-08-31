@@ -6,5 +6,16 @@ import { ReactComponent as plus } from './plus.svg';
 import { ReactComponent as remove } from './remove.svg';
 import { ReactComponent as reorder } from './reorder.svg';
 import { ReactComponent as upload } from './upload.svg';
+import { ReactComponent as filledEdit } from './filled_edit.svg';
 
-export { github, google, kakao, plus, remove, reorder, upload, download };
+export {
+  github,
+  google,
+  kakao,
+  plus,
+  remove,
+  reorder,
+  upload,
+  download,
+  filledEdit,
+};
