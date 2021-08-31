@@ -10,11 +10,11 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { Exam } from './exam.entity';
 import { ExamWord } from './exam-word.entity';
-import { Wordbook } from './wordbook.entity';
+import { Exam } from './exam.entity';
 import { WordPartOfSpeech } from './word-part-of-speech.entity';
 import { WordSense } from './word-sense.entity';
+import { Wordbook } from './wordbook.entity';
 
 @Entity('words')
 export class Word {
@@ -33,14 +33,22 @@ export class Word {
   @Column('varchar', { name: 'katakana' })
   katakana!: string;
 
+  @IsString()
+  @Column('varchar', { name: 'korean' })
+  korean!: string;
+
   @IsOptional()
-  @IsNumber()
+  @IsString()
   @Column('enum', {
     name: 'level',
     enum: ['N1', 'N2', 'N3', 'N4', 'N5'],
     nullable: true,
   })
   level?: 'N1' | 'N2' | 'N3' | 'N4' | 'N5';
+
+  @IsNumber()
+  @Column('int', { name: 'rank' })
+  rank!: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: Date;

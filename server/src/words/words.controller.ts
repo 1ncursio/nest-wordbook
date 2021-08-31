@@ -16,6 +16,7 @@ import { User } from 'src/entities/user.entity';
 import { ApiTags } from '@nestjs/swagger';
 import { WordbookSpaceRoleDecorator } from 'src/auth/wordbook-space-role.decorator';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { ReorderWordDto } from './dto/reorder-word.dto';
 
 @ApiTags('Words')
 @UseGuards(JwtAuthGuard)
@@ -42,6 +43,7 @@ export class WordsController {
   //   return this.wordsService.findOne(wordId);
   // }
 
+  @WordbookSpaceRoleDecorator(['canUpdate'])
   @Patch('/:wordbookSpaceId/wordbooks/:wordbookId/words/:wordId')
   async update(
     @Param('wordbookId') wordbookId: string,
@@ -52,8 +54,22 @@ export class WordsController {
     return this.wordsService.update(wordbookId, wordId, updateWordDto, user.id);
   }
 
+  @WordbookSpaceRoleDecorator(['canDelete'])
   @Delete('/:wordbookSpaceId/wordbooks/:wordbookId/words/:wordId')
-  async remove(@Param('wordId') wordId: string) {
-    return this.wordsService.remove(wordId);
+  async remove(
+    @Param('wordbookId') wordbookId: string,
+    @Param('wordId') wordId: string,
+  ) {
+    return this.wordsService.remove(wordbookId, wordId);
+  }
+
+  @WordbookSpaceRoleDecorator(['canUpdate'])
+  @Patch('/:wordbookSpaceId/wordbooks/:wordbookId/words/:wordId/reorder')
+  async reorderWord(
+    @Param('wordbookId') wordbookId: string,
+    @Param('wordId') wordId: string,
+    @Body() reorderWordDto: ReorderWordDto,
+  ) {
+    return this.wordsService.reorderWord(wordbookId, wordId, reorderWordDto);
   }
 }

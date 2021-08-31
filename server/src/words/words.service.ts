@@ -6,6 +6,7 @@ import { Word } from 'src/entities/word.entity';
 import { Repository } from 'typeorm';
 import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
+import { ReorderWordDto } from './dto/reorder-word.dto';
 
 @Injectable()
 export class WordsService {
@@ -45,7 +46,7 @@ export class WordsService {
     userId: string,
   ) {
     const word = await this.wordsRepository.findOne({
-      where: { WordbookId: wordbookId, id: wordId, OwnerId: userId },
+      where: { WordbookId: wordbookId, id: wordId },
     });
     if (!word) {
       throw new NotFoundException('존재하지 않는 단어 혹은 단어장입니다.');
@@ -53,11 +54,27 @@ export class WordsService {
     word.kanji = updateWordDto.kanji;
     word.hiragana = updateWordDto.hiragana;
     word.katakana = updateWordDto.katakana;
+    word.korean = updateWordDto.korean;
+    word.level = updateWordDto.level;
 
     return this.wordsRepository.save(word);
   }
 
-  async remove(id: string) {
-    return `This action removes a #${id} word`;
+  async remove(wordbookId: string, wordId: string) {
+    const word = await this.wordsRepository.findOne({
+      where: { WordbookId: wordbookId, id: wordId },
+    });
+    if (!word) {
+      throw new NotFoundException('존재하지 않는 단어 혹은 단어장입니다.');
+    }
+    await this.wordsRepository.remove(word);
+
+    return { id: wordId };
   }
+
+  async reorderWord(
+    wordbookId: string,
+    wordId: string,
+    reorderWordDto: ReorderWordDto,
+  ) {}
 }
