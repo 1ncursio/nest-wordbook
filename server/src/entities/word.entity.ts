@@ -1,4 +1,4 @@
-import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -15,6 +15,14 @@ import { Exam } from './exam.entity';
 import { WordPartOfSpeech } from './word-part-of-speech.entity';
 import { WordSense } from './word-sense.entity';
 import { Wordbook } from './wordbook.entity';
+
+export enum Level {
+  N1 = 'N1',
+  N2 = 'N2',
+  N3 = 'N3',
+  N4 = 'N4',
+  N5 = 'N5',
+}
 
 @Entity('words')
 export class Word {
@@ -38,7 +46,7 @@ export class Word {
   korean!: string;
 
   @IsOptional()
-  @IsString()
+  @IsEnum(Level)
   @Column('enum', {
     name: 'level',
     enum: ['N1', 'N2', 'N3', 'N4', 'N5'],

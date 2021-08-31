@@ -18,9 +18,16 @@ export class WordsService {
   ) {}
 
   async createWord(wordbookId: string, createWordDto: CreateWordDto) {
+    const count = await this.wordsRepository.count({
+      where: {
+        WordbookId: wordbookId,
+      },
+    });
+
     return this.wordsRepository.save({
       ...createWordDto,
       WordbookId: wordbookId,
+      rank: count + 1,
     });
   }
 
