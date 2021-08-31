@@ -3,6 +3,7 @@ import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import Icon from '../../components/Icon';
+import { WordRequestPayload } from '../../components/WordItem/WordItem';
 import WordList from '../../components/WordList';
 import useWordbookSWRImmutable from '../../hooks/swr/useWordbookSWRImmutable';
 import { Word } from '../../lib/api/typings/word';
@@ -19,7 +20,7 @@ const WordbookDetail = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm<WordRequestPayload>();
   const { wordbookSpaceId, wordbookId } = useParams<WordbookDetailParams>();
   const { data: wordbookData } = useWordbookSWRImmutable(
     wordbookSpaceId,
@@ -36,7 +37,7 @@ const WordbookDetail = () => {
         hiragana: '',
         katakana: '',
         korean: '',
-        level: '',
+        level: 'N3',
       });
     },
     [wordbookData],
@@ -119,6 +120,13 @@ const WordbookDetail = () => {
             spellCheck={false}
             className="input-primary"
           />
+          <select {...register('level')} id="level" defaultValue="N3">
+            <option value="N1">N1</option>
+            <option value="N2">N2</option>
+            <option value="N3">N3</option>
+            <option value="N4">N4</option>
+            <option value="N5">N5</option>
+          </select>
           <button type="submit">추가</button>
         </form>
       </div>

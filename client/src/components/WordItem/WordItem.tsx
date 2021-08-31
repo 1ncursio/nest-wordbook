@@ -127,7 +127,7 @@ const WordItem: FC<WordItemProps> = ({ word }) => {
                 spellCheck={false}
                 className="input-primary"
               />
-              <select {...register('level')} id="level">
+              <select {...register('level')} id="level" defaultValue="N3">
                 <option value="N1">N1</option>
                 <option value="N2">N2</option>
                 <option value="N3">N3</option>
