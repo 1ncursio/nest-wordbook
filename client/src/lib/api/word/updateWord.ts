@@ -1,36 +1,29 @@
+import produce from 'immer';
 import { mutate } from 'swr';
 import client from '../client';
 import { Word } from '../typings/word';
 import { WordbookDetail } from '../typings/wordbook';
-import produce from 'immer';
+import { CreateWordPayload } from './createWord';
 
-export interface CreateWordPayload {
-  kanji: string;
-  hiragana: string;
-  katakana: string;
-  korean: string;
-}
-
-export default async function createWord(
+export default async function updateWord(
   wordbookSpaceId: string,
   wordbookId: string,
   payload: CreateWordPayload,
   wordbookData: WordbookDetail,
+  wordId: string,
 ): Promise<Word> {
-  const response = await client.post(
-    `/wordbookspaces/${wordbookSpaceId}/wordbooks/${wordbookId}/words`,
+  const response = await client.patch(
+    `/wordbookspaces/${wordbookSpaceId}/wordbooks/${wordbookId}/words/${wordId}`,
     payload,
   );
 
   if (wordbookData) {
     mutate(
       `/wordbookspaces/${wordbookSpaceId}/wordbooks/${wordbookId}`,
-      // {
-      //   ...wordbookData,
-      //   Words: [response.data.payload, ...wordbookData.Words],
-      // },
       produce((wordbook: WordbookDetail) => {
-        wordbook.Words.push(response.data.payload);
+        wordbook.Words = wordbook.Words.map((word) =>
+          word.id === wordId ? response.data.payload : word,
+        );
         return wordbook;
       }),
       false,

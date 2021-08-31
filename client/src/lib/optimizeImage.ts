@@ -1,9 +1,8 @@
 export default function optimizeImage(url: string, width?: number) {
-  if (url.includes('https://')) return url;
+  // if (/^https?:\/\/.+/.test(url)) return url;
 
-  if (!url.match(/\.(jpe?g|png)$/i)) return url;
+  // if (!/\.(jpe?g|png)$/i.test(url)) return url;
 
-  return `http://localhost:3095/uploads/${url}`;
-
+  return url;
   // TODO: optimize image on upload
 }

@@ -3,6 +3,7 @@ export interface Word {
   kanji: string;
   hiragana: string;
   katakana: string;
+  korean: string;
   level: string | null;
   createdAt: Date;
   updatedAt: Date;

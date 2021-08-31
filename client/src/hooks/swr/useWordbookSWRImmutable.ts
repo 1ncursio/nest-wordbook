@@ -1,13 +1,14 @@
-import useSWR, { SWRConfiguration, SWRResponse } from 'swr';
+import { SWRConfiguration, SWRResponse } from 'swr';
+import useSWRImmutable from 'swr/immutable';
 import fetcher from '../../lib/api/fetcher';
 import { WordbookDetail } from '../../lib/api/typings/wordbook';
 
-export default function useWordbookSWR(
+export default function useWordbookSWRImmutable(
   wordbookSpaceId: string,
   wordbookId: string,
   options: SWRConfiguration = {},
 ): SWRResponse<WordbookDetail, unknown> & { isLoading: boolean } {
-  const response = useSWR<WordbookDetail>(
+  const response = useSWRImmutable<WordbookDetail>(
     wordbookSpaceId && wordbookId
       ? `/wordbookspaces/${wordbookSpaceId}/wordbooks/${wordbookId}`
       : null,

@@ -1,22 +1,28 @@
-import { SWRDevtools } from '@jjordy/swr-devtools';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { cache, mutate } from 'swr';
+import { SWRConfig } from 'swr';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SWRDevtools cache={cache} mutate={mutate} debug />
     <HelmetProvider>
       <Helmet>
         <title>Nest Wordbook</title>
       </Helmet>
       <Router>
-        <App />
+        <SWRConfig
+          value={{
+            errorRetryCount: 3,
+            dedupingInterval: 5000,
+            errorRetryInterval: 5000,
+          }}
+        >
+          <App />
+        </SWRConfig>
       </Router>
     </HelmetProvider>
   </React.StrictMode>,

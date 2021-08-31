@@ -3,8 +3,8 @@ import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import Icon from '../../components/Icon';
-import IconButton from '../../components/IconTextButton/IconTextButton';
-import useWordbookSWR from '../../hooks/swr/useWordbookSWR';
+import WordList from '../../components/WordList';
+import useWordbookSWRImmutable from '../../hooks/swr/useWordbookSWRImmutable';
 import { Word } from '../../lib/api/typings/word';
 import createWord from '../../lib/api/word/createWord';
 
@@ -17,21 +17,27 @@ const WordbookDetail = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const { wordbookSpaceId, wordbookId } = useParams<WordbookDetailParams>();
-  const { data: wordbookData } = useWordbookSWR(wordbookSpaceId, wordbookId);
+  const { data: wordbookData } = useWordbookSWRImmutable(
+    wordbookSpaceId,
+    wordbookId,
+  );
 
   const onSubmit = useCallback(
     async (data) => {
       if (!wordbookData) return;
 
-      const word = await createWord(
-        wordbookSpaceId,
-        wordbookId,
-        data,
-        wordbookData,
-      );
+      await createWord(wordbookSpaceId, wordbookId, data, wordbookData);
+      reset({
+        kanji: '',
+        hiragana: '',
+        katakana: '',
+        korean: '',
+        level: '',
+      });
     },
     [wordbookData],
   );
@@ -41,7 +47,7 @@ const WordbookDetail = () => {
       if (!wordbookData || !words) return;
 
       const csv = await parseAsync(words, {
-        fields: ['kanji', 'hiragana', 'katakana'],
+        fields: ['kanji', 'hiragana', 'katakana', 'korean', 'level'],
       });
 
       const a = document.createElement('a');
@@ -74,36 +80,8 @@ const WordbookDetail = () => {
         </button>
       </div>
       <div>
-        <div>
-          {React.Children.toArray(
-            wordbookData?.Words.map((word) => (
-              <div className="flex gap-4">
-                <article className="w-full p-4 rounded-lg bg-white shadow-10">
-                  <div className="flex justify-between items-center break-words">
-                    <div className="font-bold text-gray-800 text-xl">
-                      {word.kanji}
-                    </div>
-                    <div className="font-bold text-gray-800 text-xl">
-                      {word.hiragana}
-                    </div>
-                    <div className="font-bold text-gray-800 text-xl">
-                      {word.katakana}
-                    </div>
-                    <div className="font-bold text-gray-800 text-xl">
-                      {word.level}
-                    </div>
-                  </div>
-                </article>
-                {/* <button type="button">삭제</button> */}
-                <IconButton
-                  icon="remove"
-                  onClick={() => {}}
-                  className="w-12 h-12 border-0"
-                />
-              </div>
-            )),
-          )}
-        </div>
+        {/* TODO: skeleton */}
+        {wordbookData && <WordList />}
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
@@ -128,6 +106,15 @@ const WordbookDetail = () => {
             {...register('katakana')}
             id="katakana"
             placeholder="가타카나"
+            autoComplete="off"
+            spellCheck={false}
+            className="input-primary"
+          />
+          <input
+            type="text"
+            {...register('korean')}
+            id="korean"
+            placeholder="뜻"
             autoComplete="off"
             spellCheck={false}
             className="input-primary"

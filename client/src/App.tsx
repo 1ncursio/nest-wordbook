@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { SWRConfig } from 'swr';
 import './App.css';
 import AppLayout from './components/AppLayout/AppLayout';
 import Header from './components/Header';
@@ -14,54 +13,46 @@ import WordbookSpaceDetail from './pages/WordbookSpaceDetail';
 
 function App() {
   return (
-    <SWRConfig
-      value={{
-        errorRetryCount: 3,
-        dedupingInterval: 5000,
-        errorRetryInterval: 5000,
-      }}
-    >
-      <AppLayout>
-        <AppLayout.Head>
-          <Header />
-        </AppLayout.Head>
-        <AppLayout.Main>
-          <Switch>
-            <Route exact path="/">
-              {/* <Redirect to="/login" /> */}
-              <Redirect to="/wordbookspaces" />
-            </Route>
-            <Route exact path="/wordbookspaces">
-              <WordbookSpace />
-            </Route>
-            <Route exact path="/wordbookspaces/:wordbookSpaceId">
-              <WordbookSpaceDetail />
-            </Route>
-            <Route
-              exact
-              path="/wordbookspaces/:wordbookSpaceId/wordbooks/:wordbookId"
-            >
-              <WordbookDetail />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/refresh">
-              <Refresh />
-            </Route>
-            <Route exact path="/account">
-              <Redirect to="/account/settings" />
-            </Route>
-            <Route exact path="/account/settings">
-              <Setting />
-            </Route>
-            <Route exact path="/account/profile">
-              <Profile />
-            </Route>
-          </Switch>
-        </AppLayout.Main>
-      </AppLayout>
-    </SWRConfig>
+    <AppLayout>
+      <AppLayout.Head>
+        <Header />
+      </AppLayout.Head>
+      <AppLayout.Main>
+        <Switch>
+          <Route exact path="/">
+            {/* <Redirect to="/login" /> */}
+            <Redirect to="/wordbookspaces" />
+          </Route>
+          <Route exact path="/wordbookspaces">
+            <WordbookSpace />
+          </Route>
+          <Route exact path="/wordbookspaces/:wordbookSpaceId">
+            <WordbookSpaceDetail />
+          </Route>
+          <Route
+            exact
+            path="/wordbookspaces/:wordbookSpaceId/wordbooks/:wordbookId"
+          >
+            <WordbookDetail />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/refresh">
+            <Refresh />
+          </Route>
+          <Route exact path="/account">
+            <Redirect to="/account/settings" />
+          </Route>
+          <Route exact path="/account/settings">
+            <Setting />
+          </Route>
+          <Route exact path="/account/profile">
+            <Profile />
+          </Route>
+        </Switch>
+      </AppLayout.Main>
+    </AppLayout>
   );
 }
 
