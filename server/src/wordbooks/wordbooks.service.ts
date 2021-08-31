@@ -24,7 +24,7 @@ export class WordbooksService {
         .where('wordbook.id = :wordbookId', { wordbookId })
         .leftJoinAndSelect('wordbook.Author', 'author')
         .leftJoinAndSelect('wordbook.Words', 'words')
-        .orderBy('words.createdAt', 'DESC')
+        .orderBy('words.rank', 'ASC')
         .getOne();
 
       if (!wordbook) {
