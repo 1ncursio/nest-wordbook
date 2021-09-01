@@ -1,20 +1,24 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { User } from 'src/entities/user.entity';
-import { Wordbook } from 'src/entities/wordbook.entity';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
+import { InjectConnection, InjectRepository } from '@nestjs/typeorm';
 import { Word } from 'src/entities/word.entity';
-import { Repository } from 'typeorm';
+import { Wordbook } from 'src/entities/wordbook.entity';
+import { Connection, Repository } from 'typeorm';
 import { CreateWordDto } from './dto/create-word.dto';
-import { UpdateWordDto } from './dto/update-word.dto';
 import { ReorderWordDto } from './dto/reorder-word.dto';
+import { UpdateWordDto } from './dto/update-word.dto';
 
 @Injectable()
 export class WordsService {
   constructor(
-    @InjectRepository(User) private userRepository: Repository<User>,
     @InjectRepository(Wordbook)
     private wordbooksRepository: Repository<Wordbook>,
     @InjectRepository(Word) private wordsRepository: Repository<Word>,
+    @InjectConnection()
+    private connection: Connection,
   ) {}
 
   async createWord(wordbookId: string, createWordDto: CreateWordDto) {
@@ -27,7 +31,7 @@ export class WordsService {
     return this.wordsRepository.save({
       ...createWordDto,
       WordbookId: wordbookId,
-      rank: count + 1,
+      rank: count,
     });
   }
 
@@ -83,5 +87,70 @@ export class WordsService {
     wordbookId: string,
     wordId: string,
     reorderWordDto: ReorderWordDto,
-  ) {}
+  ) {
+    const { rank } = reorderWordDto;
+
+    const queryRunner = this.connection.createQueryRunner();
+    await queryRunner.connect();
+
+    await queryRunner.startTransaction();
+
+    try {
+      const { rank: previousRank } = await queryRunner.manager
+        .getRepository(Word)
+        .createQueryBuilder('word')
+        .where('id = :wordId', { wordId })
+        .getOne();
+
+      // 위에서 밑으로 재정렬시킬 경우
+      if (previousRank < rank) {
+        await queryRunner.manager
+          .getRepository(Word)
+          .createQueryBuilder('word')
+          .update()
+          .set({
+            rank: () => '`rank` - 1',
+          })
+          .where('WordbookId = :wordbookId', { wordbookId })
+          .andWhere('`rank` > :previousRank', { previousRank })
+          .andWhere('`rank` <= :rank', { rank })
+          .execute();
+      }
+      // 밑에서 위로 재정렬시킬 경우
+      else if (previousRank > rank) {
+        await queryRunner.manager
+          .getRepository(Word)
+          .createQueryBuilder('word')
+          .update()
+          .set({
+            rank: () => '`rank` + 1',
+          })
+          .where('WordbookId = :wordbookId', { wordbookId })
+          .andWhere('`rank` >= :rank', { rank })
+          .andWhere('`rank` < :previousRank', { previousRank })
+          .execute();
+      }
+      await queryRunner.manager
+        .getRepository(Word)
+        .createQueryBuilder('word')
+        .update()
+        .set({
+          rank,
+        })
+        .where('id = :wordId', { wordId })
+        .execute();
+
+      await queryRunner.commitTransaction();
+
+      return true;
+    } catch (error) {
+      console.error(error);
+      await queryRunner.rollbackTransaction();
+      throw new InternalServerErrorException(
+        '트랜잭션 중 오류가 발생했습니다.',
+      );
+    } finally {
+      await queryRunner.release();
+    }
+  }
 }
