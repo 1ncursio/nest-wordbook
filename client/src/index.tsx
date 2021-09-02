@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { SWRConfig } from 'swr';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
@@ -14,15 +13,7 @@ ReactDOM.render(
         <title>Nest Wordbook</title>
       </Helmet>
       <Router>
-        <SWRConfig
-          value={{
-            errorRetryCount: 3,
-            dedupingInterval: 5000,
-            errorRetryInterval: 5000,
-          }}
-        >
-          <App />
-        </SWRConfig>
+        <App />
       </Router>
     </HelmetProvider>
   </React.StrictMode>,

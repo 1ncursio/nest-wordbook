@@ -1,4 +1,5 @@
 import { Mutex } from 'async-mutex';
+import { AxiosError } from 'axios';
 import { source } from '../client';
 import refreshClient from '../refreshClient';
 
@@ -18,7 +19,7 @@ export default async function refreshAccessToken(): Promise<string> {
           const { headers } = await refreshClient.get('/auth/refresh');
           accessToken = headers.authorization;
         } catch (error) {
-          if (error.response.status === 401) {
+          if ((error as any).response.status === 401) {
             /* cancel all the requests if status code 401 returned */
             accessToken = '';
             source.cancel();
