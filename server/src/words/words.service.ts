@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Injectable,
   InternalServerErrorException,
   NotFoundException,
@@ -54,7 +55,6 @@ export class WordsService {
     wordbookId: string,
     wordId: string,
     updateWordDto: UpdateWordDto,
-    userId: string,
   ) {
     const word = await this.wordsRepository.findOne({
       where: { WordbookId: wordbookId, id: wordId },
@@ -89,6 +89,14 @@ export class WordsService {
     reorderWordDto: ReorderWordDto,
   ) {
     const { rank } = reorderWordDto;
+
+    const wordsCount = await this.wordsRepository.count({
+      where: { WordbookId: wordbookId },
+    });
+
+    if (wordsCount <= rank) {
+      throw new BadRequestException('유효하지 않은 rank값입니다.');
+    }
 
     const queryRunner = this.connection.createQueryRunner();
     await queryRunner.connect();

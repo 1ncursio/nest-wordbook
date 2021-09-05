@@ -1,4 +1,4 @@
-import { IsEnum, IsNumber, IsOptional, IsString } from 'class-validator';
+import { IsEnum, IsInt, IsOptional, IsString, Min } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -54,7 +54,8 @@ export class Word {
   })
   level?: 'N1' | 'N2' | 'N3' | 'N4' | 'N5';
 
-  @IsNumber()
+  @IsInt()
+  @Min(0)
   @Column('int', { name: 'rank' })
   rank!: number;
 
