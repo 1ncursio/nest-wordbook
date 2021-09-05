@@ -18,7 +18,7 @@ function App() {
 
   return (
     <>
-      <SWRDevtools cache={cache} mutate={mutate} />
+      {/* <SWRDevtools cache={cache} mutate={mutate} /> */}
       <SWRConfig
         value={{
           errorRetryCount: 3,
